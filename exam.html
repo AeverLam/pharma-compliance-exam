@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《医药代表管理办法》培训考试系统</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #f0f2f5;
+  color: #333;
+  min-height: 100vh;
+}
+.header {
+  background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+.header h1 { font-size: 22px; margin-bottom: 5px; }
+.header p { font-size: 14px; opacity: 0.9; }
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+/* 登录页 */
+.login-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 40px 30px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  margin-top: 40px;
+}
+.login-card .logo {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+.login-card h2 { font-size: 20px; margin-bottom: 8px; }
+.login-card p { font-size: 14px; color: #666; margin-bottom: 25px; line-height: 1.6; }
+.login-card input {
+  width: 100%;
+  max-width: 320px;
+  padding: 12px 16px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.login-card input:focus { border-color: #1a73e8; }
+.login-card .btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 40px;
+  background: #1a73e8;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.login-card .btn:hover { background: #1557b0; }
+.login-card .btn:disabled { background: #999; cursor: not-allowed; }
+.login-card .hint { font-size: 12px; color: #999; margin-top: 15px; }
+
+/* 考试页 */
+.exam-header {
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.exam-header .info { font-size: 14px; color: #666; }
+.exam-header .info span { color: #1a73e8; font-weight: bold; }
+.exam-header .timer { font-size: 18px; font-weight: bold; color: #e74c3c; }
+
+.question-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.question-card .q-type {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.question-card .q-type.single { background: #e3f2fd; color: #1565c0; }
+.question-card .q-type.multiple { background: #fce4ec; color: #c62828; }
+.question-card .q-num {
+  font-weight: bold;
+  color: #1a73e8;
+  margin-bottom: 10px;
+}
+.question-card .q-text {
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+.question-card .options { list-style: none; }
+.question-card .options li {
+  padding: 10px 14px;
+  margin-bottom: 6px;
+  border: 2px solid #e8e8e8;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.question-card .options li:hover { border-color: #90caf9; background: #f5f9ff; }
+.question-card .options li.selected {
+  border-color: #1a73e8;
+  background: #e3f2fd;
+}
+.question-card .options li.multi-selected {
+  border-color: #e74c3c;
+  background: #ffebee;
+}
+.question-card .options li.correct {
+  border-color: #4caf50;
+  background: #e8f5e9;
+}
+.question-card .options li.wrong {
+  border-color: #f44336;
+  background: #ffebee;
+}
+.question-card .options li.missed {
+  border-color: #ff9800;
+  background: #fff3e0;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+.actions .btn {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.actions .btn-primary { background: #1a73e8; color: #fff; }
+.actions .btn-primary:hover { background: #1557b0; }
+.actions .btn-danger { background: #e74c3c; color: #fff; }
+.actions .btn-danger:hover { background: #c0392b; }
+.actions .btn-secondary { background: #95a5a6; color: #fff; }
+.actions .btn-secondary:hover { background: #7f8c8d; }
+
+/* 结果页 */
+.result-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+.result-card .icon { font-size: 64px; margin-bottom: 15px; }
+.result-card h2 { font-size: 24px; margin-bottom: 10px; }
+.result-card .score {
+  font-size: 48px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+.result-card .score.pass { color: #4caf50; }
+.result-card .score.fail { color: #f44336; }
+.result-card .score-detail {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+.result-card .score-item {
+  text-align: center;
+}
+.result-card .score-item .num { font-size: 24px; font-weight: bold; }
+.result-card .score-item .label { font-size: 13px; color: #666; margin-top: 4px; }
+.result-card .badge {
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: 20px;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+.result-card .badge.pass { background: #e8f5e9; color: #2e7d32; }
+.result-card .badge.fail { background: #ffebee; color: #c62828; }
+
+/* 答题卡 */
+.progress-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top: 1px solid #e8e8e8;
+  padding: 10px 15px;
+  z-index: 100;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.progress-bar .dot {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 11px;
+  margin: 0 3px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.progress-bar .dot.answered { background: #1a73e8; color: #fff; }
+.progress-bar .dot.unanswered { background: #e0e0e0; color: #666; }
+.progress-bar .dot.current { border: 2px solid #e74c3c; }
+
+/* 滚动导航 */
+.question-nav { margin-bottom: 70px; }
+
+.about-info {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  line-height: 1.8;
+  font-size: 14px;
+}
+.about-info h3 { margin-bottom: 10px; color: #1a73e8; }
+.about-info p { color: #555; }
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+.modal-box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+}
+.modal-box h3 { margin-bottom: 15px; }
+.modal-box .btn-group { margin-top: 20px; display: flex; gap: 10px; justify-content: center; }
+
+/* 错题详解 */
+.detail-item {
+  background: #fff;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 10px;
+  text-align: left;
+  border-left: 4px solid #4caf50;
+}
+.detail-item.wrong { border-left-color: #f44336; }
+.detail-item .detail-q { font-size: 14px; font-weight: bold; margin-bottom: 8px; }
+.detail-item .detail-answer { font-size: 13px; color: #666; margin-bottom: 5px; }
+.detail-item .detail-exp { font-size: 13px; color: #1a73e8; background: #e3f2fd; padding: 8px; border-radius: 4px; margin-top: 5px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📋《医药代表管理办法》培训考试</h1>
+  <p>单选题30道（2分/道）+ 多选题10道（4分/道）· 满分100分 · 80分及格</p>
+</div>
+
+<div class="container" id="app">
+  <!-- 登录页 -->
+  <div id="page-login" style="display:block">
+    <div class="login-card">
+      <div class="logo">📝</div>
+      <h2>医药代表合规考试</h2>
+      <p>基于《医药代表管理办法》解读培训内容<br>全面检验你的合规知识掌握情况</p>
+      <input type="text" id="username-input" placeholder="请输入你的姓名" maxlength="20" onkeydown="if(event.key==='Enter') startExam()">
+      <br>
+      <button class="btn" id="start-btn" onclick="startExam()">开始考试</button>
+      <div class="hint">题库共 <span id="total-count">加载中...</span> 道题 · 随机抽题 · 每次不同</div>
+    </div>
+    <div class="about-info">
+      <h3>📌 考试说明</h3>
+      <p>▪ 考试时间：60分钟（自动计时）<br>
+      ▪ 单选题30道 × 2分 = 60分<br>
+      ▪ 多选题10道 × 4分 = 40分<br>
+      ▪ 及格线：80分<br>
+      ▪ 多选题：全部选对才得分，少选/多选/错选均不得分<br>
+      ▪ 提交后可查看详细答案解析</p>
+    </div>
+  </div>
+
+  <!-- 考试页 -->
+  <div id="page-exam" style="display:none">
+    <div class="exam-header">
+      <div class="info">
+        考生：<span id="display-name"></span> │ 
+        已答：<span id="answered-count">0</span>/<span id="total-count-exam">40</span>
+      </div>
+      <div class="timer" id="timer">60:00</div>
+    </div>
+
+    <div class="question-nav" id="question-list"></div>
+
+    <div class="actions">
+      <button class="btn btn-primary" onclick="confirmSubmit()">📤 提交答卷</button>
+    </div>
+  </div>
+
+  <!-- 结果页 -->
+  <div id="page-result" style="display:none"></div>
+</div>
+
+<!-- 确认提交弹窗 -->
+<div id="submit-modal" class="modal-overlay" style="display:none" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <h3>⚠️ 确认提交？</h3>
+    <p id="modal-msg">提交后无法修改，请确认所有题目已作答。</p>
+    <div class="btn-group">
+      <button class="btn btn-secondary" onclick="closeModal()">继续答题</button>
+      <button class="btn btn-danger" onclick="doSubmit()">确认提交</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let examState = null;
+let timerInterval = null;
+
+// 页面加载
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const res = await fetch('/api/questions/count');
+    const data = await res.json();
+    document.getElementById('total-count').textContent = data.total;
+  } catch(e) {
+    document.getElementById('total-count').textContent = '171';
+  }
+});
+
+// 开始考试
+async function startExam() {
+  const username = document.getElementById('username-input').value.trim();
+  if (!username) {
+    document.getElementById('username-input').focus();
+    document.getElementById('username-input').style.borderColor = '#f44336';
+    return;
+  }
+
+  const btn = document.getElementById('start-btn');
+  btn.disabled = true;
+  btn.textContent = '🎲 正在抽题...';
+
+  try {
+    const res = await fetch('/api/exam/start', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({username})
+    });
+    examState = await res.json();
+    examState.answers = {};
+
+    document.getElementById('page-login').style.display = 'none';
+    document.getElementById('page-exam').style.display = 'block';
+    document.getElementById('display-name').textContent = username;
+
+    renderQuestions();
+    startTimer(60);
+  } catch(e) {
+    alert('加载题目失败，请重试');
+  }
+  btn.disabled = false;
+  btn.textContent = '开始考试';
+}
+
+// 渲染题目
+function renderQuestions() {
+  const container = document.getElementById('question-list');
+  container.innerHTML = '';
+
+  let idx = 1;
+  examState.single.forEach(q => {
+    q.displayIndex = idx++;
+    container.appendChild(createQuestionCard(q, 'single'));
+  });
+  examState.multiple.forEach(q => {
+    q.displayIndex = idx++;
+    container.appendChild(createQuestionCard(q, 'multiple'));
+  });
+
+  document.getElementById('total-count-exam').textContent = idx - 1;
+  updateProgress();
+}
+
+function createQuestionCard(q, type) {
+  const card = document.createElement('div');
+  card.className = 'question-card';
+  card.id = `q-${type}-${q.id}`;
+
+  const typeLabel = type === 'single' ? '单选题' : '多选题';
+  const typeClass = type === 'single' ? 'single' : 'multiple';
+  const score = type === 'single' ? '2分' : '4分';
+
+  let optionsHtml = '';
+  const labels = ['A', 'B', 'C', 'D', 'E'];
+  q.options.forEach((opt, i) => {
+    const liClass = type === 'single' ? 'selected' : 'multi-selected';
+    optionsHtml += `<li id="opt-${type}-${q.id}-${i}" onclick="${type === 'single' ? 'selectSingle' : 'toggleMulti'}('${q.id}', ${i})">${labels[i]}. ${opt}</li>`;
+  });
+
+  card.innerHTML = `
+    <span class="q-type ${typeClass}">${typeLabel} · ${score}</span>
+    <div class="q-num">第 ${q.displayIndex} 题</div>
+    <div class="q-text">${q.question}</div>
+    <ul class="options">${optionsHtml}</ul>
+  `;
+
+  return card;
+}
+
+// 单选题选择
+function selectSingle(qId, idx) {
+  if (!examState) return;
+  examState.answers[`single_${qId}`] = idx;
+
+  // 清除其他选项的高亮
+  examState.single.forEach(q => {
+    if (q.id === qId) {
+      q.options.forEach((_, i) => {
+        const el = document.getElementById(`opt-single-${qId}-${i}`);
+        if (el) {
+          el.classList.toggle('selected', i === idx);
+        }
+      });
+    }
+  });
+  updateProgress();
+}
+
+// 多选题选择
+function toggleMulti(qId, idx) {
+  if (!examState) return;
+  const key = `multiple_${qId}`;
+  if (!examState.answers[key]) examState.answers[key] = [];
+
+  const arr = examState.answers[key];
+  const pos = arr.indexOf(idx);
+  if (pos >= 0) {
+    arr.splice(pos, 1);
+  } else {
+    arr.push(idx);
+  }
+
+  // 更新UI
+  examState.multiple.forEach(q => {
+    if (q.id === qId) {
+      q.options.forEach((_, i) => {
+        const el = document.getElementById(`opt-multiple-${qId}-${i}`);
+        if (el) {
+          el.classList.toggle('multi-selected', (examState.answers[key] || []).includes(i));
+        }
+      });
+    }
+  });
+  updateProgress();
+}
+
+// 更新进度
+function updateProgress() {
+  if (!examState) return;
+  const answered = Object.keys(examState.answers).length;
+  document.getElementById('answered-count').textContent = answered;
+}
+
+// 计时器
+function startTimer(minutes) {
+  let totalSeconds = minutes * 60;
+  timerInterval = setInterval(() => {
+    totalSeconds--;
+    const m = Math.floor(totalSeconds / 60);
+    const s = totalSeconds % 60;
+    document.getElementById('timer').textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    if (totalSeconds <= 0) {
+      clearInterval(timerInterval);
+      alert('⏰ 时间到！将自动提交答卷。');
+      doSubmit();
+    }
+    if (totalSeconds <= 300) {
+      document.getElementById('timer').style.color = '#f44336';
+    }
+  }, 1000);
+}
+
+// 确认提交
+function confirmSubmit() {
+  const answered = Object.keys(examState.answers).length;
+  const total = examState.single.length + examState.multiple.length;
+  const msg = answered < total ?
+    `你还有 ${total - answered} 道题未作答，确定要提交吗？` :
+    `所有题目已作答，确定要提交吗？`;
+  document.getElementById('modal-msg').textContent = msg;
+  document.getElementById('submit-modal').style.display = 'flex';
+}
+
+function closeModal() {
+  document.getElementById('submit-modal').style.display = 'none';
+}
+
+// 提交
+async function doSubmit() {
+  clearInterval(timerInterval);
+  closeModal();
+
+  const btn = document.querySelector('.btn-primary');
+  btn.disabled = true;
+  btn.textContent = '⏳ 正在评分...';
+
+  try {
+    const res = await fetch('/api/exam/submit', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        session_id: examState.session_id,
+        answers: examState.answers
+      })
+    });
+    const result = await res.json();
+    showResult(result);
+  } catch(e) {
+    alert('提交失败，请重试');
+  }
+}
+
+// 显示结果
+function showResult(result) {
+  document.getElementById('page-exam').style.display = 'none';
+  const container = document.getElementById('page-result');
+  container.style.display = 'block';
+
+  const passed = result.passed;
+  const icon = passed ? '🎉' : '😞';
+  const statusText = passed ? '恭喜通过！' : '未通过';
+  const scoreClass = passed ? 'pass' : 'fail';
+  const badgeClass = passed ? 'pass' : 'fail';
+
+  let detailsHtml = '<h3 style="margin:20px 0 10px;text-align:left">📖 答案解析</h3>';
+  result.details.forEach(d => {
+    const labels = ['A', 'B', 'C', 'D', 'E'];
+    const isMulti = d.type === 'multiple';
+    const userAns = isMulti ?
+      (Array.isArray(d.user_answer) ? d.user_answer.map(i => labels[i]).join('、') : '未作答') :
+      (d.user_answer !== null && d.user_answer !== undefined ? labels[d.user_answer] : '未作答');
+    const correctAns = isMulti ?
+      d.answer.map(i => labels[i]).join('、') :
+      labels[d.answer];
+
+    const detailClass = d.correct ? 'detail-item' : 'detail-item wrong';
+    detailsHtml += `
+      <div class="${detailClass}">
+        <div class="detail-q">${d.question}</div>
+        <div class="detail-answer">📌 <b>你的答案</b>：${userAns} ${d.correct ? '✅' : '❌'}</div>
+        <div class="detail-answer">✅ <b>正确答案</b>：${correctAns}</div>
+        <div class="detail-exp">💡 ${d.explanation}</div>
+      </div>
+    `;
+  });
+
+  container.innerHTML = `
+    <div class="result-card">
+      <div class="icon">${icon}</div>
+      <div class="badge ${badgeClass}">${statusText}</div>
+      <h2>考试结果</h2>
+      <div class="score ${scoreClass}">${result.total_score}</div>
+      <div style="color:#666;margin-bottom:15px;font-size:14px">满分100分 · 80分及格</div>
+      <div class="score-detail">
+        <div class="score-item">
+          <div class="num" style="color:#1a73e8">${result.single_score}</div>
+          <div class="label">单选题得分</div>
+          <div style="font-size:12px;color:#999">${result.single_correct}/${result.single_total} 正确</div>
+        </div>
+        <div class="score-item">
+          <div class="num" style="color:#e74c3c">${result.multiple_score}</div>
+          <div class="label">多选题得分</div>
+          <div style="font-size:12px;color:#999">${result.multiple_correct}/${result.multiple_total} 正确</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px">${detailsHtml}</div>
+
+    <div class="actions" style="margin-top:20px">
+      <button class="btn btn-primary" onclick="location.reload()">🔄 重新考试</button>
+    </div>
+  `;
+}
+</script>
+</body>
+</html>
