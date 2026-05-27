@@ -345,7 +345,7 @@ body {
         考生：<span id="display-name"></span> │ 
         已答：<span id="answered-count">0</span>/<span id="total-count-exam">40</span>
       </div>
-      <div class="timer" id="timer">60:00</div>
+      <div class="timer" id="timer">20:00</div>
     </div>
 
     <div class="question-nav" id="question-list"></div>
@@ -432,7 +432,7 @@ async function startExam() {
     document.getElementById('display-name').textContent = username;
 
     renderQuestions();
-    startTimer(60);
+    startTimer(20);
   } catch(e) {
     alert('加载题目失败，请重试');
   }
