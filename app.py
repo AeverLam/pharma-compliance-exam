@@ -15,7 +15,7 @@ try:
     import requests
 except ImportError:
     requests = None
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory, make_response
 
 app = Flask(__name__)
 
@@ -188,7 +188,11 @@ def load_all_records():
 # ============ 前端页面 ============
 @app.route("/")
 def index():
-    return send_from_directory('.', 'exam.html')
+    resp = make_response(send_from_directory('.', 'exam.html'))
+    resp.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    resp.headers["Pragma"] = "no-cache"
+    resp.headers["Expires"] = "0"
+    return resp
 
 @app.route("/health")
 def health():
@@ -417,7 +421,11 @@ def submit_exam():
 
 @app.route("/admin")
 def admin_page():
-    return send_from_directory('.', 'admin.html')
+    resp = make_response(send_from_directory('.', 'admin.html'))
+    resp.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    resp.headers["Pragma"] = "no-cache"
+    resp.headers["Expires"] = "0"
+    return resp
 
 @app.route("/api/admin/records", methods=["POST"])
 def get_admin_records():
