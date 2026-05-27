@@ -29,7 +29,8 @@ ALL_MULTIPLE = MULTIPLE_CHOICE_QUESTIONS
 exam_sessions = {}
 
 # 持久化存储文件
-DATA_FILE = os.path.join(os.path.dirname(__file__), "exam_records.json")
+DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
+DATA_FILE = os.path.join(DATA_DIR, "exam_records.json")
 ADMIN_PASSWORD = "livzon2026"
 
 # GitHub 持久化存储（部署重启不丢数据）
@@ -40,14 +41,31 @@ GITHUB_DATA_PATH = "data/exam_records.json"
 GITHUB_API_URL = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{GITHUB_DATA_PATH}"
 
 def init_data_file():
+    if not os.path.exists(DATA_DIR):
+        os.makedirs(DATA_DIR, exist_ok=True)
     if not os.path.exists(DATA_FILE):
-        os.makedirs(os.path.dirname(DATA_FILE) or '.', exist_ok=True)
         with open(DATA_FILE, 'w', encoding='utf-8') as f:
             json.dump([], f, ensure_ascii=False)
 
+def _get_token():
+    """获取GitHub token（环境变量 > gitconfig）"""
+    t = os.environ.get("GITHUB_TOKEN", "")
+    if t:
+        return t
+    try:
+        import re
+        cfg = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '.git', 'config')).read()
+        m = re.search(r'https://[^:]+:([^@]+)@github\.com', cfg)
+        if m:
+            return m.group(1)
+    except:
+        pass
+    return ""
+
 def git_load_records():
     """从GitHub加载记录（首次启动时恢复历史数据）"""
-    if not requests or not GITHUB_TOKEN:
+    token = _get_token()
+    if not requests or not token:
         return None
     try:
         headers = {"Authorization": f"token {GITHUB_TOKEN}", "Accept": "application/vnd.github.v3+json"}
@@ -83,9 +101,10 @@ def save_record_to_file(record):
 
 def async_push_to_github(records):
     """异步推送到 GitHub"""
-    if not requests or not GITHUB_TOKEN:
+    token = _get_token()
+    if not requests or not token:
         return
-    headers = {"Authorization": f"token {GITHUB_TOKEN}", "Accept": "application/vnd.github.v3+json"}
+    headers = {"Authorization": f"token {token}", "Accept": "application/vnd.github.v3+json"}
     content = base64.b64encode(json.dumps(records, ensure_ascii=False, indent=2).encode()).decode()
     try:
         resp = requests.get(GITHUB_API_URL, headers=headers, params={"ref": GITHUB_BRANCH}, timeout=10)
@@ -101,16 +120,21 @@ def async_push_to_github(records):
         pass
 
 def load_all_records():
-    """读取所有考试记录"""
+    """读取所有考试记录（本地+GitHub双重恢复）"""
     init_data_file()
+    records = []
     try:
         with open(DATA_FILE, 'r', encoding='utf-8') as f:
             records = json.load(f)
-        if not records:
-            # 本地为空则尝试从GitHub恢复
-            sync_from_github()
     except:
-        records = []
+        pass
+    if not records:
+        sync_from_github()
+        try:
+            with open(DATA_FILE, 'r', encoding='utf-8') as f:
+                records = json.load(f)
+        except:
+            pass
     return records
 
 # ============ 前端页面 ============
