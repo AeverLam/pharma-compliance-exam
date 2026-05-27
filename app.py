@@ -242,7 +242,7 @@ def start_exam():
         "single_score": 2,
         "multiple_score": 4,
         "total": single_count * 2 + multiple_count * 4,
-        "pass_score": 80
+        "pass_score": 90
     }
 
     return jsonify(response)
@@ -316,7 +316,7 @@ def submit_exam():
         })
 
     total_score = single_score_total + multiple_score_total
-    passed = total_score >= 80
+    passed = total_score >= 90
 
     result = {
         "username": session["username"],
