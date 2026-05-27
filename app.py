@@ -28,6 +28,20 @@ ALL_MULTIPLE = MULTIPLE_CHOICE_QUESTIONS
 # 考试会话存储
 exam_sessions = {}
 
+# 飞书多维表格持久化（数据在飞书云端，永不丢失）
+FEISHU_APP_ID = "cli_a938ac2a24391bcb"
+FEISHU_APP_SECRET = os.environ.get("FEISHU_APP_SECRET", "")
+BITABLE_APP_TOKEN = "YW4ab8lvlaVL1QsLyjQcDSZEnCh"
+BITABLE_TABLE_ID = "tblpi3HfyCVa4do8"
+BITABLE_USER_NAME = "fldXEKRvpM"
+BITABLE_PROVINCE = "fldMvhlRaI"
+BITABLE_POSITION = "fldZ7u68z9"
+BITABLE_PHONE = "fldmxLCmom"
+BITABLE_SCORE = "fldLdR4KVe"
+BITABLE_PASSED = "fldUS40mDp"
+BITABLE_DURATION = "fldQkMnlyP"
+BITABLE_TIME = "fld4mpG09e"
+
 # 持久化存储文件
 DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
 DATA_FILE = os.path.join(DATA_DIR, "exam_records.json")
@@ -95,9 +109,11 @@ def save_record_to_file(record):
     records.append(record)
     with open(DATA_FILE, 'w', encoding='utf-8') as f:
         json.dump(records, f, ensure_ascii=False, indent=2)
-    # 异步推送到 GitHub 永久存储
-    if requests and GITHUB_TOKEN:
+    # 异步推送 GitHub + 飞书多维表格
+    if requests:
         threading.Thread(target=async_push_to_github, args=(records,), daemon=True).start()
+    if requests and FEISHU_APP_SECRET:
+        threading.Thread(target=_save_to_bitable, args=(record,), daemon=True).start()
 
 def async_push_to_github(records):
     """异步推送到 GitHub"""
@@ -116,6 +132,38 @@ def async_push_to_github(records):
         data["sha"] = sha
     try:
         requests.put(GITHUB_API_URL, headers=headers, json=data, timeout=15)
+    except:
+        pass
+
+def _save_to_bitable(record):
+    """保存到飞书多维表格（云端持久化，永不丢失）"""
+    if not requests or not FEISHU_APP_SECRET:
+        return
+    try:
+        # 获取 token
+        r = requests.post("https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal",
+            json={"app_id": FEISHU_APP_ID, "app_secret": FEISHU_APP_SECRET}, timeout=10)
+        token = r.json().get("tenant_access_token", "")
+        if not token:
+            return
+        
+        headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
+        now_ts = int(datetime.now().timestamp() * 1000)
+        
+        url = f"https://open.feishu.cn/open-apis/bitable/v1/apps/{BITABLE_APP_TOKEN}/tables/{BITABLE_TABLE_ID}/records"
+        data = {
+            "fields": {
+                BITABLE_USER_NAME: record.get("username", ""),
+                BITABLE_PROVINCE: record.get("province", ""),
+                BITABLE_POSITION: record.get("position", ""),
+                BITABLE_PHONE: record.get("phone", ""),
+                BITABLE_SCORE: record.get("score", 0),
+                BITABLE_PASSED: "通过" if record.get("passed") else "未通过",
+                BITABLE_DURATION: record.get("duration_seconds", 0),
+                BITABLE_TIME: now_ts
+            }
+        }
+        requests.post(url, headers=headers, json=data, timeout=10)
     except:
         pass
 
