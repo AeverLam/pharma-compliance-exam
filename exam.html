@@ -296,8 +296,28 @@ body {
       <div class="logo">📝</div>
       <h2>医药代表合规考试</h2>
       <p>基于《医药代表管理办法》解读培训内容<br>全面检验你的合规知识掌握情况</p>
-      <input type="text" id="username-input" placeholder="请输入你的姓名" maxlength="20" onkeydown="if(event.key==='Enter') startExam()">
-      <br>
+      <div style="margin-bottom:10px;">
+        <input type="text" id="username-input" placeholder="请输入你的姓名" maxlength="20" style="width:100%;padding:12px 16px;border:2px solid #e0e0e0;border-radius:10px;font-size:1em;outline:none;transition:all 0.3s;box-sizing:border-box;" onkeydown="if(event.key==='Enter') startExam()">
+      </div>
+      <div style="margin-bottom:10px;">
+        <input type="text" id="province-input" placeholder="请输入省公司（如：广东省公司）" maxlength="30" style="width:100%;padding:12px 16px;border:2px solid #e0e0e0;border-radius:10px;font-size:1em;outline:none;transition:all 0.3s;box-sizing:border-box;">
+      </div>
+      <div style="margin-bottom:10px;">
+        <select id="position-input" style="width:100%;padding:12px 16px;border:2px solid #e0e0e0;border-radius:10px;font-size:1em;outline:none;transition:all 0.3s;box-sizing:border-box;background:white;">
+          <option value="">请选择职位</option>
+          <option value="大区总">大区总</option>
+          <option value="省总">省总</option>
+          <option value="省（区）经理">省（区）经理</option>
+          <option value="推广">推广</option>
+          <option value="推广经理">推广经理</option>
+          <option value="自营代表（经理）">自营代表（经理）</option>
+          <option value="CSO推广人员">CSO推广人员</option>
+          <option value="职能总部人员">职能总部人员</option>
+        </select>
+      </div>
+      <div style="margin-bottom:15px;">
+        <input type="tel" id="phone-input" placeholder="请输入手机号" maxlength="11" style="width:100%;padding:12px 16px;border:2px solid #e0e0e0;border-radius:10px;font-size:1em;outline:none;transition:all 0.3s;box-sizing:border-box;">
+      </div>
       <button class="btn" id="start-btn" onclick="startExam()">开始考试</button>
       <div class="hint">题库共 <span id="total-count">加载中...</span> 道题 · 随机抽题 · 每次不同</div>
     </div>
@@ -363,9 +383,28 @@ document.addEventListener('DOMContentLoaded', async () => {
 // 开始考试
 async function startExam() {
   const username = document.getElementById('username-input').value.trim();
+  const province = document.getElementById('province-input').value.trim();
+  const position = document.getElementById('position-input').value;
+  const phone = document.getElementById('phone-input').value.trim();
+  
   if (!username) {
     document.getElementById('username-input').focus();
     document.getElementById('username-input').style.borderColor = '#f44336';
+    return;
+  }
+  if (!province) {
+    document.getElementById('province-input').focus();
+    document.getElementById('province-input').style.borderColor = '#f44336';
+    return;
+  }
+  if (!position) {
+    document.getElementById('position-input').focus();
+    document.getElementById('position-input').style.borderColor = '#f44336';
+    return;
+  }
+  if (!phone || !/^1\d{10}$/.test(phone)) {
+    document.getElementById('phone-input').focus();
+    document.getElementById('phone-input').style.borderColor = '#f44336';
     return;
   }
 
@@ -377,7 +416,7 @@ async function startExam() {
     const res = await fetch('/api/exam/start', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({username})
+      body: JSON.stringify({username, province, position, phone})
     });
     examState = await res.json();
     examState.answers = {};

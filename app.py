@@ -47,20 +47,52 @@ def start_exam():
     """开始考试，随机选题"""
     data = request.json or {}
     username = data.get("username", "匿名用户")
+    province = data.get("province", "")
+    position = data.get("position", "")
+    phone = data.get("phone", "")
 
+    # 标识IIT题目（ID >= 111的单选题和ID >= 62的多选题）
+    iit_single = [q for q in ALL_SINGLE if q.get("id") and isinstance(q["id"], str) and int(q["id"][1:]) >= 111]
+    iit_multiple = [q for q in ALL_MULTIPLE if q.get("id") and isinstance(q["id"], str) and int(q["id"][1:]) >= 62]
+    
     # 随机选题
-    # 单选题：从题库随机抽取30道
-    # 多选题：从题库随机抽取10道
     single_count = min(30, len(ALL_SINGLE))
     multiple_count = min(10, len(ALL_MULTIPLE))
-
-    selected_single = random.sample(ALL_SINGLE, single_count)
-    selected_multiple = random.sample(ALL_MULTIPLE, multiple_count)
+    
+    # 每次考试至少保证2题来自IIT案例
+    non_iit_single = [q for q in ALL_SINGLE if q not in iit_single]
+    non_iit_multiple = [q for q in ALL_MULTIPLE if q not in iit_multiple]
+    
+    selected_single = []
+    selected_multiple = []
+    
+    # 先确保至少2题IIT
+    random.shuffle(iit_single)
+    random.shuffle(iit_multiple)
+    if iit_single:
+        selected_single.extend(iit_single[:2])
+    if iit_multiple and len(selected_single) < 2:
+        selected_multiple.append(iit_multiple[0])
+    
+    # 补满剩余题目
+    remaining_single = single_count - len(selected_single)
+    remaining_multiple = multiple_count - len(selected_multiple)
+    
+    random.shuffle(non_iit_single)
+    random.shuffle(non_iit_multiple)
+    selected_single.extend(non_iit_single[:remaining_single])
+    selected_multiple.extend(non_iit_multiple[:remaining_multiple])
+    
+    random.shuffle(selected_single)
+    random.shuffle(selected_multiple)
 
     session_id = os.urandom(16).hex()
 
     exam_sessions[session_id] = {
         "username": username,
+        "province": province,
+        "position": position,
+        "phone": phone,
         "single": selected_single,
         "multiple": selected_multiple,
         "answers": {},
