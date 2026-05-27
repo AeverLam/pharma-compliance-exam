@@ -622,9 +622,28 @@ function showResult(result) {
       labels[d.answer];
 
     const detailClass = d.correct ? 'detail-item' : 'detail-item wrong';
+    let optionsHtml = '';
+    if (d.options && Array.isArray(d.options)) {
+      optionsHtml = '<div style="margin:8px 0 4px;font-size:0.9em;color:#555;">';
+      d.options.forEach((opt, oi) => {
+        const isUserAns = isMulti ? 
+          (Array.isArray(d.user_answer) && d.user_answer.includes(oi)) : 
+          (d.user_answer === oi);
+        const isCorrect = isMulti ?
+          d.answer.includes(oi) :
+          (d.answer === oi);
+        let mark = '';
+        if (isUserAns && isCorrect) mark = ' ✅';
+        else if (isUserAns && !isCorrect) mark = ' ❌';
+        else if (!isUserAns && isCorrect) mark = ' ✔';
+        optionsHtml += `<div style="padding:3px 8px;margin:2px 0;border-radius:4px;${isUserAns && isCorrect ? 'background:#e8f5e9;' : ''}${isUserAns && !isCorrect ? 'background:#fef2f2;text-decoration:line-through;color:#999;' : ''}${!isUserAns && isCorrect ? 'color:#2e7d32;' : ''}">${labels[oi]}. ${opt}${mark}</div>`;
+      });
+      optionsHtml += '</div>';
+    }
     detailsHtml += `
       <div class="${detailClass}">
         <div class="detail-q">${d.question}</div>
+        ${optionsHtml}
         <div class="detail-answer">📌 <b>你的答案</b>：${userAns} ${d.correct ? '✅' : '❌'}</div>
         <div class="detail-answer">✅ <b>正确答案</b>：${correctAns}</div>
         <div class="detail-exp">💡 ${d.explanation}</div>
