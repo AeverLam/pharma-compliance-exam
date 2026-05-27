@@ -8,7 +8,13 @@ Flask单文件部署版
 import os
 import json
 import random
+import base64
+import threading
 from datetime import datetime
+try:
+    import requests
+except ImportError:
+    requests = None
 from flask import Flask, request, jsonify, send_from_directory
 
 app = Flask(__name__)
@@ -26,14 +32,42 @@ exam_sessions = {}
 DATA_FILE = os.path.join(os.path.dirname(__file__), "exam_records.json")
 ADMIN_PASSWORD = "livzon2026"
 
-# 初始化数据文件
+# GitHub 持久化存储（部署重启不丢数据）
+GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
+GITHUB_REPO = "AeverLam/pharma-compliance-exam"
+GITHUB_BRANCH = "main"
+GITHUB_DATA_PATH = "data/exam_records.json"
+GITHUB_API_URL = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{GITHUB_DATA_PATH}"
+
 def init_data_file():
     if not os.path.exists(DATA_FILE):
+        os.makedirs(os.path.dirname(DATA_FILE) or '.', exist_ok=True)
         with open(DATA_FILE, 'w', encoding='utf-8') as f:
             json.dump([], f, ensure_ascii=False)
 
+def git_load_records():
+    """从GitHub加载记录（首次启动时恢复历史数据）"""
+    if not requests or not GITHUB_TOKEN:
+        return None
+    try:
+        headers = {"Authorization": f"token {GITHUB_TOKEN}", "Accept": "application/vnd.github.v3+json"}
+        resp = requests.get(GITHUB_API_URL, headers=headers, params={"ref": GITHUB_BRANCH}, timeout=10)
+        if resp.status_code == 200:
+            raw = base64.b64decode(resp.json()["content"]).decode()
+            return json.loads(raw)
+    except:
+        pass
+    return None
+
+def sync_from_github():
+    """启动时从GitHub恢复数据"""
+    records = git_load_records()
+    if records:
+        with open(DATA_FILE, 'w', encoding='utf-8') as f:
+            json.dump(records, f, ensure_ascii=False, indent=2)
+
 def save_record_to_file(record):
-    """保存考试记录到持久化文件"""
+    """保存考试记录到本地 + GitHub"""
     init_data_file()
     try:
         with open(DATA_FILE, 'r', encoding='utf-8') as f:
@@ -43,15 +77,41 @@ def save_record_to_file(record):
     records.append(record)
     with open(DATA_FILE, 'w', encoding='utf-8') as f:
         json.dump(records, f, ensure_ascii=False, indent=2)
+    # 异步推送到 GitHub 永久存储
+    if requests and GITHUB_TOKEN:
+        threading.Thread(target=async_push_to_github, args=(records,), daemon=True).start()
+
+def async_push_to_github(records):
+    """异步推送到 GitHub"""
+    if not requests or not GITHUB_TOKEN:
+        return
+    headers = {"Authorization": f"token {GITHUB_TOKEN}", "Accept": "application/vnd.github.v3+json"}
+    content = base64.b64encode(json.dumps(records, ensure_ascii=False, indent=2).encode()).decode()
+    try:
+        resp = requests.get(GITHUB_API_URL, headers=headers, params={"ref": GITHUB_BRANCH}, timeout=10)
+        sha = resp.json().get("sha", "") if resp.status_code == 200 else ""
+    except:
+        sha = ""
+    data = {"message": f"自动保存 {len(records)}条记录", "content": content, "branch": GITHUB_BRANCH}
+    if sha:
+        data["sha"] = sha
+    try:
+        requests.put(GITHUB_API_URL, headers=headers, json=data, timeout=15)
+    except:
+        pass
 
 def load_all_records():
     """读取所有考试记录"""
     init_data_file()
     try:
         with open(DATA_FILE, 'r', encoding='utf-8') as f:
-            return json.load(f)
+            records = json.load(f)
+        if not records:
+            # 本地为空则尝试从GitHub恢复
+            sync_from_github()
     except:
-        return []
+        records = []
+    return records
 
 # ============ 前端页面 ============
 @app.route("/")
@@ -326,6 +386,10 @@ def get_all_questions():
             for q in ALL_MULTIPLE
         ]
     })
+
+# ============ 启动时从GitHub恢复历史记录 ============
+init_data_file()
+sync_from_github()
 
 # ============ 主入口 ============
 if __name__ == "__main__":
