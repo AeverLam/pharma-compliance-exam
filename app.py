@@ -22,6 +22,37 @@ ALL_MULTIPLE = MULTIPLE_CHOICE_QUESTIONS
 # 考试会话存储
 exam_sessions = {}
 
+# 持久化存储文件
+DATA_FILE = os.path.join(os.path.dirname(__file__), "exam_records.json")
+ADMIN_PASSWORD = "livzon2026"
+
+# 初始化数据文件
+def init_data_file():
+    if not os.path.exists(DATA_FILE):
+        with open(DATA_FILE, 'w', encoding='utf-8') as f:
+            json.dump([], f, ensure_ascii=False)
+
+def save_record_to_file(record):
+    """保存考试记录到持久化文件"""
+    init_data_file()
+    try:
+        with open(DATA_FILE, 'r', encoding='utf-8') as f:
+            records = json.load(f)
+    except:
+        records = []
+    records.append(record)
+    with open(DATA_FILE, 'w', encoding='utf-8') as f:
+        json.dump(records, f, ensure_ascii=False, indent=2)
+
+def load_all_records():
+    """读取所有考试记录"""
+    init_data_file()
+    try:
+        with open(DATA_FILE, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except:
+        return []
+
 # ============ 前端页面 ============
 @app.route("/")
 def index():
@@ -219,7 +250,56 @@ def submit_exam():
     }
 
     session["result"] = result
+    
+    # 计算考试用时（分钟）
+    duration_seconds = 0
+    try:
+        start = datetime.fromisoformat(session["start_time"])
+        end = datetime.fromisoformat(session["end_time"])
+        duration_seconds = int((end - start).total_seconds())
+    except:
+        pass
+    
+    # 持久化保存考试记录
+    record = {
+        "username": session["username"],
+        "province": session.get("province", ""),
+        "position": session.get("position", ""),
+        "phone": session.get("phone", ""),
+        "score": total_score,
+        "single_score": single_score_total,
+        "multiple_score": multiple_score_total,
+        "single_correct": single_correct,
+        "single_total": len(session["single"]),
+        "multiple_correct": multiple_correct,
+        "multiple_total": len(session["multiple"]),
+        "passed": passed,
+        "duration_seconds": duration_seconds,
+        "start_time": session["start_time"],
+        "end_time": session["end_time"],
+        "submit_time": datetime.now().isoformat()
+    }
+    save_record_to_file(record)
+    
     return jsonify(result)
+
+@app.route("/admin")
+def admin_page():
+    return send_from_directory('.', 'admin.html')
+
+@app.route("/api/admin/records", methods=["POST"])
+def get_admin_records():
+    data = request.json or {}
+    password = data.get("password", "")
+    if password != ADMIN_PASSWORD:
+        return jsonify({"error": "密码错误"}), 401
+    records = load_all_records()
+    # 按提交时间倒序
+    records.reverse()
+    return jsonify({
+        "total": len(records),
+        "records": records
+    })
 
 @app.route("/api/questions/all")
 def get_all_questions():

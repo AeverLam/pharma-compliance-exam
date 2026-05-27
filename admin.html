@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>考试后台管理</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; background:#f0f2f5; color:#333; }
+.header { background:linear-gradient(135deg,#1a3a5c,#2a5a8c); color:#fff; padding:20px 30px; display:flex; align-items:center; justify-content:space-between; }
+.header h1 { font-size:1.4em; }
+.header span { font-size:0.85em; opacity:0.8; }
+.container { max-width:1400px; margin:0 auto; padding:20px; }
+.stats { display:flex; gap:15px; margin-bottom:20px; }
+.stat-card { flex:1; background:#fff; border-radius:12px; padding:20px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.stat-card .num { font-size:2em; font-weight:700; color:#1a3a5c; }
+.stat-card .label { font-size:0.85em; color:#999; margin-top:5px; }
+.stat-card.pass .num { color:#16a34a; }
+.stat-card.fail .num { color:#dc2626; }
+.stat-card.avg .num { color:#4a90d9; }
+.login-box { max-width:400px; margin:100px auto; background:#fff; border-radius:12px; padding:40px; text-align:center; box-shadow:0 4px 20px rgba(0,0,0,0.1); }
+.login-box h2 { margin-bottom:20px; color:#1a3a5c; }
+.login-box input { width:100%; padding:12px 16px; border:2px solid #e0e0e0; border-radius:8px; font-size:1em; margin-bottom:15px; }
+.login-box button { width:100%; padding:12px; background:#1a3a5c; color:#fff; border:none; border-radius:8px; font-size:1em; cursor:pointer; }
+.login-box button:hover { background:#2a5a8c; }
+.login-error { color:#dc2626; font-size:0.9em; margin-top:10px; display:none; }
+.filters { display:flex; gap:10px; margin-bottom:15px; flex-wrap:wrap; align-items:center; }
+.filters input, .filters select { padding:8px 12px; border:2px solid #e0e0e0; border-radius:8px; font-size:0.9em; }
+.filters input { flex:1; min-width:200px; }
+.filters select { width:auto; }
+.table-wrap { background:#fff; border-radius:12px; overflow-x:auto; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+table { width:100%; border-collapse:collapse; font-size:0.9em; }
+th { background:#f8f9fa; padding:12px 14px; text-align:left; font-weight:600; color:#555; border-bottom:2px solid #e0e0e0; white-space:nowrap; }
+td { padding:10px 14px; border-bottom:1px solid #f0f0f0; }
+tr:hover { background:#f8faff; }
+tr.passed { border-left:3px solid #16a34a; }
+tr.failed { border-left:3px solid #dc2626; }
+.badge { display:inline-block; padding:2px 10px; border-radius:12px; font-size:0.8em; font-weight:600; }
+.badge.pass { background:#dcfce7; color:#16a34a; }
+.badge.fail { background:#fef2f2; color:#dc2626; }
+.duration { color:#666; font-size:0.85em; }
+.time { color:#999; font-size:0.8em; white-space:nowrap; }
+.pos-tag { display:inline-block; padding:2px 8px; border-radius:4px; background:#eef2ff; color:#4a6fa5; font-size:0.8em; }
+.empty { text-align:center; padding:60px; color:#999; }
+.loading { text-align:center; padding:40px; color:#999; }
+.pagination { display:flex; justify-content:center; align-items:center; gap:10px; margin-top:15px; }
+.pagination button { padding:6px 14px; border:1px solid #ddd; background:#fff; border-radius:6px; cursor:pointer; }
+.pagination button:hover { background:#f0f0f0; }
+.pagination button:disabled { opacity:0.4; cursor:default; }
+.pagination span { color:#666; font-size:0.9em; }
+.export-btn { margin-left:auto; padding:8px 16px; background:#16a34a; color:#fff; border:none; border-radius:8px; font-size:0.9em; cursor:pointer; }
+.export-btn:hover { background:#15803d; }
+@media (max-width:768px) {
+  .stats { flex-wrap:wrap; }
+  .stat-card { min-width:45%; }
+  th, td { padding:8px 10px; font-size:0.8em; }
+}
+</style>
+</head>
+<body>
+
+<div id="loginPage" style="display:block">
+  <div class="login-box">
+    <h2>🔐 考试后台管理</h2>
+    <p style="color:#999;margin-bottom:20px;">请输入管理员密码查看考试记录</p>
+    <input type="password" id="pwd-input" placeholder="请输入管理员密码" onkeydown="if(event.key==='Enter') login()">
+    <button onclick="login()">登录</button>
+    <div class="login-error" id="login-error">密码错误，请重试</div>
+  </div>
+</div>
+
+<div id="adminPage" style="display:none">
+  <div class="header">
+    <div>
+      <h1>📊 《医药代表管理办法》解读培训考试 · 后台管理</h1>
+      <span>实时考试数据统计</span>
+    </div>
+    <span id="header-time"></span>
+  </div>
+  <div class="container">
+    <div class="stats" id="stats"></div>
+    <div class="filters">
+      <input type="text" id="search-input" placeholder="🔍 搜索姓名、省公司、手机号..." oninput="filterRecords()">
+      <select id="pass-filter" onchange="filterRecords()">
+        <option value="">全部状态</option>
+        <option value="pass">已通过</option>
+        <option value="fail">未通过</option>
+      </select>
+      <button class="export-btn" onclick="exportCSV()">📥 导出CSV</button>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>姓名</th>
+            <th>省公司</th>
+            <th>职位</th>
+            <th>手机号</th>
+            <th>得分</th>
+            <th>结果</th>
+            <th>单选</th>
+            <th>多选</th>
+            <th>用时</th>
+            <th>提交时间</th>
+          </tr>
+        </thead>
+        <tbody id="records-body">
+          <tr><td colspan="11" class="loading">📡 加载中...</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pagination" id="pagination"></div>
+  </div>
+</div>
+
+<script>
+let allRecords = [];
+let currentPage = 1;
+const PAGE_SIZE = 50;
+
+function login() {
+  const pwd = document.getElementById('pwd-input').value;
+  if (!pwd) return;
+  
+  fetch('/api/admin/records', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({password: pwd})
+  }).then(r => {
+    if (!r.ok) throw new Error('密码错误');
+    return r.json();
+  }).then(data => {
+    document.getElementById('loginPage').style.display = 'none';
+    document.getElementById('adminPage').style.display = 'block';
+    allRecords = data.records;
+    render();
+    document.getElementById('header-time').textContent = new Date().toLocaleString('zh-CN');
+    setInterval(() => {
+      document.getElementById('header-time').textContent = new Date().toLocaleString('zh-CN');
+    }, 1000);
+  }).catch(e => {
+    document.getElementById('login-error').style.display = 'block';
+  });
+}
+
+function render() {
+  renderStats();
+  filterRecords();
+}
+
+function renderStats() {
+  const total = allRecords.length;
+  const passed = allRecords.filter(r => r.passed).length;
+  const failed = total - passed;
+  const avg = total > 0 ? Math.round(allRecords.reduce((s,r) => s+r.score, 0) / total) : 0;
+  const passRate = total > 0 ? Math.round(passed/total*100) : 0;
+  
+  document.getElementById('stats').innerHTML = `
+    <div class="stat-card"><div class="num">${total}</div><div class="label">总考试人次</div></div>
+    <div class="stat-card pass"><div class="num">${passed}</div><div class="label">通过 (${passRate}%)</div></div>
+    <div class="stat-card fail"><div class="num">${failed}</div><div class="label">未通过</div></div>
+    <div class="stat-card avg"><div class="num">${avg}</div><div class="label">平均分</div></div>
+  `;
+}
+
+function filterRecords() {
+  const search = document.getElementById('search-input').value.trim().toLowerCase();
+  const passFilter = document.getElementById('pass-filter').value;
+  
+  let filtered = allRecords.filter(r => {
+    if (passFilter === 'pass' && !r.passed) return false;
+    if (passFilter === 'fail' && r.passed) return false;
+    if (search) {
+      const match = (r.username + r.province + r.position + r.phone).toLowerCase();
+      if (!match.includes(search)) return false;
+    }
+    return true;
+  });
+  
+  const totalPages = Math.ceil(filtered.length / PAGE_SIZE) || 1;
+  if (currentPage > totalPages) currentPage = totalPages;
+  
+  const start = (currentPage - 1) * PAGE_SIZE;
+  const pageData = filtered.slice(start, start + PAGE_SIZE);
+  
+  renderTable(pageData);
+  renderPagination(totalPages, filtered.length);
+}
+
+function renderTable(records) {
+  const tbody = document.getElementById('records-body');
+  if (records.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="11" class="empty">暂无考试记录</td></tr>';
+    return;
+  }
+  
+  tbody.innerHTML = records.map((r, i) => {
+    const cls = r.passed ? 'passed' : 'failed';
+    const badgeCls = r.passed ? 'pass' : 'fail';
+    const badgeText = r.passed ? '✅ 通过' : '❌ 未通过';
+    const dur = formatDuration(r.duration_seconds);
+    const time = formatTime(r.submit_time);
+    return `<tr class="${cls}">
+      <td>${(currentPage-1)*PAGE_SIZE + i + 1}</td>
+      <td><strong>${esc(r.username)}</strong></td>
+      <td>${esc(r.province)}</td>
+      <td><span class="pos-tag">${esc(r.position)}</span></td>
+      <td>${esc(r.phone)}</td>
+      <td><strong>${r.score}</strong> 分</td>
+      <td><span class="badge ${badgeCls}">${badgeText}</span></td>
+      <td>${r.single_correct}/${r.single_total}</td>
+      <td>${r.multiple_correct}/${r.multiple_total}</td>
+      <td class="duration">${dur}</td>
+      <td class="time">${time}</td>
+    </tr>`;
+  }).join('');
+}
+
+function renderPagination(totalPages, totalRecords) {
+  document.getElementById('pagination').innerHTML = `
+    <span>共 ${totalRecords} 条记录</span>
+    <button onclick="goPage(1)" ${currentPage<=1?'disabled':''}>首页</button>
+    <button onclick="goPage(${currentPage-1})" ${currentPage<=1?'disabled':''}>上一页</button>
+    <span>第 ${currentPage}/${totalPages} 页</span>
+    <button onclick="goPage(${currentPage+1})" ${currentPage>=totalPages?'disabled':''}>下一页</button>
+    <button onclick="goPage(${totalPages})" ${currentPage>=totalPages?'disabled':''}>末页</button>
+  `;
+}
+
+function goPage(page) {
+  currentPage = page;
+  filterRecords();
+}
+
+function formatDuration(seconds) {
+  if (!seconds && seconds !== 0) return '-';
+  const m = Math.floor(seconds / 60);
+  const s = seconds % 60;
+  return `${m}分${s}秒`;
+}
+
+function formatTime(iso) {
+  if (!iso) return '-';
+  try {
+    const d = new Date(iso);
+    return d.toLocaleString('zh-CN');
+  } catch { return iso; }
+}
+
+function esc(s) { return s || '-'; }
+
+function exportCSV() {
+  const headers = ['姓名','省公司','职位','手机号','得分','通过','单选正确','单选总数','多选正确','多选总数','用时(秒)','提交时间'];
+  const rows = allRecords.map(r => [
+    r.username, r.province, r.position, r.phone, r.score,
+    r.passed ? '是' : '否',
+    r.single_correct, r.single_total,
+    r.multiple_correct, r.multiple_total,
+    r.duration_seconds, r.submit_time
+  ]);
+  
+  const csv = [headers.join(','), ...rows.map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(','))].join('\n');
+  const blob = new Blob(['\ufeff' + csv], {type:'text/csv;charset=utf-8;'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `考试记录_${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+}
+</script>
+</body>
+</html>
