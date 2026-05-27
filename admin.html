@@ -80,7 +80,7 @@ tr.failed { border-left:3px solid #dc2626; }
   <div class="container">
     <div class="stats" id="stats"></div>
     <div class="filters">
-      <input type="text" id="search-input" placeholder="🔍 搜索姓名、省公司、手机号..." oninput="filterRecords()">
+      <input type="text" id="search-input" placeholder="🔍 搜索姓名、省公司/部门、手机号..." oninput="filterRecords()">
       <select id="pass-filter" onchange="filterRecords()">
         <option value="">全部状态</option>
         <option value="pass">已通过</option>
@@ -94,7 +94,7 @@ tr.failed { border-left:3px solid #dc2626; }
           <tr>
             <th>#</th>
             <th>姓名</th>
-            <th>省公司</th>
+            <th>省公司/部门</th>
             <th>职位</th>
             <th>手机号</th>
             <th>得分</th>
@@ -251,7 +251,7 @@ function formatTime(iso) {
 function esc(s) { return s || '-'; }
 
 function exportCSV() {
-  const headers = ['姓名','省公司','职位','手机号','得分','通过','单选正确','单选总数','多选正确','多选总数','用时(秒)','提交时间'];
+  const headers = ['姓名','省公司/部门','职位','手机号','得分','通过','单选正确','单选总数','多选正确','多选总数','用时(秒)','提交时间'];
   const rows = allRecords.map(r => [
     r.username, r.province, r.position, r.phone, r.score,
     r.passed ? '是' : '否',
