@@ -674,11 +674,26 @@ def get_admin_records():
     if password != ADMIN_PASSWORD:
         return jsonify({"error": "密码错误"}), 401
     records = load_all_records()
-    # 按提交时间倒序
-    records.reverse()
+    
+    # 只保留每个人的最高成绩记录
+    # 用 (username, province, position) 作为唯一标识
+    best_records = {}
+    for r in records:
+        key = (r.get("username", ""), r.get("province", ""), r.get("position", ""))
+        if key not in best_records:
+            best_records[key] = r
+        else:
+            # 保留分数更高的记录
+            if r.get("score", 0) > best_records[key].get("score", 0):
+                best_records[key] = r
+    
+    # 转换为列表并按分数降序排列
+    result_records = list(best_records.values())
+    result_records.sort(key=lambda x: x.get("score", 0), reverse=True)
+    
     return jsonify({
-        "total": len(records),
-        "records": records
+        "total": len(result_records),
+        "records": result_records
     })
 
 @app.route("/api/questions/all")
