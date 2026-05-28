@@ -484,6 +484,10 @@ def submit_exam():
     data = request.json or {}
     session_id = data.get("session_id")
     answers = data.get("answers", {})
+    
+    # 详细日志便于排查问题
+    print(f"[{datetime.now()}] Submit exam request: session_id={session_id}, answers_count={len(answers)}")
+    print(f"[{datetime.now()}] Active sessions: {list(exam_sessions.keys())}")
 
     if not session_id or session_id not in exam_sessions:
         return jsonify({"error": "考试会话不存在或已过期"}), 400

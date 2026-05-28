@@ -631,10 +631,31 @@ async function doSubmit() {
         answers: examState.answers
       })
     });
+    
+    if (!res.ok) {
+      const errorData = await res.json().catch(() => ({}));
+      const errorMsg = errorData.error || errorData.message || `服务器错误 (${res.status})`;
+      alert('提交失败：' + errorMsg);
+      btn.disabled = false;
+      btn.textContent = '提交答卷';
+      return;
+    }
+    
     const result = await res.json();
+    
+    if (result.error) {
+      alert('提交失败：' + result.error);
+      btn.disabled = false;
+      btn.textContent = '提交答卷';
+      return;
+    }
+    
     showResult(result);
   } catch(e) {
-    alert('提交失败，请重试');
+    alert('提交失败：网络错误，请检查网络连接后重试。如果问题持续，请截图联系管理员。');
+    console.error('Submit error:', e);
+    btn.disabled = false;
+    btn.textContent = '提交答卷';
   }
 }
 
