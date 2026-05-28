@@ -645,7 +645,7 @@ function showResult(result) {
     }
     detailsHtml += `
       <div class="${detailClass}">
-        <div class="detail-q">${d.question}</div>
+        <div class="detail-q">第${d.index || '?'}题：${d.question}</div>
         ${optionsHtml}
         <div class="detail-answer">📌 <b>你的答案</b>：${userAns} ${d.correct ? '✅' : '❌'}</div>
         <div class="detail-answer">✅ <b>正确答案</b>：${correctAns}</div>

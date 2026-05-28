@@ -10,7 +10,7 @@ import json
 import random
 import base64
 import threading
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 try:
     import requests
 except ImportError:
@@ -271,6 +271,10 @@ def start_exam():
     random.shuffle(selected_multiple)
 
     session_id = os.urandom(16).hex()
+    
+    # 使用北京时间（UTC+8）
+    beijing_tz = timezone(timedelta(hours=8))
+    beijing_now = datetime.now(beijing_tz)
 
     exam_sessions[session_id] = {
         "username": username,
@@ -280,7 +284,7 @@ def start_exam():
         "single": selected_single,
         "multiple": selected_multiple,
         "answers": {},
-        "start_time": datetime.now().isoformat(),
+        "start_time": beijing_now.isoformat(),
         "status": "in_progress"
     }
 
@@ -332,7 +336,9 @@ def submit_exam():
 
     session["answers"] = answers
     session["status"] = "completed"
-    session["end_time"] = datetime.now().isoformat()
+    # 使用北京时间（UTC+8）
+    beijing_tz = timezone(timedelta(hours=8))
+    session["end_time"] = datetime.now(beijing_tz).isoformat()
 
     # 评分
     single_score_total = 0
@@ -354,6 +360,7 @@ def submit_exam():
             single_wrong += 1
         details.append({
             "id": q["id"],
+            "index": q.get("index", 0) + 1,  # 题号（从1开始）
             "type": "single",
             "question": q["question"],
             "options": q["options"],
@@ -375,6 +382,7 @@ def submit_exam():
             multiple_wrong += 1
         details.append({
             "id": q["id"],
+            "index": q.get("index", 0) + 1,  # 题号（从1开始）
             "type": "multiple",
             "question": q["question"],
             "options": q["options"],
@@ -413,7 +421,8 @@ def submit_exam():
     except:
         pass
     
-    # 持久化保存考试记录
+    # 持久化保存考试记录（使用北京时间）
+    beijing_tz = timezone(timedelta(hours=8))
     record = {
         "username": session["username"],
         "province": session.get("province", ""),
@@ -430,7 +439,7 @@ def submit_exam():
         "duration_seconds": duration_seconds,
         "start_time": session["start_time"],
         "end_time": session["end_time"],
-        "submit_time": datetime.now().isoformat()
+        "submit_time": datetime.now(beijing_tz).isoformat()
     }
     save_record_to_file(record)
     
