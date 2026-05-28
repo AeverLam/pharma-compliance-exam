@@ -275,14 +275,75 @@ def get_question_count():
         "total": len(ALL_SINGLE) + len(ALL_MULTIPLE)
     })
 
+def check_user_exam_attempts(username, province, position):
+    """检查用户已考试次数和最高成绩
+    
+    返回: (attempts_count, highest_score, records)
+    - attempts_count: 已考试次数 (0-2)
+    - highest_score: 最高成绩
+    - records: 该用户的所有考试记录
+    """
+    records = load_all_records()
+    user_records = [
+        r for r in records 
+        if r.get("username") == username 
+        and r.get("province") == province 
+        and r.get("position") == position
+    ]
+    attempts = len(user_records)
+    highest_score = max([r.get("score", 0) for r in user_records], default=0)
+    return attempts, highest_score, user_records
+
+
+@app.route("/api/exam/check", methods=["POST"])
+def check_exam_eligibility():
+    """检查用户是否有考试资格"""
+    data = request.json or {}
+    username = data.get("username", "").strip()
+    province = data.get("province", "").strip()
+    position = data.get("position", "").strip()
+    
+    if not username or not province or not position:
+        return jsonify({
+            "eligible": False,
+            "message": "请填写完整的个人信息（姓名、省公司/部门、职位）"
+        })
+    
+    attempts, highest_score, records = check_user_exam_attempts(username, province, position)
+    
+    if attempts >= 2:
+        return jsonify({
+            "eligible": False,
+            "attempts": attempts,
+            "highest_score": highest_score,
+            "message": f"您已完成 {attempts} 次考试，最高成绩为 {highest_score} 分。每人仅限 2 次考试机会。"
+        })
+    
+    return jsonify({
+        "eligible": True,
+        "attempts": attempts,
+        "highest_score": highest_score,
+        "remaining": 2 - attempts,
+        "message": f"您还有 {2 - attempts} 次考试机会" if attempts > 0 else "首次考试，祝您好运！"
+    })
+
+
 @app.route("/api/exam/start", methods=["POST"])
 def start_exam():
     """开始考试，随机选题"""
     data = request.json or {}
-    username = data.get("username", "匿名用户")
-    province = data.get("province", "")
-    position = data.get("position", "")
+    username = data.get("username", "匿名用户").strip()
+    province = data.get("province", "").strip()
+    position = data.get("position", "").strip()
     phone = data.get("phone", "")
+    
+    # 检查考试次数限制
+    attempts, highest_score, _ = check_user_exam_attempts(username, province, position)
+    if attempts >= 2:
+        return jsonify({
+            "error": True,
+            "message": f"您已完成 {attempts} 次考试，最高成绩为 {highest_score} 分。每人仅限 2 次考试机会。"
+        }), 403
 
     # 标识IIT题目（ID >= 111的单选题和ID >= 62的多选题）
     iit_single = [q for q in ALL_SINGLE if q.get("id") and isinstance(q["id"], str) and int(q["id"][1:]) >= 111]

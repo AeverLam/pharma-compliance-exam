@@ -419,14 +419,51 @@ async function startExam() {
 
   const btn = document.getElementById('start-btn');
   btn.disabled = true;
-  btn.textContent = '🎲 正在抽题...';
+  btn.textContent = '🔍 检查考试资格...';
 
   try {
+    // 先检查考试资格
+    const checkRes = await fetch('/api/exam/check', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({username, province, position})
+    });
+    const checkData = await checkRes.json();
+    
+    if (!checkData.eligible) {
+      // 没有考试资格，显示提示
+      alert(checkData.message);
+      btn.disabled = false;
+      btn.textContent = '开始考试';
+      return;
+    }
+    
+    // 有资格，显示提示（如果是第二次考试）
+    if (checkData.attempts > 0) {
+      const confirmMsg = `您已考试 ${checkData.attempts} 次，最高成绩 ${checkData.highest_score} 分。\n\n这是您的第 ${checkData.attempts + 1} 次考试（共2次机会），确定要继续吗？`;
+      if (!confirm(confirmMsg)) {
+        btn.disabled = false;
+        btn.textContent = '开始考试';
+        return;
+      }
+    }
+    
+    btn.textContent = '🎲 正在抽题...';
+    
     const res = await fetch('/api/exam/start', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({username, province, position, phone})
     });
+    
+    if (!res.ok) {
+      const errorData = await res.json();
+      alert(errorData.message || '无法开始考试，请重试');
+      btn.disabled = false;
+      btn.textContent = '开始考试';
+      return;
+    }
+    
     examState = await res.json();
     examState.answers = {};
 
