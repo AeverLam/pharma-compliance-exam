@@ -142,5 +142,41 @@
     "start_time": "2026-05-28T17:07:09.932914+08:00",
     "end_time": "2026-05-28T17:08:12.093894+08:00",
     "submit_time": "2026-05-28T17:08:12.094021+08:00"
+  },
+  {
+    "username": "老师",
+    "province": "营销市场总部",
+    "position": "职能总部人员",
+    "phone": "18926066668",
+    "score": 86,
+    "single_score": 58,
+    "multiple_score": 28,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 7,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 238,
+    "start_time": "2026-05-28T19:21:44.995835+08:00",
+    "end_time": "2026-05-28T19:25:43.572871+08:00",
+    "submit_time": "2026-05-28T19:25:43.573030+08:00"
+  },
+  {
+    "username": "老师",
+    "province": "营销市场总部",
+    "position": "职能总部人员",
+    "phone": "18926066668",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 282,
+    "start_time": "2026-05-28T19:27:44.429725+08:00",
+    "end_time": "2026-05-28T19:32:26.541520+08:00",
+    "submit_time": "2026-05-28T19:32:26.541662+08:00"
   }
 ]
