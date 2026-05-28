@@ -82,7 +82,7 @@ def git_load_records():
     if not requests or not token:
         return None
     try:
-        headers = {"Authorization": f"token {GITHUB_TOKEN}", "Accept": "application/vnd.github.v3+json"}
+        headers = {"Authorization": f"token {token}", "Accept": "application/vnd.github.v3+json"}
         resp = requests.get(GITHUB_API_URL, headers=headers, params={"ref": GITHUB_BRANCH}, timeout=10)
         if resp.status_code == 200:
             raw = base64.b64decode(resp.json()["content"]).decode()
@@ -469,7 +469,19 @@ def get_all_questions():
 
 # ============ 启动时从GitHub恢复历史记录 ============
 init_data_file()
-sync_from_github()
+# 强制从GitHub同步（修复了token变量bug，现在应该能正常恢复数据）
+print(f"[{datetime.now()}] 正在从GitHub恢复数据...")
+records = git_load_records()
+if records is not None:
+    with open(DATA_FILE, 'w', encoding='utf-8') as f:
+        json.dump(records, f, ensure_ascii=False, indent=2)
+    print(f"[{datetime.now()}] 成功从GitHub恢复 {len(records)} 条记录")
+else:
+    print(f"[{datetime.now()}] 从GitHub恢复失败，使用本地数据")
+# 如果GitHub同步失败，至少保证本地文件存在
+if not os.path.exists(DATA_FILE):
+    with open(DATA_FILE, 'w', encoding='utf-8') as f:
+        json.dump([], f, ensure_ascii=False)
 
 # ============ 主入口 ============
 if __name__ == "__main__":
