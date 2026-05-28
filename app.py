@@ -351,6 +351,8 @@ def check_exam_eligibility():
     province = data.get("province", "").strip()
     position = data.get("position", "").strip()
     
+    print(f"[{datetime.now()}] Check eligibility: username={username}, province={province}, position={position}")
+    
     if not username or not province or not position:
         return jsonify({
             "eligible": False,
@@ -358,6 +360,8 @@ def check_exam_eligibility():
         })
     
     attempts, highest_score, records = check_user_exam_attempts(username, province, position)
+    
+    print(f"[{datetime.now()}] Check result: attempts={attempts}, highest_score={highest_score}")
     
     if attempts >= 2:
         return jsonify({

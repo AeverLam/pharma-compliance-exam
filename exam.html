@@ -439,13 +439,17 @@ async function startExam() {
     }
     
     // 有资格，显示提示（如果是第二次考试）
+    console.log('Check result:', checkData); // 调试用
     if (checkData.attempts > 0) {
       const confirmMsg = `您已考试 ${checkData.attempts} 次，最高成绩 ${checkData.highest_score} 分。\n\n这是您的第 ${checkData.attempts + 1} 次考试（共2次机会），确定要继续吗？`;
+      console.log('Showing confirm:', confirmMsg); // 调试用
       if (!confirm(confirmMsg)) {
         btn.disabled = false;
         btn.textContent = '开始考试';
         return;
       }
+    } else {
+      console.log('First attempt, no confirm needed'); // 调试用
     }
     
     btn.textContent = '🎲 正在抽题...';
