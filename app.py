@@ -48,6 +48,8 @@ BITABLE_FIELDS = {
 # 持久化存储文件
 DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
 DATA_FILE = os.path.join(DATA_DIR, "exam_records.json")
+# 新增：单独文件存储目录（更可靠）
+RECORDS_DIR = os.path.join(DATA_DIR, "records")
 ADMIN_PASSWORD = "livzon2026"
 
 # GitHub 持久化存储（部署重启不丢数据）
@@ -63,6 +65,9 @@ def init_data_file():
     if not os.path.exists(DATA_FILE):
         with open(DATA_FILE, 'w', encoding='utf-8') as f:
             json.dump([], f, ensure_ascii=False)
+    # 初始化单独文件存储目录
+    if not os.path.exists(RECORDS_DIR):
+        os.makedirs(RECORDS_DIR, exist_ok=True)
 
 def _get_token():
     """获取GitHub token（优先使用模块级GITHUB_TOKEN）"""
@@ -103,8 +108,21 @@ def sync_from_github():
             json.dump(records, f, ensure_ascii=False, indent=2)
 
 def save_record_to_file(record):
-    """保存考试记录到本地 + GitHub（同步确保成功）+ 飞书多维表格（异步）"""
+    """保存考试记录到本地（单独文件 + 汇总文件）+ GitHub备份 + 飞书多维表格"""
     init_data_file()
+    
+    # 【方案A核心】单独文件存储 - 最可靠
+    # 每个记录单独存一个文件，避免文件损坏导致全部丢失
+    record_id = record.get("submit_time", "").replace(":", "-").replace("+", "_") + "_" + record.get("username", "unknown")
+    record_file = os.path.join(RECORDS_DIR, f"{record_id}.json")
+    try:
+        with open(record_file, 'w', encoding='utf-8') as f:
+            json.dump(record, f, ensure_ascii=False, indent=2)
+        print(f"[{datetime.now()}] Saved individual record: {record_file}")
+    except Exception as e:
+        print(f"[{datetime.now()}] Failed to save individual record: {e}")
+    
+    # 同时更新汇总文件（兼容旧逻辑）
     try:
         with open(DATA_FILE, 'r', encoding='utf-8') as f:
             records = json.load(f)
@@ -114,15 +132,11 @@ def save_record_to_file(record):
     with open(DATA_FILE, 'w', encoding='utf-8') as f:
         json.dump(records, f, ensure_ascii=False, indent=2)
     
-    # 【关键】同步推送到 GitHub，确保数据不丢失
-    # Render 免费版后台线程可能被打断，必须同步执行
+    # GitHub备份（异步，失败不影响主流程）
     if requests:
-        try:
-            sync_push_to_github(records)
-        except Exception as e:
-            print(f"[{datetime.now()}] GitHub sync push failed: {e}")
+        threading.Thread(target=async_push_to_github, args=(records,), daemon=True).start()
     
-    # 飞书多维表格异步推送（作为备份）
+    # 飞书多维表格异步推送
     if requests and FEISHU_APP_SECRET:
         threading.Thread(target=_save_to_bitable, args=(record,), daemon=True).start()
 
@@ -234,22 +248,56 @@ def _save_to_bitable(record):
         print(traceback.format_exc())
 
 def load_all_records():
-    """读取所有考试记录（本地+GitHub双重恢复）"""
+    """读取所有考试记录（优先从单独文件目录读取，更可靠）"""
     init_data_file()
-    records = []
+    
+    # 【方案A核心】优先从单独文件目录读取
+    # 这样即使汇总文件损坏，也能恢复数据
+    individual_records = []
+    try:
+        if os.path.exists(RECORDS_DIR):
+            for filename in os.listdir(RECORDS_DIR):
+                if filename.endswith('.json'):
+                    filepath = os.path.join(RECORDS_DIR, filename)
+                    try:
+                        with open(filepath, 'r', encoding='utf-8') as f:
+                            record = json.load(f)
+                            individual_records.append(record)
+                    except Exception as e:
+                        print(f"[{datetime.now()}] Failed to load {filename}: {e}")
+            
+            if individual_records:
+                # 按提交时间排序
+                individual_records.sort(key=lambda x: x.get('submit_time', ''), reverse=True)
+                print(f"[{datetime.now()}] Loaded {len(individual_records)} records from individual files")
+                
+                # 同步到汇总文件（修复可能损坏的汇总文件）
+                try:
+                    with open(DATA_FILE, 'w', encoding='utf-8') as f:
+                        json.dump(individual_records, f, ensure_ascii=False, indent=2)
+                except Exception as e:
+                    print(f"[{datetime.now()}] Failed to sync to DATA_FILE: {e}")
+                
+                return individual_records
+    except Exception as e:
+        print(f"[{datetime.now()}] Failed to load individual records: {e}")
+    
+    # 回退到汇总文件
     try:
         with open(DATA_FILE, 'r', encoding='utf-8') as f:
             records = json.load(f)
+        if records:
+            return records
     except:
         pass
-    if not records:
-        sync_from_github()
-        try:
-            with open(DATA_FILE, 'r', encoding='utf-8') as f:
-                records = json.load(f)
-        except:
-            pass
-    return records
+    
+    # 最后尝试从GitHub恢复
+    sync_from_github()
+    try:
+        with open(DATA_FILE, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except:
+        return []
 
 # ============ 前端页面 ============
 @app.route("/")
