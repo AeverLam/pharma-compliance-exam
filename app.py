@@ -33,14 +33,17 @@ FEISHU_APP_ID = "cli_a938ac2a24391bcb"
 FEISHU_APP_SECRET = os.environ.get("FEISHU_APP_SECRET", "")
 BITABLE_APP_TOKEN = "YW4ab8lvlaVL1QsLyjQcDSZEnCh"
 BITABLE_TABLE_ID = "tblpi3HfyCVa4do8"
-BITABLE_USER_NAME = "fldXEKRvpM"
-BITABLE_PROVINCE = "fldMvhlRaI"
-BITABLE_POSITION = "fldZ7u68z9"
-BITABLE_PHONE = "fldmxLCmom"
-BITABLE_SCORE = "fldLdR4KVe"
-BITABLE_PASSED = "fldUS40mDp"
-BITABLE_DURATION = "fldQkMnlyP"
-BITABLE_TIME = "fld4mpG09e"
+# 字段ID映射（必须与飞书多维表格实际字段一致）
+BITABLE_FIELDS = {
+    "username": "fldXEKRvpM",
+    "province": "fldMvhlRaI", 
+    "position": "fldZ7u68z9",
+    "phone": "fldmxLCmom",
+    "score": "fldLdR4KVe",
+    "passed": "fldUS40mDp",
+    "duration": "fldQkMnlyP",
+    "time": "fld4mpG09e"
+}
 
 # 持久化存储文件
 DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
@@ -62,33 +65,34 @@ def init_data_file():
             json.dump([], f, ensure_ascii=False)
 
 def _get_token():
-    """获取GitHub token（环境变量 > gitconfig）"""
+    """获取GitHub token（优先使用模块级GITHUB_TOKEN）"""
+    # 优先使用模块级变量（已从环境变量读取）
+    if GITHUB_TOKEN:
+        return GITHUB_TOKEN
+    # 回退到环境变量读取
     t = os.environ.get("GITHUB_TOKEN", "")
     if t:
         return t
-    try:
-        import re
-        cfg = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '.git', 'config')).read()
-        m = re.search(r'https://[^:]+:([^@]+)@github\.com', cfg)
-        if m:
-            return m.group(1)
-    except:
-        pass
     return ""
 
 def git_load_records():
     """从GitHub加载记录（首次启动时恢复历史数据）"""
     token = _get_token()
     if not requests or not token:
+        print(f"[{datetime.now()}] GitHub token not available")
         return None
     try:
         headers = {"Authorization": f"token {token}", "Accept": "application/vnd.github.v3+json"}
         resp = requests.get(GITHUB_API_URL, headers=headers, params={"ref": GITHUB_BRANCH}, timeout=10)
         if resp.status_code == 200:
             raw = base64.b64decode(resp.json()["content"]).decode()
-            return json.loads(raw)
-    except:
-        pass
+            records = json.loads(raw)
+            print(f"[{datetime.now()}] Successfully loaded {len(records)} records from GitHub")
+            return records
+        else:
+            print(f"[{datetime.now()}] GitHub API error: {resp.status_code} - {resp.text[:200]}")
+    except Exception as e:
+        print(f"[{datetime.now()}] GitHub load error: {e}")
     return None
 
 def sync_from_github():
@@ -119,25 +123,33 @@ def async_push_to_github(records):
     """异步推送到 GitHub"""
     token = _get_token()
     if not requests or not token:
+        print(f"[{datetime.now()}] GitHub push skipped: token not available")
         return
     headers = {"Authorization": f"token {token}", "Accept": "application/vnd.github.v3+json"}
     content = base64.b64encode(json.dumps(records, ensure_ascii=False, indent=2).encode()).decode()
+    sha = ""
     try:
         resp = requests.get(GITHUB_API_URL, headers=headers, params={"ref": GITHUB_BRANCH}, timeout=10)
-        sha = resp.json().get("sha", "") if resp.status_code == 200 else ""
-    except:
-        sha = ""
+        if resp.status_code == 200:
+            sha = resp.json().get("sha", "")
+    except Exception as e:
+        print(f"[{datetime.now()}] GitHub get SHA error: {e}")
     data = {"message": f"自动保存 {len(records)}条记录", "content": content, "branch": GITHUB_BRANCH}
     if sha:
         data["sha"] = sha
     try:
-        requests.put(GITHUB_API_URL, headers=headers, json=data, timeout=15)
-    except:
-        pass
+        resp = requests.put(GITHUB_API_URL, headers=headers, json=data, timeout=15)
+        if resp.status_code in [200, 201]:
+            print(f"[{datetime.now()}] Successfully pushed {len(records)} records to GitHub")
+        else:
+            print(f"[{datetime.now()}] GitHub push error: {resp.status_code} - {resp.text[:200]}")
+    except Exception as e:
+        print(f"[{datetime.now()}] GitHub push error: {e}")
 
 def _save_to_bitable(record):
     """保存到飞书多维表格（云端持久化，永不丢失）"""
     if not requests or not FEISHU_APP_SECRET:
+        print(f"[{datetime.now()}] Bitable save skipped: FEISHU_APP_SECRET not set")
         return
     try:
         # 获取 token
@@ -145,6 +157,7 @@ def _save_to_bitable(record):
             json={"app_id": FEISHU_APP_ID, "app_secret": FEISHU_APP_SECRET}, timeout=10)
         token = r.json().get("tenant_access_token", "")
         if not token:
+            print(f"[{datetime.now()}] Bitable save failed: no tenant_access_token")
             return
         
         headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
@@ -153,19 +166,23 @@ def _save_to_bitable(record):
         url = f"https://open.feishu.cn/open-apis/bitable/v1/apps/{BITABLE_APP_TOKEN}/tables/{BITABLE_TABLE_ID}/records"
         data = {
             "fields": {
-                BITABLE_USER_NAME: record.get("username", ""),
-                BITABLE_PROVINCE: record.get("province", ""),
-                BITABLE_POSITION: record.get("position", ""),
-                BITABLE_PHONE: record.get("phone", ""),
-                BITABLE_SCORE: record.get("score", 0),
-                BITABLE_PASSED: "通过" if record.get("passed") else "未通过",
-                BITABLE_DURATION: record.get("duration_seconds", 0),
-                BITABLE_TIME: now_ts
+                BITABLE_FIELDS["username"]: record.get("username", ""),
+                BITABLE_FIELDS["province"]: record.get("province", ""),
+                BITABLE_FIELDS["position"]: record.get("position", ""),
+                BITABLE_FIELDS["phone"]: record.get("phone", ""),
+                BITABLE_FIELDS["score"]: record.get("score", 0),
+                BITABLE_FIELDS["passed"]: "通过" if record.get("passed") else "未通过",
+                BITABLE_FIELDS["duration"]: record.get("duration_seconds", 0),
+                BITABLE_FIELDS["time"]: now_ts
             }
         }
-        requests.post(url, headers=headers, json=data, timeout=10)
-    except:
-        pass
+        resp = requests.post(url, headers=headers, json=data, timeout=10)
+        if resp.status_code == 200:
+            print(f"[{datetime.now()}] Successfully saved record to Bitable: {record.get('username', 'unknown')}")
+        else:
+            print(f"[{datetime.now()}] Bitable save error: {resp.status_code} - {resp.text[:200]}")
+    except Exception as e:
+        print(f"[{datetime.now()}] Bitable save error: {e}")
 
 def load_all_records():
     """读取所有考试记录（本地+GitHub双重恢复）"""
@@ -469,19 +486,34 @@ def get_all_questions():
 
 # ============ 启动时从GitHub恢复历史记录 ============
 init_data_file()
-# 强制从GitHub同步（修复了token变量bug，现在应该能正常恢复数据）
+
+# 先读取本地数据
+local_records = []
+try:
+    with open(DATA_FILE, 'r', encoding='utf-8') as f:
+        local_records = json.load(f)
+    print(f"[{datetime.now()}] 本地数据: {len(local_records)} 条记录")
+except Exception as e:
+    print(f"[{datetime.now()}] 读取本地数据失败: {e}")
+
+# 尝试从GitHub恢复（但不覆盖本地已有数据）
 print(f"[{datetime.now()}] 正在从GitHub恢复数据...")
 records = git_load_records()
-if records is not None:
-    with open(DATA_FILE, 'w', encoding='utf-8') as f:
-        json.dump(records, f, ensure_ascii=False, indent=2)
-    print(f"[{datetime.now()}] 成功从GitHub恢复 {len(records)} 条记录")
+if records is not None and len(records) > 0:
+    # 合并本地和GitHub数据（去重）
+    existing_ids = {r.get("submit_time", "") + r.get("username", "") for r in local_records}
+    new_records = [r for r in records if (r.get("submit_time", "") + r.get("username", "")) not in existing_ids]
+    if new_records:
+        local_records.extend(new_records)
+        with open(DATA_FILE, 'w', encoding='utf-8') as f:
+            json.dump(local_records, f, ensure_ascii=False, indent=2)
+        print(f"[{datetime.now()}] 从GitHub合并了 {len(new_records)} 条新记录，总计 {len(local_records)} 条")
+    else:
+        print(f"[{datetime.now()}] GitHub数据与本地相同，无需合并")
+elif records is not None and len(records) == 0:
+    print(f"[{datetime.now()}] GitHub数据为空，保留本地 {len(local_records)} 条记录")
 else:
-    print(f"[{datetime.now()}] 从GitHub恢复失败，使用本地数据")
-# 如果GitHub同步失败，至少保证本地文件存在
-if not os.path.exists(DATA_FILE):
-    with open(DATA_FILE, 'w', encoding='utf-8') as f:
-        json.dump([], f, ensure_ascii=False)
+    print(f"[{datetime.now()}] 从GitHub恢复失败，使用本地 {len(local_records)} 条记录")
 
 # ============ 主入口 ============
 if __name__ == "__main__":
