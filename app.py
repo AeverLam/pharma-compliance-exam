@@ -327,11 +327,10 @@ def check_user_exam_attempts(username, province, position):
     """检查用户已考试次数和最高成绩
     
     返回: (attempts_count, highest_score, records)
-    - attempts_count: 已考试次数 (0-2)，包括已开始但未完成的
+    - attempts_count: 已考试次数 (0-2)，只算成功提交的
     - highest_score: 最高成绩
     - records: 该用户的所有考试记录
     """
-    # 检查已完成的考试记录
     records = load_all_records()
     user_records = [
         r for r in records 
@@ -339,53 +338,9 @@ def check_user_exam_attempts(username, province, position):
         and r.get("province") == province 
         and r.get("position") == position
     ]
-    
-    # 检查已开始的考试（包括未完成的）
-    started_count = 0
-    started_pattern = f"{username}_{province}_{position}"
-    try:
-        if os.path.exists(RECORDS_DIR):
-            for filename in os.listdir(RECORDS_DIR):
-                if filename.startswith(started_pattern.replace("/", "_").replace("\\", "_")):
-                    started_count += 1
-    except:
-        pass
-    
-    # 取最大值：已完成的记录数 或 已开始的文件数
-    attempts = max(len(user_records), started_count)
+    attempts = len(user_records)
     highest_score = max([r.get("score", 0) for r in user_records], default=0)
     return attempts, highest_score, user_records
-
-
-def save_exam_start(username, province, position, session_id):
-    """保存考试开始记录，防止重复考试"""
-    init_data_file()
-    try:
-        # 创建开始记录文件
-        safe_username = username.replace("/", "_").replace("\\", "_")
-        safe_province = province.replace("/", "_").replace("\\", "_")
-        safe_position = position.replace("/", "_").replace("\\", "_")
-        
-        start_file = os.path.join(RECORDS_DIR, f"{safe_username}_{safe_province}_{safe_position}_{session_id}_started.json")
-        
-        beijing_tz = timezone(timedelta(hours=8))
-        start_record = {
-            "username": username,
-            "province": province,
-            "position": position,
-            "session_id": session_id,
-            "start_time": datetime.now(beijing_tz).isoformat(),
-            "status": "started"
-        }
-        
-        with open(start_file, 'w', encoding='utf-8') as f:
-            json.dump(start_record, f, ensure_ascii=False, indent=2)
-        
-        print(f"[{datetime.now()}] Saved exam start record: {start_file}")
-        return True
-    except Exception as e:
-        print(f"[{datetime.now()}] Failed to save exam start: {e}")
-        return False
 
 
 @app.route("/api/exam/check", methods=["POST"])
@@ -494,9 +449,6 @@ def start_exam():
         "start_time": beijing_now.isoformat(),
         "status": "in_progress"
     }
-    
-    # 【关键】立即保存考试开始记录，防止刷新后重复考试
-    save_exam_start(username, province, position, session_id)
 
     # 返回题目（不包含答案）
     response = {
