@@ -106,5 +106,23 @@
     "start_time": "2026-05-28T17:00:36.346161+08:00",
     "end_time": "2026-05-28T17:01:32.419412+08:00",
     "submit_time": "2026-05-28T17:01:32.419530+08:00"
+  },
+  {
+    "username": "测试3",
+    "province": "职能总部",
+    "position": "职能总部人员",
+    "phone": "12345678900",
+    "score": 26,
+    "single_score": 26,
+    "multiple_score": 0,
+    "single_correct": 13,
+    "single_total": 30,
+    "multiple_correct": 0,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 96,
+    "start_time": "2026-05-28T17:00:02.145238+08:00",
+    "end_time": "2026-05-28T17:01:38.335090+08:00",
+    "submit_time": "2026-05-28T17:01:38.335250+08:00"
   }
 ]
