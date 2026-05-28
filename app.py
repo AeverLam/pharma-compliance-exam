@@ -103,7 +103,7 @@ def sync_from_github():
             json.dump(records, f, ensure_ascii=False, indent=2)
 
 def save_record_to_file(record):
-    """保存考试记录到本地 + GitHub"""
+    """保存考试记录到本地 + GitHub（同步确保成功）+ 飞书多维表格（异步）"""
     init_data_file()
     try:
         with open(DATA_FILE, 'r', encoding='utf-8') as f:
@@ -113,76 +113,125 @@ def save_record_to_file(record):
     records.append(record)
     with open(DATA_FILE, 'w', encoding='utf-8') as f:
         json.dump(records, f, ensure_ascii=False, indent=2)
-    # 异步推送 GitHub + 飞书多维表格
+    
+    # 【关键】同步推送到 GitHub，确保数据不丢失
+    # Render 免费版后台线程可能被打断，必须同步执行
     if requests:
-        threading.Thread(target=async_push_to_github, args=(records,), daemon=True).start()
+        try:
+            sync_push_to_github(records)
+        except Exception as e:
+            print(f"[{datetime.now()}] GitHub sync push failed: {e}")
+    
+    # 飞书多维表格异步推送（作为备份）
     if requests and FEISHU_APP_SECRET:
         threading.Thread(target=_save_to_bitable, args=(record,), daemon=True).start()
 
-def async_push_to_github(records):
-    """异步推送到 GitHub"""
+def sync_push_to_github(records):
+    """同步推送到 GitHub（阻塞式，确保数据保存成功）"""
     token = _get_token()
     if not requests or not token:
         print(f"[{datetime.now()}] GitHub push skipped: token not available")
-        return
+        return False
+    
     headers = {"Authorization": f"token {token}", "Accept": "application/vnd.github.v3+json"}
     content = base64.b64encode(json.dumps(records, ensure_ascii=False, indent=2).encode()).decode()
     sha = ""
+    
+    # 获取当前文件的 SHA
     try:
         resp = requests.get(GITHUB_API_URL, headers=headers, params={"ref": GITHUB_BRANCH}, timeout=10)
         if resp.status_code == 200:
             sha = resp.json().get("sha", "")
     except Exception as e:
         print(f"[{datetime.now()}] GitHub get SHA error: {e}")
+    
+    # 推送数据
     data = {"message": f"自动保存 {len(records)}条记录", "content": content, "branch": GITHUB_BRANCH}
     if sha:
         data["sha"] = sha
+    
     try:
         resp = requests.put(GITHUB_API_URL, headers=headers, json=data, timeout=15)
         if resp.status_code in [200, 201]:
             print(f"[{datetime.now()}] Successfully pushed {len(records)} records to GitHub")
+            return True
         else:
             print(f"[{datetime.now()}] GitHub push error: {resp.status_code} - {resp.text[:200]}")
+            return False
     except Exception as e:
         print(f"[{datetime.now()}] GitHub push error: {e}")
+        return False
+
+# 保留异步推送函数（供其他场景使用）
+def async_push_to_github(records):
+    """异步推送到 GitHub（后台线程）"""
+    threading.Thread(target=sync_push_to_github, args=(records,), daemon=True).start()
 
 def _save_to_bitable(record):
     """保存到飞书多维表格（云端持久化，永不丢失）"""
     if not requests or not FEISHU_APP_SECRET:
         print(f"[{datetime.now()}] Bitable save skipped: FEISHU_APP_SECRET not set")
         return
+    
     try:
         # 获取 token
         r = requests.post("https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal",
             json={"app_id": FEISHU_APP_ID, "app_secret": FEISHU_APP_SECRET}, timeout=10)
         token = r.json().get("tenant_access_token", "")
         if not token:
-            print(f"[{datetime.now()}] Bitable save failed: no tenant_access_token")
+            print(f"[{datetime.now()}] Bitable save failed: no tenant_access_token, response: {r.json()}")
             return
         
         headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
-        now_ts = int(datetime.now().timestamp() * 1000)
+        
+        # 解析提交时间为毫秒时间戳
+        submit_time_str = record.get("submit_time", "")
+        try:
+            # 处理 ISO 格式时间字符串（带时区）
+            if submit_time_str:
+                from datetime import datetime as dt
+                # 处理 +08:00 时区格式
+                if "+" in submit_time_str:
+                    dt_obj = dt.fromisoformat(submit_time_str)
+                    now_ts = int(dt_obj.timestamp() * 1000)
+                else:
+                    dt_obj = dt.fromisoformat(submit_time_str.replace('Z', '+00:00'))
+                    now_ts = int(dt_obj.timestamp() * 1000)
+            else:
+                now_ts = int(datetime.now().timestamp() * 1000)
+        except Exception as e:
+            print(f"[{datetime.now()}] Time parse error: {e}, using current time")
+            now_ts = int(datetime.now().timestamp() * 1000)
         
         url = f"https://open.feishu.cn/open-apis/bitable/v1/apps/{BITABLE_APP_TOKEN}/tables/{BITABLE_TABLE_ID}/records"
-        data = {
-            "fields": {
-                BITABLE_FIELDS["username"]: record.get("username", ""),
-                BITABLE_FIELDS["province"]: record.get("province", ""),
-                BITABLE_FIELDS["position"]: record.get("position", ""),
-                BITABLE_FIELDS["phone"]: record.get("phone", ""),
-                BITABLE_FIELDS["score"]: record.get("score", 0),
-                BITABLE_FIELDS["passed"]: "通过" if record.get("passed") else "未通过",
-                BITABLE_FIELDS["duration"]: record.get("duration_seconds", 0),
-                BITABLE_FIELDS["time"]: now_ts
-            }
+        
+        # 构建字段数据（确保类型正确）
+        fields = {
+            BITABLE_FIELDS["username"]: str(record.get("username", "")),
+            BITABLE_FIELDS["province"]: str(record.get("province", "")),
+            BITABLE_FIELDS["position"]: str(record.get("position", "")),
+            BITABLE_FIELDS["phone"]: str(record.get("phone", "")),
+            BITABLE_FIELDS["score"]: float(record.get("score", 0)),
+            BITABLE_FIELDS["passed"]: "通过" if record.get("passed") else "未通过",
+            BITABLE_FIELDS["duration"]: float(record.get("duration_seconds", 0)),
+            BITABLE_FIELDS["time"]: now_ts
         }
+        
+        data = {"fields": fields}
+        
+        print(f"[{datetime.now()}] Saving to Bitable: {fields}")
+        
         resp = requests.post(url, headers=headers, json=data, timeout=10)
+        resp_data = resp.json()
+        
         if resp.status_code == 200:
             print(f"[{datetime.now()}] Successfully saved record to Bitable: {record.get('username', 'unknown')}")
         else:
-            print(f"[{datetime.now()}] Bitable save error: {resp.status_code} - {resp.text[:200]}")
+            print(f"[{datetime.now()}] Bitable save error: {resp.status_code} - {resp_data}")
     except Exception as e:
         print(f"[{datetime.now()}] Bitable save error: {e}")
+        import traceback
+        print(traceback.format_exc())
 
 def load_all_records():
     """读取所有考试记录（本地+GitHub双重恢复）"""
