@@ -178,5 +178,23 @@
     "start_time": "2026-05-28T19:27:44.429725+08:00",
     "end_time": "2026-05-28T19:32:26.541520+08:00",
     "submit_time": "2026-05-28T19:32:26.541662+08:00"
+  },
+  {
+    "username": "测试6",
+    "province": "医学项目部",
+    "position": "职能总部人员",
+    "phone": "13524679632",
+    "score": 78,
+    "single_score": 54,
+    "multiple_score": 24,
+    "single_correct": 27,
+    "single_total": 30,
+    "multiple_correct": 6,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 388,
+    "start_time": "2026-05-28T20:12:08.569471+08:00",
+    "end_time": "2026-05-28T20:18:37.512320+08:00",
+    "submit_time": "2026-05-28T20:18:37.512484+08:00"
   }
 ]
