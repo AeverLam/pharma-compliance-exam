@@ -16,5 +16,23 @@
     "start_time": "2026-05-28T16:19:29.822711+08:00",
     "end_time": "2026-05-28T16:23:00.681937+08:00",
     "submit_time": "2026-05-28T16:23:00.682065+08:00"
+  },
+  {
+    "username": "王富坤",
+    "province": "销售培训部",
+    "position": "职能总部人员",
+    "phone": "18926066668",
+    "score": 96,
+    "single_score": 56,
+    "multiple_score": 40,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 198,
+    "start_time": "2026-05-28T16:27:16.707272+08:00",
+    "end_time": "2026-05-28T16:30:35.085900+08:00",
+    "submit_time": "2026-05-28T16:30:35.086109+08:00"
   }
 ]
