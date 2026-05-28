@@ -515,8 +515,8 @@ def submit_exam():
     multiple_wrong = 0
     details = []
 
-    # 评分单选题
-    for q in session["single"]:
+    # 评分单选题（题号从1开始）
+    for i, q in enumerate(session["single"], 1):
         user_answer = answers.get(f"single_{q['id']}")
         correct = user_answer is not None and user_answer == q["answer"]
         if correct:
@@ -526,7 +526,7 @@ def submit_exam():
             single_wrong += 1
         details.append({
             "id": q["id"],
-            "index": q.get("index", 0) + 1,  # 题号（从1开始）
+            "index": i,  # 题号（从1开始，连续编号）
             "type": "single",
             "question": q["question"],
             "options": q["options"],
@@ -536,8 +536,9 @@ def submit_exam():
             "explanation": q["explanation"]
         })
 
-    # 评分多选题
-    for q in session["multiple"]:
+    # 评分多选题（题号从31开始，接在单选题后面）
+    single_count = len(session["single"])
+    for i, q in enumerate(session["multiple"], single_count + 1):
         user_answer = answers.get(f"multiple_{q['id']}", [])
         correct_answer = q["answer"]
         # 多选题：完全正确才得分
@@ -548,7 +549,7 @@ def submit_exam():
             multiple_wrong += 1
         details.append({
             "id": q["id"],
-            "index": q.get("index", 0) + 1,  # 题号（从1开始）
+            "index": i,  # 题号（连续编号，接在单选题后面）
             "type": "multiple",
             "question": q["question"],
             "options": q["options"],
