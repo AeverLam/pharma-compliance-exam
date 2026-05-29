@@ -1,5 +1,23 @@
 [
   {
+    "username": "郑焕雷",
+    "province": "华中大区",
+    "position": "大区总",
+    "phone": "13837125308",
+    "score": 92,
+    "single_score": 60,
+    "multiple_score": 32,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 307,
+    "start_time": "2026-05-29T19:10:07.449501+08:00",
+    "end_time": "2026-05-29T19:15:15.249179+08:00",
+    "submit_time": "2026-05-29T19:15:15.249320+08:00"
+  },
+  {
     "username": "张亚兰",
     "province": "华南十粤西",
     "position": "省（区）经理",
