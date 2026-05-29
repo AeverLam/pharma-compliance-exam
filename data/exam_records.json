@@ -1,5 +1,23 @@
 [
   {
+    "username": "王彪",
+    "province": "华北+吉林",
+    "position": "省总",
+    "phone": "18686864366",
+    "score": 98,
+    "single_score": 58,
+    "multiple_score": 40,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 843,
+    "start_time": "2026-05-29T16:26:46.829062+08:00",
+    "end_time": "2026-05-29T16:40:50.387840+08:00",
+    "submit_time": "2026-05-29T16:40:50.387986+08:00"
+  },
+  {
     "username": "姚力",
     "province": "华东+南京",
     "position": "推广经理",
@@ -522,10 +540,10 @@
     "submit_time": "2026-05-29T16:32:07.739770+08:00"
   },
   {
-    "username": "王彪",
-    "province": "华北+吉林",
-    "position": "省总",
-    "phone": "18686864366",
+    "username": "张月萍",
+    "province": "生殖部职能",
+    "position": "职能总部人员",
+    "phone": "13510430973",
     "score": 98,
     "single_score": 58,
     "multiple_score": 40,
@@ -534,9 +552,9 @@
     "multiple_correct": 10,
     "multiple_total": 10,
     "passed": true,
-    "duration_seconds": 843,
-    "start_time": "2026-05-29T16:26:46.829062+08:00",
-    "end_time": "2026-05-29T16:40:50.387840+08:00",
-    "submit_time": "2026-05-29T16:40:50.387986+08:00"
+    "duration_seconds": 727,
+    "start_time": "2026-05-29T16:28:52.766893+08:00",
+    "end_time": "2026-05-29T16:41:00.670530+08:00",
+    "submit_time": "2026-05-29T16:41:00.670661+08:00"
   }
 ]
