@@ -1,5 +1,23 @@
 [
   {
+    "username": "何远鹏",
+    "province": "华南+福建",
+    "position": "推广",
+    "phone": "18060869995",
+    "score": 96,
+    "single_score": 60,
+    "multiple_score": 36,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 1000,
+    "start_time": "2026-05-29T17:24:02.315263+08:00",
+    "end_time": "2026-05-29T17:40:42.567920+08:00",
+    "submit_time": "2026-05-29T17:40:42.568025+08:00"
+  },
+  {
     "username": "周甲",
     "province": "华中大区-河南一",
     "position": "推广经理",
