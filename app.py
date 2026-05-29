@@ -25,33 +25,8 @@ from questions import SINGLE_CHOICE_QUESTIONS, MULTIPLE_CHOICE_QUESTIONS
 ALL_SINGLE = SINGLE_CHOICE_QUESTIONS
 ALL_MULTIPLE = MULTIPLE_CHOICE_QUESTIONS
 
-# 考试会话存储（内存 + 持久化文件）
+# 考试会话存储（文件持久化，Render重启不丢失）
 exam_sessions = {}
-SESSIONS_FILE = os.path.join(DATA_DIR, "exam_sessions.json")
-SESSIONS_LOCK = threading.Lock()
-
-def load_sessions():
-    """从文件加载考试会话（解决Render重启会话丢失问题）"""
-    global exam_sessions
-    try:
-        if os.path.exists(SESSIONS_FILE):
-            with open(SESSIONS_FILE, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-                # 只加载未完成的会话
-                exam_sessions = {k: v for k, v in data.items() if v.get("status") != "completed"}
-            print(f"[{datetime.now()}] Loaded {len(exam_sessions)} active sessions from file")
-    except Exception as e:
-        print(f"[{datetime.now()}] Failed to load sessions: {e}")
-        exam_sessions = {}
-
-def save_sessions():
-    """保存考试会话到文件"""
-    try:
-        with SESSIONS_LOCK:
-            with open(SESSIONS_FILE, 'w', encoding='utf-8') as f:
-                json.dump(exam_sessions, f, ensure_ascii=False, indent=2)
-    except Exception as e:
-        print(f"[{datetime.now()}] Failed to save sessions: {e}")
 
 # 飞书多维表格持久化（数据在飞书云端，永不丢失）
 FEISHU_APP_ID = "cli_a938ac2a24391bcb"
@@ -75,7 +50,12 @@ DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
 DATA_FILE = os.path.join(DATA_DIR, "exam_records.json")
 # 新增：单独文件存储目录（更可靠）
 RECORDS_DIR = os.path.join(DATA_DIR, "records")
+# 会话持久化目录（Render重启不丢session）
+SESSIONS_DIR = os.path.join(DATA_DIR, "sessions")
 ADMIN_PASSWORD = "livzon2026"
+
+# 会话过期时间（分钟）
+SESSION_TTL_MINUTES = 60
 
 # ============ 全局记录缓存（解决Render重启数据丢失问题）============
 ALL_RECORDS_CACHE = None  # 缓存所有记录，首次从GitHub加载
@@ -88,7 +68,8 @@ GITHUB_BRANCH = "main"
 GITHUB_DATA_PATH = "data/exam_records.json"
 GITHUB_API_URL = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{GITHUB_DATA_PATH}"
 
-def init_data_file():
+def init_dirs():
+    """初始化所有数据目录"""
     if not os.path.exists(DATA_DIR):
         os.makedirs(DATA_DIR, exist_ok=True)
     if not os.path.exists(DATA_FILE):
@@ -97,6 +78,111 @@ def init_data_file():
     # 初始化单独文件存储目录
     if not os.path.exists(RECORDS_DIR):
         os.makedirs(RECORDS_DIR, exist_ok=True)
+    # 初始化会话目录
+    if not os.path.exists(SESSIONS_DIR):
+        os.makedirs(SESSIONS_DIR, exist_ok=True)
+
+def save_session_to_disk(session_id, session_data):
+    """将考试会话保存到磁盘（Render重启可恢复）"""
+    init_dirs()
+    try:
+        # 创建会话数据的可序列化副本
+        serializable = {}
+        for k, v in session_data.items():
+            if k == 'single' or k == 'multiple':
+                # 题目对象是列表，需要确保可序列化
+                serializable[k] = v
+            else:
+                try:
+                    json.dumps({k: v})
+                    serializable[k] = v
+                except:
+                    serializable[k] = str(v)
+        
+        filepath = os.path.join(SESSIONS_DIR, f"{session_id}.json")
+        with open(filepath, 'w', encoding='utf-8') as f:
+            json.dump(serializable, f, ensure_ascii=False, default=str)
+        return True
+    except Exception as e:
+        print(f"[{datetime.now()}] Failed to save session {session_id}: {e}")
+        return False
+
+def load_sessions_from_disk():
+    """从磁盘恢复所有活跃会话（启动时调用）"""
+    global exam_sessions
+    if not os.path.exists(SESSIONS_DIR):
+        return
+    
+    now = datetime.now(timezone.utc)
+    loaded = 0
+    expired = 0
+    
+    for filename in os.listdir(SESSIONS_DIR):
+        if not filename.endswith('.json'):
+            continue
+        filepath = os.path.join(SESSIONS_DIR, filename)
+        session_id = filename[:-5]  # 去掉 .json 后缀
+        
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                session_data = json.load(f)
+            
+            # 检查会话是否过期
+            start_time_str = session_data.get('start_time', '')
+            if start_time_str:
+                try:
+                    start_dt = datetime.fromisoformat(start_time_str)
+                    elapsed = (now - start_dt).total_seconds() / 60
+                    if elapsed > SESSION_TTL_MINUTES:
+                        # 过期会话，删除文件
+                        try:
+                            os.remove(filepath)
+                        except:
+                            pass
+                        expired += 1
+                        continue
+                except:
+                    pass
+            
+            exam_sessions[session_id] = session_data
+            loaded += 1
+        except Exception as e:
+            print(f"[{datetime.now()}] Failed to load session {session_id}: {e}")
+    
+    print(f"[{datetime.now()}] Restored {loaded} sessions from disk, cleaned {expired} expired")
+
+def delete_session_file(session_id):
+    """删除磁盘上的会话文件"""
+    filepath = os.path.join(SESSIONS_DIR, f"{session_id}.json")
+    try:
+        if os.path.exists(filepath):
+            os.remove(filepath)
+    except:
+        pass
+
+def cleanup_expired_sessions():
+    """清理过期会话（启动+定时）"""
+    global exam_sessions
+    now = datetime.now(timezone.utc)
+    expired_ids = []
+    
+    for session_id in list(exam_sessions.keys()):
+        session_data = exam_sessions.get(session_id)
+        if not session_data:
+            continue
+        start_time_str = session_data.get('start_time', '')
+        if start_time_str:
+            try:
+                start_dt = datetime.fromisoformat(start_time_str)
+                elapsed = (now - start_dt).total_seconds() / 60
+                if elapsed > SESSION_TTL_MINUTES:
+                    expired_ids.append(session_id)
+            except:
+                expired_ids.append(session_id)
+    
+    for sid in expired_ids:
+        exam_sessions.pop(sid, None)
+        delete_session_file(sid)
 
 def _get_token():
     """获取GitHub token（优先使用模块级GITHUB_TOKEN）"""
@@ -139,7 +225,7 @@ def sync_from_github():
 def save_record_to_file(record):
     """保存考试记录到本地 + GitHub备份 + 飞书多维表格"""
     global ALL_RECORDS_CACHE
-    init_data_file()
+    init_dirs()
     
     # 【方案A核心】单独文件存储
     record_id = record.get("submit_time", "").replace(":", "-").replace("+", "_") + "_" + record.get("username", "unknown")
@@ -309,7 +395,7 @@ def _save_to_bitable(record):
 def load_all_records():
     """读取所有考试记录（全局缓存 + GitHub云端 + 本地三重保障）"""
     global ALL_RECORDS_CACHE
-    init_data_file()
+    init_dirs()
     
     with CACHE_LOCK:
         # 如果缓存已加载且有数据，直接返回缓存
@@ -520,7 +606,7 @@ def start_exam():
     beijing_tz = timezone(timedelta(hours=8))
     beijing_now = datetime.now(beijing_tz)
 
-    exam_sessions[session_id] = {
+    session_data = {
         "username": username,
         "province": province,
         "position": position,
@@ -531,6 +617,11 @@ def start_exam():
         "start_time": beijing_now.isoformat(),
         "status": "in_progress"
     }
+
+    exam_sessions[session_id] = session_data
+    
+    # 保存会话到磁盘（Render重启可恢复）
+    threading.Thread(target=save_session_to_disk, args=(session_id, session_data), daemon=True).start()
 
     # 返回题目（不包含答案）
     response = {
@@ -576,7 +667,21 @@ def submit_exam():
     print(f"[{datetime.now()}] Active sessions: {list(exam_sessions.keys())}")
 
     if not session_id or session_id not in exam_sessions:
-        return jsonify({"error": "考试会话不存在或已过期"}), 400
+        # 尝试从磁盘恢复会话（Render重启后的补救措施）
+        recovered = None
+        if session_id:
+            session_file = os.path.join(SESSIONS_DIR, f"{session_id}.json")
+            try:
+                if os.path.exists(session_file):
+                    with open(session_file, 'r', encoding='utf-8') as f:
+                        recovered = json.load(f)
+                    exam_sessions[session_id] = recovered
+                    print(f"[{datetime.now()}] Recovered session {session_id} from disk!")
+            except Exception as e:
+                print(f"[{datetime.now()}] Failed to recover session {session_id}: {e}")
+        
+        if not recovered:
+            return jsonify({"error": "考试会话不存在或已过期，请重新开始考试"}), 400
 
     session = exam_sessions[session_id]
     if session["status"] == "completed":
@@ -587,9 +692,6 @@ def submit_exam():
     # 使用北京时间（UTC+8）
     beijing_tz = timezone(timedelta(hours=8))
     session["end_time"] = datetime.now(beijing_tz).isoformat()
-    
-    # 完成后更新持久化（移除已完成会话节省空间）
-    save_sessions()
 
     # 评分
     single_score_total = 0
@@ -695,6 +797,9 @@ def submit_exam():
     }
     save_record_to_file(record)
     
+    # 提交成功后删除会话文件
+    delete_session_file(session_id)
+    
     return jsonify(result)
 
 @app.route("/admin")
@@ -760,12 +865,11 @@ def get_all_questions():
         ]
     })
 
-# ============ 启动时从GitHub恢复历史记录 ============
-init_data_file()
+# ============ 启动时恢复数据 ============
+init_dirs()
 
 # 初始化全局缓存：优先从GitHub加载
 print(f"[{datetime.now()}] 正在从GitHub恢复历史记录...")
-global ALL_RECORDS_CACHE
 all_records = []
 
 # 1) 先尝试从GitHub加载（云持久化，重启不丢）
@@ -812,10 +916,12 @@ except:
 with CACHE_LOCK:
     ALL_RECORDS_CACHE = all_records
 
-print(f"[{datetime.now()}] 启动完成，全局缓存 {len(ALL_RECORDS_CACHE)} 条记录")
+# 5) 从磁盘恢复活跃考试会话
+print(f"[{datetime.now()}] 正在从磁盘恢复考试会话...")
+load_sessions_from_disk()
+cleanup_expired_sessions()
 
-# 加载持久化的考试会话（防止Render重启导致考试中断）
-load_sessions()
+print(f"[{datetime.now()}] 启动完成，全局缓存 {len(ALL_RECORDS_CACHE)} 条记录，{len(exam_sessions)} 个活跃会话")
 
 # ============ 主入口 ============
 if __name__ == "__main__":
