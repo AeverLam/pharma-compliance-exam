@@ -1,5 +1,23 @@
 [
   {
+    "username": "许刚畅",
+    "province": "华南粤东",
+    "position": "省（区）经理",
+    "phone": "13751861067",
+    "score": 82,
+    "single_score": 50,
+    "multiple_score": 32,
+    "single_correct": 25,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 1202,
+    "start_time": "2026-05-29T17:30:58.420508+08:00",
+    "end_time": "2026-05-29T17:51:00.684061+08:00",
+    "submit_time": "2026-05-29T17:51:00.684171+08:00"
+  },
+  {
     "username": "谭炳堂",
     "province": "基层事业部华南深莞惠",
     "position": "省（区）经理",
