@@ -1,5 +1,23 @@
 [
   {
+    "username": "王娟",
+    "province": "华南深圳",
+    "position": "推广经理",
+    "phone": "18317910443",
+    "score": 94,
+    "single_score": 58,
+    "multiple_score": 36,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 908,
+    "start_time": "2026-05-29T17:48:44.578744+08:00",
+    "end_time": "2026-05-29T18:03:52.656393+08:00",
+    "submit_time": "2026-05-29T18:03:52.656494+08:00"
+  },
+  {
     "username": "王心如",
     "province": "精神+黑龙江",
     "position": "推广经理",
