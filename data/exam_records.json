@@ -1,5 +1,23 @@
 [
   {
+    "username": "李勇",
+    "province": "西南成都",
+    "position": "省（区）经理",
+    "phone": "17740189176",
+    "score": 82,
+    "single_score": 54,
+    "multiple_score": 28,
+    "single_correct": 27,
+    "single_total": 30,
+    "multiple_correct": 7,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 451,
+    "start_time": "2026-05-29T17:27:32.616768+08:00",
+    "end_time": "2026-05-29T17:35:04.213616+08:00",
+    "submit_time": "2026-05-29T17:35:04.213734+08:00"
+  },
+  {
     "username": "黄春艳",
     "province": "华西重庆",
     "position": "省总",
