@@ -1,5 +1,23 @@
 [
   {
+    "username": "王斌",
+    "province": "基层贵州",
+    "position": "省（区）经理",
+    "phone": "13852691958",
+    "score": 90,
+    "single_score": 58,
+    "multiple_score": 32,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 687,
+    "start_time": "2026-05-29T17:22:55.704496+08:00",
+    "end_time": "2026-05-29T17:34:23.139239+08:00",
+    "submit_time": "2026-05-29T17:34:23.139360+08:00"
+  },
+  {
     "username": "林徛洲",
     "province": "华北辽宁",
     "position": "省（区）经理",
