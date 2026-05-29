@@ -1,5 +1,23 @@
 [
   {
+    "username": "陶璐媛",
+    "province": "华西+甘肃",
+    "position": "推广",
+    "phone": "18919009860",
+    "score": 94,
+    "single_score": 58,
+    "multiple_score": 36,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 374,
+    "start_time": "2026-05-29T16:32:15.783393+08:00",
+    "end_time": "2026-05-29T16:38:30.039670+08:00",
+    "submit_time": "2026-05-29T16:38:30.039780+08:00"
+  },
+  {
     "username": "纪钰子",
     "province": "基层粤东",
     "position": "推广经理",
@@ -396,21 +414,21 @@
     "submit_time": "2026-05-29T16:32:07.739770+08:00"
   },
   {
-    "username": "陶璐媛",
-    "province": "华西+甘肃",
-    "position": "推广",
-    "phone": "18919009860",
-    "score": 94,
-    "single_score": 58,
-    "multiple_score": 36,
-    "single_correct": 29,
+    "username": "test_user",
+    "province": "test_dept",
+    "position": "test_role",
+    "phone": "",
+    "score": 0,
+    "single_score": 0,
+    "multiple_score": 0,
+    "single_correct": 0,
     "single_total": 30,
-    "multiple_correct": 9,
+    "multiple_correct": 0,
     "multiple_total": 10,
-    "passed": true,
-    "duration_seconds": 374,
-    "start_time": "2026-05-29T16:32:15.783393+08:00",
-    "end_time": "2026-05-29T16:38:30.039670+08:00",
-    "submit_time": "2026-05-29T16:38:30.039780+08:00"
+    "passed": false,
+    "duration_seconds": 0,
+    "start_time": "2026-05-29T16:39:14.533845+08:00",
+    "end_time": "2026-05-29T16:39:14.752242+08:00",
+    "submit_time": "2026-05-29T16:39:14.752327+08:00"
   }
 ]
