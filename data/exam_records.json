@@ -1,5 +1,23 @@
 [
   {
+    "username": "王鹏",
+    "province": "华中+陕西",
+    "position": "推广经理",
+    "phone": "18993148497",
+    "score": 98,
+    "single_score": 58,
+    "multiple_score": 40,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 239,
+    "start_time": "2026-05-29T17:21:10.528343+08:00",
+    "end_time": "2026-05-29T17:25:10.278499+08:00",
+    "submit_time": "2026-05-29T17:25:10.278634+08:00"
+  },
+  {
     "username": "陈钰滢",
     "province": "基层华南佛山",
     "position": "推广经理",
