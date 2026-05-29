@@ -1,5 +1,23 @@
 [
   {
+    "username": "陈茵宜",
+    "province": "市场推广部",
+    "position": "职能总部人员",
+    "phone": "15622155944",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 732,
+    "start_time": "2026-05-29T21:56:18.665217+08:00",
+    "end_time": "2026-05-29T22:08:31.495017+08:00",
+    "submit_time": "2026-05-29T22:08:31.495145+08:00"
+  },
+  {
     "username": "石本一",
     "province": "中部大区基层河南一",
     "position": "省（区）经理",
