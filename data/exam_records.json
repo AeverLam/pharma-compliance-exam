@@ -1,5 +1,41 @@
 [
   {
+    "username": "梁润荷",
+    "province": "市场推广部",
+    "position": "职能总部人员",
+    "phone": "15521032186",
+    "score": 92,
+    "single_score": 56,
+    "multiple_score": 36,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 825,
+    "start_time": "2026-05-29T16:31:52.721139+08:00",
+    "end_time": "2026-05-29T16:45:38.522932+08:00",
+    "submit_time": "2026-05-29T16:45:38.523048+08:00"
+  },
+  {
+    "username": "u_1780044256",
+    "province": "t",
+    "position": "t",
+    "phone": "",
+    "score": 96,
+    "single_score": 60,
+    "multiple_score": 36,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 0,
+    "start_time": "2026-05-29T16:45:30.067320+08:00",
+    "end_time": "2026-05-29T16:45:30.289260+08:00",
+    "submit_time": "2026-05-29T16:45:30.289385+08:00"
+  },
+  {
     "username": "刘海霞",
     "province": "精神福建",
     "position": "省（区）经理",
@@ -1206,10 +1242,10 @@
     "submit_time": "2026-05-29T16:32:07.739770+08:00"
   },
   {
-    "username": "u_1780044256",
-    "province": "t",
-    "position": "t",
-    "phone": "",
+    "username": "张晗钰",
+    "province": "华中➕陕西",
+    "position": "推广经理",
+    "phone": "13359296550",
     "score": 96,
     "single_score": 60,
     "multiple_score": 36,
@@ -1218,27 +1254,9 @@
     "multiple_correct": 9,
     "multiple_total": 10,
     "passed": true,
-    "duration_seconds": 0,
-    "start_time": "2026-05-29T16:45:30.067320+08:00",
-    "end_time": "2026-05-29T16:45:30.289260+08:00",
-    "submit_time": "2026-05-29T16:45:30.289385+08:00"
-  },
-  {
-    "username": "梁润荷",
-    "province": "市场推广部",
-    "position": "职能总部人员",
-    "phone": "15521032186",
-    "score": 92,
-    "single_score": 56,
-    "multiple_score": 36,
-    "single_correct": 28,
-    "single_total": 30,
-    "multiple_correct": 9,
-    "multiple_total": 10,
-    "passed": true,
-    "duration_seconds": 825,
-    "start_time": "2026-05-29T16:31:52.721139+08:00",
-    "end_time": "2026-05-29T16:45:38.522932+08:00",
-    "submit_time": "2026-05-29T16:45:38.523048+08:00"
+    "duration_seconds": 405,
+    "start_time": "2026-05-29T16:39:01.342058+08:00",
+    "end_time": "2026-05-29T16:45:46.375994+08:00",
+    "submit_time": "2026-05-29T16:45:46.376115+08:00"
   }
 ]
