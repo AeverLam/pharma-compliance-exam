@@ -1,5 +1,23 @@
 [
   {
+    "username": "金晶",
+    "province": "精神+新疆",
+    "position": "省（区）经理",
+    "phone": "18690263398",
+    "score": 94,
+    "single_score": 58,
+    "multiple_score": 36,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 862,
+    "start_time": "2026-05-29T17:00:29.466418+08:00",
+    "end_time": "2026-05-29T17:14:52.197974+08:00",
+    "submit_time": "2026-05-29T17:14:52.198071+08:00"
+  },
+  {
     "username": "袁晓武",
     "province": "华西+重庆+推广",
     "position": "推广经理",
