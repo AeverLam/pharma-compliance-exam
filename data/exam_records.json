@@ -1,5 +1,23 @@
 [
   {
+    "username": "宣啸",
+    "province": "华东-苏中",
+    "position": "省（区）经理",
+    "phone": "13605215691",
+    "score": 72,
+    "single_score": 60,
+    "multiple_score": 12,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 3,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 1213,
+    "start_time": "2026-05-29T18:02:42.202104+08:00",
+    "end_time": "2026-05-29T18:22:56.098359+08:00",
+    "submit_time": "2026-05-29T18:22:56.098467+08:00"
+  },
+  {
     "username": "王祺增",
     "province": "华南大区 福建省公司",
     "position": "省（区）经理",
