@@ -1,5 +1,23 @@
 [
   {
+    "username": "李世芳",
+    "province": "华北辽宁",
+    "position": "省（区）经理",
+    "phone": "18701369097",
+    "score": 84,
+    "single_score": 60,
+    "multiple_score": 24,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 6,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 1030,
+    "start_time": "2026-05-29T16:53:12.433591+08:00",
+    "end_time": "2026-05-29T17:10:23.307137+08:00",
+    "submit_time": "2026-05-29T17:10:23.307258+08:00"
+  },
+  {
     "username": "赖尚阳",
     "province": "生殖➕贵州",
     "position": "省总",
