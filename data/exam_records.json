@@ -1,5 +1,23 @@
 [
   {
+    "username": "柯宇婷",
+    "province": "华南+厦门",
+    "position": "职能总部人员",
+    "phone": "13459625880",
+    "score": 96,
+    "single_score": 60,
+    "multiple_score": 36,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 898,
+    "start_time": "2026-05-29T20:41:18.257591+08:00",
+    "end_time": "2026-05-29T20:56:16.875169+08:00",
+    "submit_time": "2026-05-29T20:56:16.875290+08:00"
+  },
+  {
     "username": "张东旭",
     "province": "精神上海",
     "position": "省（区）经理",
