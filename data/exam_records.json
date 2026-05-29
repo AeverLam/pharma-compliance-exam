@@ -1,5 +1,23 @@
 [
   {
+    "username": "黄淳",
+    "province": "华西-重庆",
+    "position": "推广",
+    "phone": "19923908930",
+    "score": 92,
+    "single_score": 56,
+    "multiple_score": 36,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 453,
+    "start_time": "2026-05-29T17:04:39.473232+08:00",
+    "end_time": "2026-05-29T17:12:13.448007+08:00",
+    "submit_time": "2026-05-29T17:12:13.448129+08:00"
+  },
+  {
     "username": "胡阳",
     "province": "生殖-山西",
     "position": "省（区）经理",
