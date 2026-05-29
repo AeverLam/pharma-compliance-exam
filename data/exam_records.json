@@ -1,5 +1,23 @@
 [
   {
+    "username": "第二份",
+    "province": "广东",
+    "position": "区域经理",
+    "phone": "13900139001",
+    "score": 0,
+    "single_score": 0,
+    "multiple_score": 0,
+    "single_correct": 0,
+    "single_total": 30,
+    "multiple_correct": 0,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 0,
+    "start_time": "2026-05-29T16:51:17.657651+08:00",
+    "end_time": "2026-05-29T16:51:17.870632+08:00",
+    "submit_time": "2026-05-29T16:51:17.870743+08:00"
+  },
+  {
     "username": "赵测试",
     "province": "上海",
     "position": "合规经理",
