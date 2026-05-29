@@ -1,5 +1,23 @@
 [
   {
+    "username": "邵有裕",
+    "province": "华南广西",
+    "position": "推广经理",
+    "phone": "18677924904",
+    "score": 92,
+    "single_score": 60,
+    "multiple_score": 32,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 1000,
+    "start_time": "2026-05-29T20:07:25.921717+08:00",
+    "end_time": "2026-05-29T20:24:06.901832+08:00",
+    "submit_time": "2026-05-29T20:24:06.901960+08:00"
+  },
+  {
     "username": "胡珊珊",
     "province": "生殖销售部安徽省公司",
     "position": "CSO推广人员",
