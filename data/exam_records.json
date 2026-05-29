@@ -1,5 +1,23 @@
 [
   {
+    "username": "u_1780044195",
+    "province": "t",
+    "position": "t",
+    "phone": "",
+    "score": 88,
+    "single_score": 56,
+    "multiple_score": 32,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 0,
+    "start_time": "2026-05-29T16:44:29.665672+08:00",
+    "end_time": "2026-05-29T16:44:29.889333+08:00",
+    "submit_time": "2026-05-29T16:44:29.889420+08:00"
+  },
+  {
     "username": "王胜",
     "province": "贵州省",
     "position": "省总",
@@ -1098,21 +1116,21 @@
     "submit_time": "2026-05-29T16:32:07.739770+08:00"
   },
   {
-    "username": "u_1780044195",
-    "province": "t",
-    "position": "t",
-    "phone": "",
-    "score": 88,
-    "single_score": 56,
-    "multiple_score": 32,
-    "single_correct": 28,
+    "username": "赵恺琦",
+    "province": "华北➕河北二",
+    "position": "推广经理",
+    "phone": "18833818973",
+    "score": 94,
+    "single_score": 58,
+    "multiple_score": 36,
+    "single_correct": 29,
     "single_total": 30,
-    "multiple_correct": 8,
+    "multiple_correct": 9,
     "multiple_total": 10,
-    "passed": false,
-    "duration_seconds": 0,
-    "start_time": "2026-05-29T16:44:29.665672+08:00",
-    "end_time": "2026-05-29T16:44:29.889333+08:00",
-    "submit_time": "2026-05-29T16:44:29.889420+08:00"
+    "passed": true,
+    "duration_seconds": 976,
+    "start_time": "2026-05-29T16:28:19.763029+08:00",
+    "end_time": "2026-05-29T16:44:36.659333+08:00",
+    "submit_time": "2026-05-29T16:44:36.659419+08:00"
   }
 ]
