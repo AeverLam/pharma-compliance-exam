@@ -1,5 +1,23 @@
 [
   {
+    "username": "蔡婷婷",
+    "province": "生殖+安徽",
+    "position": "CSO推广人员",
+    "phone": "13514976608",
+    "score": 94,
+    "single_score": 58,
+    "multiple_score": 36,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 1181,
+    "start_time": "2026-05-29T16:57:44.617993+08:00",
+    "end_time": "2026-05-29T17:17:26.210499+08:00",
+    "submit_time": "2026-05-29T17:17:26.210645+08:00"
+  },
+  {
     "username": "李宇鸿",
     "province": "数字拓展部",
     "position": "职能总部人员",
