@@ -1,5 +1,23 @@
 [
   {
+    "username": "纪钰子",
+    "province": "华南粤东",
+    "position": "推广经理",
+    "phone": "15007644400",
+    "score": 96,
+    "single_score": 56,
+    "multiple_score": 40,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 502,
+    "start_time": "2026-05-29T18:04:28.227289+08:00",
+    "end_time": "2026-05-29T18:12:50.640947+08:00",
+    "submit_time": "2026-05-29T18:12:50.641066+08:00"
+  },
+  {
     "username": "徐欣野",
     "province": "精神江苏",
     "position": "推广经理",
