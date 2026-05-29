@@ -1,5 +1,23 @@
 [
   {
+    "username": "马杰",
+    "province": "精神福建",
+    "position": "推广经理",
+    "phone": "13799196925",
+    "score": 90,
+    "single_score": 58,
+    "multiple_score": 32,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 461,
+    "start_time": "2026-05-29T16:58:33.284595+08:00",
+    "end_time": "2026-05-29T17:06:14.371107+08:00",
+    "submit_time": "2026-05-29T17:06:14.371218+08:00"
+  },
+  {
     "username": "邢萍萍",
     "province": "河南精神",
     "position": "推广经理",
