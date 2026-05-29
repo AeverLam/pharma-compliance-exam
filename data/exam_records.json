@@ -250,5 +250,23 @@
     "start_time": "2026-05-29T16:36:27.173589+08:00",
     "end_time": "2026-05-29T16:36:27.380549+08:00",
     "submit_time": "2026-05-29T16:36:27.380681+08:00"
+  },
+  {
+    "username": "苏爽捷",
+    "province": "生殖陕西",
+    "position": "省（区）经理",
+    "phone": "13893618118",
+    "score": 88,
+    "single_score": 60,
+    "multiple_score": 28,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 7,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 538,
+    "start_time": "2026-05-29T16:27:32.585233+08:00",
+    "end_time": "2026-05-29T16:36:31.168531+08:00",
+    "submit_time": "2026-05-29T16:36:31.168655+08:00"
   }
 ]
