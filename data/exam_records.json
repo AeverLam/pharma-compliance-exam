@@ -1,5 +1,23 @@
 [
   {
+    "username": "袁彩霞",
+    "province": "精神产品销售部+江苏",
+    "position": "推广",
+    "phone": "13584035949",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 916,
+    "start_time": "2026-05-29T23:12:27.422434+08:00",
+    "end_time": "2026-05-29T23:27:43.760269+08:00",
+    "submit_time": "2026-05-29T23:27:43.760413+08:00"
+  },
+  {
     "username": "高桂珍",
     "province": "生殖湖南",
     "position": "推广",
