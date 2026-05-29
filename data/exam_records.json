@@ -1,5 +1,23 @@
 [
   {
+    "username": "严钰",
+    "province": "华南+粤北",
+    "position": "省（区）经理",
+    "phone": "15889856045",
+    "score": 98,
+    "single_score": 58,
+    "multiple_score": 40,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 861,
+    "start_time": "2026-05-29T19:42:47.541245+08:00",
+    "end_time": "2026-05-29T19:57:09.346558+08:00",
+    "submit_time": "2026-05-29T19:57:09.346678+08:00"
+  },
+  {
     "username": "赵晓东",
     "province": "华南+广西",
     "position": "省总",
