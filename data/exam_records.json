@@ -880,5 +880,23 @@
     "start_time": "2026-05-29T16:27:25.359055+08:00",
     "end_time": "2026-05-29T16:42:57.841318+08:00",
     "submit_time": "2026-05-29T16:42:57.841410+08:00"
+  },
+  {
+    "username": "陈雷",
+    "province": "ka项目部",
+    "position": "职能总部人员",
+    "phone": "15854555008",
+    "score": 88,
+    "single_score": 56,
+    "multiple_score": 32,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 544,
+    "start_time": "2026-05-29T16:33:58.398918+08:00",
+    "end_time": "2026-05-29T16:43:02.445897+08:00",
+    "submit_time": "2026-05-29T16:43:02.445995+08:00"
   }
 ]
