@@ -1,5 +1,23 @@
 [
   {
+    "username": "巨雷",
+    "province": "生殖+广东",
+    "position": "推广",
+    "phone": "18520122342",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 678,
+    "start_time": "2026-05-29T19:06:09.909366+08:00",
+    "end_time": "2026-05-29T19:17:27.995481+08:00",
+    "submit_time": "2026-05-29T19:17:27.995630+08:00"
+  },
+  {
     "username": "翟立国",
     "province": "华东大区+南京省公司",
     "position": "省（区）经理",
