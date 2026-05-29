@@ -1222,5 +1222,23 @@
     "start_time": "2026-05-29T16:45:30.067320+08:00",
     "end_time": "2026-05-29T16:45:30.289260+08:00",
     "submit_time": "2026-05-29T16:45:30.289385+08:00"
+  },
+  {
+    "username": "梁润荷",
+    "province": "市场推广部",
+    "position": "职能总部人员",
+    "phone": "15521032186",
+    "score": 92,
+    "single_score": 56,
+    "multiple_score": 36,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 825,
+    "start_time": "2026-05-29T16:31:52.721139+08:00",
+    "end_time": "2026-05-29T16:45:38.522932+08:00",
+    "submit_time": "2026-05-29T16:45:38.523048+08:00"
   }
 ]
