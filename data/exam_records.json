@@ -1,5 +1,23 @@
 [
   {
+    "username": "王嘉诚",
+    "province": "华中大区河南一",
+    "position": "省（区）经理",
+    "phone": "18898189976",
+    "score": 88,
+    "single_score": 52,
+    "multiple_score": 36,
+    "single_correct": 26,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 1031,
+    "start_time": "2026-05-29T17:10:06.030122+08:00",
+    "end_time": "2026-05-29T17:27:17.439987+08:00",
+    "submit_time": "2026-05-29T17:27:17.440102+08:00"
+  },
+  {
     "username": "高翔",
     "province": "生殖 四川省",
     "position": "省（区）经理",
