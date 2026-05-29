@@ -1,5 +1,23 @@
 [
   {
+    "username": "赵晓东",
+    "province": "华南+广西",
+    "position": "省总",
+    "phone": "13100511679",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 552,
+    "start_time": "2026-05-29T19:46:53.569931+08:00",
+    "end_time": "2026-05-29T19:56:05.882800+08:00",
+    "submit_time": "2026-05-29T19:56:05.882934+08:00"
+  },
+  {
     "username": "翟立国",
     "province": "华东大区+南京省公司",
     "position": "省（区）经理",
