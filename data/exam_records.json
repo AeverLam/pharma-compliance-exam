@@ -1,5 +1,23 @@
 [
   {
+    "username": "张剑超",
+    "province": "华北辽宁",
+    "position": "省总",
+    "phone": "18609811789",
+    "score": 96,
+    "single_score": 60,
+    "multiple_score": 36,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 289,
+    "start_time": "2026-05-29T17:44:30.807009+08:00",
+    "end_time": "2026-05-29T17:49:20.043852+08:00",
+    "submit_time": "2026-05-29T17:49:20.043967+08:00"
+  },
+  {
     "username": "韩文杰",
     "province": "特药上海",
     "position": "省（区）经理",
