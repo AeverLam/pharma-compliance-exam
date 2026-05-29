@@ -1,5 +1,23 @@
 [
   {
+    "username": "李姗",
+    "province": "华西+四川二",
+    "position": "推广经理",
+    "phone": "17784412897",
+    "score": 88,
+    "single_score": 56,
+    "multiple_score": 32,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 378,
+    "start_time": "2026-05-29T16:31:24.940198+08:00",
+    "end_time": "2026-05-29T16:37:43.821573+08:00",
+    "submit_time": "2026-05-29T16:37:43.821741+08:00"
+  },
+  {
     "username": "没有味",
     "province": "广西",
     "position": "大区总",
@@ -360,21 +378,21 @@
     "submit_time": "2026-05-29T16:32:07.739770+08:00"
   },
   {
-    "username": "李姗",
-    "province": "华西+四川二",
+    "username": "纪钰子",
+    "province": "基层粤东",
     "position": "推广经理",
-    "phone": "17784412897",
-    "score": 88,
-    "single_score": 56,
-    "multiple_score": 32,
-    "single_correct": 28,
+    "phone": "15007644400",
+    "score": 94,
+    "single_score": 58,
+    "multiple_score": 36,
+    "single_correct": 29,
     "single_total": 30,
-    "multiple_correct": 8,
+    "multiple_correct": 9,
     "multiple_total": 10,
-    "passed": false,
-    "duration_seconds": 378,
-    "start_time": "2026-05-29T16:31:24.940198+08:00",
-    "end_time": "2026-05-29T16:37:43.821573+08:00",
-    "submit_time": "2026-05-29T16:37:43.821741+08:00"
+    "passed": true,
+    "duration_seconds": 564,
+    "start_time": "2026-05-29T16:28:31.833082+08:00",
+    "end_time": "2026-05-29T16:37:56.371048+08:00",
+    "submit_time": "2026-05-29T16:37:56.371145+08:00"
   }
 ]
