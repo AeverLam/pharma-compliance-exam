@@ -1,5 +1,23 @@
 [
   {
+    "username": "苏飞洋",
+    "province": "生殖+河南",
+    "position": "自营代表（经理）",
+    "phone": "17550882679",
+    "score": 92,
+    "single_score": 60,
+    "multiple_score": 32,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 305,
+    "start_time": "2026-05-29T16:58:57.418413+08:00",
+    "end_time": "2026-05-29T17:04:02.860396+08:00",
+    "submit_time": "2026-05-29T17:04:02.860493+08:00"
+  },
+  {
     "username": "吴科强",
     "province": "华北+河北二",
     "position": "省总",
