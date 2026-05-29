@@ -1,5 +1,23 @@
 [
   {
+    "username": "郭继文",
+    "province": "华中大区-河南二公司",
+    "position": "推广经理",
+    "phone": "15738382881",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 1113,
+    "start_time": "2026-05-29T17:43:56.430622+08:00",
+    "end_time": "2026-05-29T18:02:29.960812+08:00",
+    "submit_time": "2026-05-29T18:02:29.960943+08:00"
+  },
+  {
     "username": "章雪莹",
     "province": "华南江西",
     "position": "推广经理",
