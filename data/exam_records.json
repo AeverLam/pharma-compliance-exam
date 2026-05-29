@@ -1,5 +1,23 @@
 [
   {
+    "username": "丁杰",
+    "province": "华南广西",
+    "position": "省（区）经理",
+    "phone": "19968118110",
+    "score": 92,
+    "single_score": 60,
+    "multiple_score": 32,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 609,
+    "start_time": "2026-05-29T18:54:41.293936+08:00",
+    "end_time": "2026-05-29T19:04:50.589307+08:00",
+    "submit_time": "2026-05-29T19:04:50.589405+08:00"
+  },
+  {
     "username": "陈虹",
     "province": "福建+精神",
     "position": "职能总部人员",
