@@ -1,5 +1,23 @@
 [
   {
+    "username": "裴志鹏",
+    "province": "华中大区河南一公司",
+    "position": "推广经理",
+    "phone": "17638482608",
+    "score": 92,
+    "single_score": 60,
+    "multiple_score": 32,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 395,
+    "start_time": "2026-05-29T16:34:44.775510+08:00",
+    "end_time": "2026-05-29T16:41:20.132461+08:00",
+    "submit_time": "2026-05-29T16:41:20.132549+08:00"
+  },
+  {
     "username": "兰茹",
     "province": "生殖-山西",
     "position": "推广",
@@ -576,21 +594,21 @@
     "submit_time": "2026-05-29T16:32:07.739770+08:00"
   },
   {
-    "username": "裴志鹏",
-    "province": "华中大区河南一公司",
-    "position": "推广经理",
-    "phone": "17638482608",
-    "score": 92,
-    "single_score": 60,
-    "multiple_score": 32,
-    "single_correct": 30,
+    "username": "test_user_1780044012",
+    "province": "test",
+    "position": "test",
+    "phone": "",
+    "score": 0,
+    "single_score": 0,
+    "multiple_score": 0,
+    "single_correct": 0,
     "single_total": 30,
-    "multiple_correct": 8,
+    "multiple_correct": 0,
     "multiple_total": 10,
-    "passed": true,
-    "duration_seconds": 395,
-    "start_time": "2026-05-29T16:34:44.775510+08:00",
-    "end_time": "2026-05-29T16:41:20.132461+08:00",
-    "submit_time": "2026-05-29T16:41:20.132549+08:00"
+    "passed": false,
+    "duration_seconds": 0,
+    "start_time": "2026-05-29T16:41:26.839524+08:00",
+    "end_time": "2026-05-29T16:41:27.063488+08:00",
+    "submit_time": "2026-05-29T16:41:27.063579+08:00"
   }
 ]
