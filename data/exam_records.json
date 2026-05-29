@@ -1,5 +1,23 @@
 [
   {
+    "username": "刘梅兰",
+    "province": "基层+江西",
+    "position": "省（区）经理",
+    "phone": "13576964139",
+    "score": 84,
+    "single_score": 56,
+    "multiple_score": 28,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 7,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 1203,
+    "start_time": "2026-05-29T17:18:57.058964+08:00",
+    "end_time": "2026-05-29T17:39:00.753856+08:00",
+    "submit_time": "2026-05-29T17:39:00.753953+08:00"
+  },
+  {
     "username": "杨春玲",
     "province": "营销市场总部",
     "position": "职能总部人员",
