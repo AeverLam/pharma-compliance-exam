@@ -1,5 +1,23 @@
 [
   {
+    "username": "王晓锟",
+    "province": "华北-天津",
+    "position": "推广经理",
+    "phone": "18525360612",
+    "score": 86,
+    "single_score": 58,
+    "multiple_score": 28,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 7,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 1028,
+    "start_time": "2026-05-29T18:13:04.605903+08:00",
+    "end_time": "2026-05-29T18:30:13.553507+08:00",
+    "submit_time": "2026-05-29T18:30:13.553650+08:00"
+  },
+  {
     "username": "谢钦",
     "province": "精神-江西",
     "position": "推广经理",
