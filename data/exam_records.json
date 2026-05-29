@@ -1,5 +1,23 @@
 [
   {
+    "username": "郑金梅",
+    "province": "华南大区+广州",
+    "position": "推广经理",
+    "phone": "13630124505",
+    "score": 94,
+    "single_score": 58,
+    "multiple_score": 36,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 850,
+    "start_time": "2026-05-29T17:10:00.616501+08:00",
+    "end_time": "2026-05-29T17:24:11.433522+08:00",
+    "submit_time": "2026-05-29T17:24:11.433682+08:00"
+  },
+  {
     "username": "耿波",
     "province": "华北+河北一",
     "position": "省（区）经理",
