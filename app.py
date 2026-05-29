@@ -52,6 +52,10 @@ DATA_FILE = os.path.join(DATA_DIR, "exam_records.json")
 RECORDS_DIR = os.path.join(DATA_DIR, "records")
 ADMIN_PASSWORD = "livzon2026"
 
+# ============ 全局记录缓存（解决Render重启数据丢失问题）============
+ALL_RECORDS_CACHE = None  # 缓存所有记录，首次从GitHub加载
+CACHE_LOCK = threading.Lock()
+
 # GitHub 持久化存储（部署重启不丢数据）
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
 GITHUB_REPO = "AeverLam/pharma-compliance-exam"
@@ -108,11 +112,11 @@ def sync_from_github():
             json.dump(records, f, ensure_ascii=False, indent=2)
 
 def save_record_to_file(record):
-    """保存考试记录到本地（单独文件 + 汇总文件）+ GitHub备份 + 飞书多维表格"""
+    """保存考试记录到本地 + GitHub备份 + 飞书多维表格"""
+    global ALL_RECORDS_CACHE
     init_data_file()
     
-    # 【方案A核心】单独文件存储 - 最可靠
-    # 每个记录单独存一个文件，避免文件损坏导致全部丢失
+    # 【方案A核心】单独文件存储
     record_id = record.get("submit_time", "").replace(":", "-").replace("+", "_") + "_" + record.get("username", "unknown")
     record_file = os.path.join(RECORDS_DIR, f"{record_id}.json")
     try:
@@ -122,19 +126,49 @@ def save_record_to_file(record):
     except Exception as e:
         print(f"[{datetime.now()}] Failed to save individual record: {e}")
     
-    # 同时更新汇总文件（兼容旧逻辑）
-    try:
-        with open(DATA_FILE, 'r', encoding='utf-8') as f:
-            records = json.load(f)
-    except:
-        records = []
-    records.append(record)
-    with open(DATA_FILE, 'w', encoding='utf-8') as f:
-        json.dump(records, f, ensure_ascii=False, indent=2)
-    
-    # GitHub备份（异步，失败不影响主流程）
-    if requests:
-        threading.Thread(target=async_push_to_github, args=(records,), daemon=True).start()
+    with CACHE_LOCK:
+        # 优先从GitHub加载最新数据，避免覆盖
+        all_records = []
+        github_records = git_load_records()
+        if github_records:
+            all_records = github_records
+        
+        # 合并本地缓存
+        if ALL_RECORDS_CACHE:
+            existing_keys = {(r.get('username',''), r.get('submit_time',''), str(r.get('score',0))) for r in all_records}
+            for r in ALL_RECORDS_CACHE:
+                key = (r.get('username',''), r.get('submit_time',''), str(r.get('score',0)))
+                if key not in existing_keys:
+                    all_records.append(r)
+                    existing_keys.add(key)
+        
+        # 检查新记录是否已存在（避免重复）
+        new_key = (record.get('username',''), record.get('submit_time',''), str(record.get('score',0)))
+        new_exists = False
+        for r in all_records:
+            if (r.get('username',''), r.get('submit_time',''), str(r.get('score',0))) == new_key:
+                new_exists = True
+                break
+        
+        if not new_exists:
+            all_records.append(record)
+        
+        # 按时间排序
+        all_records.sort(key=lambda x: x.get('submit_time', ''), reverse=True)
+        
+        # 更新缓存
+        ALL_RECORDS_CACHE = all_records
+        
+        # 写本地汇总文件
+        try:
+            with open(DATA_FILE, 'w', encoding='utf-8') as f:
+                json.dump(all_records, f, ensure_ascii=False, indent=2)
+        except Exception as e:
+            print(f"[{datetime.now()}] Failed to save to DATA_FILE: {e}")
+        
+        # GitHub备份（异步）
+        if requests:
+            threading.Thread(target=sync_push_to_github, args=(all_records,), daemon=True).start()
     
     # 飞书多维表格异步推送
     if requests and FEISHU_APP_SECRET:
@@ -248,56 +282,79 @@ def _save_to_bitable(record):
         print(traceback.format_exc())
 
 def load_all_records():
-    """读取所有考试记录（优先从单独文件目录读取，更可靠）"""
+    """读取所有考试记录（全局缓存 + GitHub云端 + 本地三重保障）"""
+    global ALL_RECORDS_CACHE
     init_data_file()
     
-    # 【方案A核心】优先从单独文件目录读取
-    # 这样即使汇总文件损坏，也能恢复数据
-    individual_records = []
-    try:
-        if os.path.exists(RECORDS_DIR):
-            for filename in os.listdir(RECORDS_DIR):
-                if filename.endswith('.json'):
-                    filepath = os.path.join(RECORDS_DIR, filename)
-                    try:
-                        with open(filepath, 'r', encoding='utf-8') as f:
-                            record = json.load(f)
-                            individual_records.append(record)
-                    except Exception as e:
-                        print(f"[{datetime.now()}] Failed to load {filename}: {e}")
+    with CACHE_LOCK:
+        # 如果缓存已加载且有数据，直接返回缓存
+        if ALL_RECORDS_CACHE is not None and len(ALL_RECORDS_CACHE) > 0:
+            return ALL_RECORDS_CACHE
+        
+        # 第一次加载：优先从GitHub获取（云持久化，重启不丢）
+        all_records = []
+        
+        # 1) 从GitHub加载
+        github_records = git_load_records()
+        if github_records:
+            all_records = github_records
+            print(f"[{datetime.now()}] Loaded {len(all_records)} records from GitHub")
+        
+        # 2) 补充本地记录（如果GitHub数据不全）
+        local_records = []
+        try:
+            # 优先从单独文件目录读取
+            if os.path.exists(RECORDS_DIR):
+                for filename in os.listdir(RECORDS_DIR):
+                    if filename.endswith('.json'):
+                        filepath = os.path.join(RECORDS_DIR, filename)
+                        try:
+                            with open(filepath, 'r', encoding='utf-8') as f:
+                                record = json.load(f)
+                                local_records.append(record)
+                        except:
+                            pass
             
-            if individual_records:
-                # 按提交时间排序
-                individual_records.sort(key=lambda x: x.get('submit_time', ''), reverse=True)
-                print(f"[{datetime.now()}] Loaded {len(individual_records)} records from individual files")
-                
-                # 同步到汇总文件（修复可能损坏的汇总文件）
-                try:
-                    with open(DATA_FILE, 'w', encoding='utf-8') as f:
-                        json.dump(individual_records, f, ensure_ascii=False, indent=2)
-                except Exception as e:
-                    print(f"[{datetime.now()}] Failed to sync to DATA_FILE: {e}")
-                
-                return individual_records
-    except Exception as e:
-        print(f"[{datetime.now()}] Failed to load individual records: {e}")
-    
-    # 回退到汇总文件
-    try:
-        with open(DATA_FILE, 'r', encoding='utf-8') as f:
-            records = json.load(f)
-        if records:
-            return records
-    except:
-        pass
-    
-    # 最后尝试从GitHub恢复
-    sync_from_github()
-    try:
-        with open(DATA_FILE, 'r', encoding='utf-8') as f:
-            return json.load(f)
-    except:
-        return []
+            # 再从汇总文件读取补充
+            if os.path.exists(DATA_FILE):
+                with open(DATA_FILE, 'r', encoding='utf-8') as f:
+                    file_records = json.load(f)
+                    if file_records:
+                        local_records.extend(file_records)
+        except:
+            pass
+        
+        if local_records:
+            # 去重合并
+            existing_keys = set()
+            for r in all_records:
+                key = (r.get('username',''), r.get('submit_time',''), str(r.get('score',0)))
+                existing_keys.add(key)
+            for r in local_records:
+                key = (r.get('username',''), r.get('submit_time',''), str(r.get('score',0)))
+                if key not in existing_keys:
+                    all_records.append(r)
+                    existing_keys.add(key)
+            
+            print(f"[{datetime.now()}] Merged {len(local_records)} local records, total: {len(all_records)}")
+        
+        # 按提交时间排序
+        all_records.sort(key=lambda x: x.get('submit_time', ''), reverse=True)
+        
+        # 更新缓存
+        ALL_RECORDS_CACHE = all_records
+        
+        # 同步到本地文件和GitHub
+        if all_records:
+            try:
+                with open(DATA_FILE, 'w', encoding='utf-8') as f:
+                    json.dump(all_records, f, ensure_ascii=False, indent=2)
+                if requests and _get_token():
+                    threading.Thread(target=sync_push_to_github, args=(all_records,), daemon=True).start()
+            except:
+                pass
+        
+        return all_records
 
 # ============ 前端页面 ============
 @app.route("/")
@@ -678,33 +735,56 @@ def get_all_questions():
 # ============ 启动时从GitHub恢复历史记录 ============
 init_data_file()
 
-# 先读取本地数据
+# 初始化全局缓存：优先从GitHub加载
+print(f"[{datetime.now()}] 正在从GitHub恢复历史记录...")
+global ALL_RECORDS_CACHE
+all_records = []
+
+# 1) 先尝试从GitHub加载（云持久化，重启不丢）
+records = git_load_records()
+if records is not None:
+    all_records = records
+    print(f"[{datetime.now()}] 从GitHub加载了 {len(all_records)} 条记录")
+
+# 2) 补充本地记录（GitHub可能不是最新的）
 local_records = []
 try:
-    with open(DATA_FILE, 'r', encoding='utf-8') as f:
-        local_records = json.load(f)
-    print(f"[{datetime.now()}] 本地数据: {len(local_records)} 条记录")
+    if os.path.exists(DATA_FILE):
+        with open(DATA_FILE, 'r', encoding='utf-8') as f:
+            local_records = json.load(f)
+    if os.path.exists(RECORDS_DIR):
+        for fn in os.listdir(RECORDS_DIR):
+            if fn.endswith('.json'):
+                fp = os.path.join(RECORDS_DIR, fn)
+                try:
+                    with open(fp, 'r') as f:
+                        local_records.append(json.load(f))
+                except:
+                    pass
+    if local_records:
+        existing_keys = {(r.get('username',''), r.get('submit_time',''), str(r.get('score',0))) for r in all_records}
+        for r in local_records:
+            key = (r.get('username',''), r.get('submit_time',''), str(r.get('score',0)))
+            if key not in existing_keys:
+                all_records.append(r)
+                existing_keys.add(key)
+        print(f"[{datetime.now()}] 合并本地记录后总计 {len(all_records)} 条")
 except Exception as e:
-    print(f"[{datetime.now()}] 读取本地数据失败: {e}")
+    print(f"[{datetime.now()}] 读取本地数据时出错: {e}")
 
-# 尝试从GitHub恢复（但不覆盖本地已有数据）
-print(f"[{datetime.now()}] 正在从GitHub恢复数据...")
-records = git_load_records()
-if records is not None and len(records) > 0:
-    # 合并本地和GitHub数据（去重）
-    existing_ids = {r.get("submit_time", "") + r.get("username", "") for r in local_records}
-    new_records = [r for r in records if (r.get("submit_time", "") + r.get("username", "")) not in existing_ids]
-    if new_records:
-        local_records.extend(new_records)
-        with open(DATA_FILE, 'w', encoding='utf-8') as f:
-            json.dump(local_records, f, ensure_ascii=False, indent=2)
-        print(f"[{datetime.now()}] 从GitHub合并了 {len(new_records)} 条新记录，总计 {len(local_records)} 条")
-    else:
-        print(f"[{datetime.now()}] GitHub数据与本地相同，无需合并")
-elif records is not None and len(records) == 0:
-    print(f"[{datetime.now()}] GitHub数据为空，保留本地 {len(local_records)} 条记录")
-else:
-    print(f"[{datetime.now()}] 从GitHub恢复失败，使用本地 {len(local_records)} 条记录")
+# 3) 排序并写入本地
+all_records.sort(key=lambda x: x.get('submit_time', ''), reverse=True)
+try:
+    with open(DATA_FILE, 'w', encoding='utf-8') as f:
+        json.dump(all_records, f, ensure_ascii=False, indent=2)
+except:
+    pass
+
+# 4) 更新全局缓存
+with CACHE_LOCK:
+    ALL_RECORDS_CACHE = all_records
+
+print(f"[{datetime.now()}] 启动完成，全局缓存 {len(ALL_RECORDS_CACHE)} 条记录")
 
 # ============ 主入口 ============
 if __name__ == "__main__":
