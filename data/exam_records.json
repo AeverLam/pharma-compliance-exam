@@ -1,5 +1,23 @@
 [
   {
+    "username": "赵昊",
+    "province": "华东上海",
+    "position": "省（区）经理",
+    "phone": "13564768768",
+    "score": 96,
+    "single_score": 60,
+    "multiple_score": 36,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 657,
+    "start_time": "2026-05-29T17:03:01.320954+08:00",
+    "end_time": "2026-05-29T17:13:59.004132+08:00",
+    "submit_time": "2026-05-29T17:13:59.004254+08:00"
+  },
+  {
     "username": "李娜娜",
     "province": "医学项目部",
     "position": "职能总部人员",
