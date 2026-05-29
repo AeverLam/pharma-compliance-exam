@@ -304,5 +304,23 @@
     "start_time": "2026-05-29T16:30:04.776324+08:00",
     "end_time": "2026-05-29T16:37:04.830809+08:00",
     "submit_time": "2026-05-29T16:37:04.830904+08:00"
+  },
+  {
+    "username": "郑芳",
+    "province": "华中+陕西",
+    "position": "推广经理",
+    "phone": "18202980065",
+    "score": 96,
+    "single_score": 56,
+    "multiple_score": 40,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 559,
+    "start_time": "2026-05-29T16:27:54.816793+08:00",
+    "end_time": "2026-05-29T16:37:14.380534+08:00",
+    "submit_time": "2026-05-29T16:37:14.380678+08:00"
   }
 ]
