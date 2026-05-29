@@ -1,5 +1,23 @@
 [
   {
+    "username": "周江林",
+    "province": "精神+浙江",
+    "position": "省（区）经理",
+    "phone": "18205856368",
+    "score": 94,
+    "single_score": 58,
+    "multiple_score": 36,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 993,
+    "start_time": "2026-05-29T22:05:19.316354+08:00",
+    "end_time": "2026-05-29T22:21:52.777449+08:00",
+    "submit_time": "2026-05-29T22:21:52.777583+08:00"
+  },
+  {
     "username": "石佳果",
     "province": "精神+安徽",
     "position": "省（区）经理",
