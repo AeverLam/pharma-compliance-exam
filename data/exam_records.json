@@ -1,5 +1,23 @@
 [
   {
+    "username": "夏恒",
+    "province": "KA项目部",
+    "position": "职能总部人员",
+    "phone": "13751756047",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 912,
+    "start_time": "2026-05-29T16:58:55.976864+08:00",
+    "end_time": "2026-05-29T17:14:08.730810+08:00",
+    "submit_time": "2026-05-29T17:14:08.730907+08:00"
+  },
+  {
     "username": "王欢",
     "province": "市场推广部",
     "position": "职能总部人员",
