@@ -700,5 +700,23 @@
     "start_time": "2026-05-29T16:35:11.496521+08:00",
     "end_time": "2026-05-29T16:42:03.796039+08:00",
     "submit_time": "2026-05-29T16:42:03.796128+08:00"
+  },
+  {
+    "username": "李金峰",
+    "province": "北区+北京",
+    "position": "推广",
+    "phone": "15711110438",
+    "score": 94,
+    "single_score": 58,
+    "multiple_score": 36,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 783,
+    "start_time": "2026-05-29T16:29:03.330710+08:00",
+    "end_time": "2026-05-29T16:42:06.871256+08:00",
+    "submit_time": "2026-05-29T16:42:06.871354+08:00"
   }
 ]
