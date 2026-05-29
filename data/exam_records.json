@@ -1,5 +1,23 @@
 [
   {
+    "username": "张紫灵",
+    "province": "华西+四川一",
+    "position": "推广经理",
+    "phone": "15281010263",
+    "score": 92,
+    "single_score": 56,
+    "multiple_score": 36,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 356,
+    "start_time": "2026-05-29T17:00:49.494008+08:00",
+    "end_time": "2026-05-29T17:06:45.651348+08:00",
+    "submit_time": "2026-05-29T17:06:45.651444+08:00"
+  },
+  {
     "username": "马杰",
     "province": "精神福建",
     "position": "推广经理",
