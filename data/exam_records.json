@@ -1,5 +1,23 @@
 [
   {
+    "username": "张静慧",
+    "province": "精神上海",
+    "position": "推广经理",
+    "phone": "18739176525",
+    "score": 90,
+    "single_score": 58,
+    "multiple_score": 32,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 665,
+    "start_time": "2026-05-29T20:14:01.679041+08:00",
+    "end_time": "2026-05-29T20:25:06.711794+08:00",
+    "submit_time": "2026-05-29T20:25:06.711917+08:00"
+  },
+  {
     "username": "邵有裕",
     "province": "华南广西",
     "position": "推广经理",
