@@ -238,31 +238,48 @@ def save_record_to_file(record):
         print(f"[{datetime.now()}] Failed to save individual record: {e}")
     
     with CACHE_LOCK:
-        # 优先从GitHub加载最新数据，避免覆盖
+        # 【关键】必须从GitHub加载最新数据，否则多实例会互相覆盖
         all_records = []
         github_records = git_load_records()
-        if github_records:
-            all_records = github_records
         
-        # 合并本地缓存
+        if github_records is not None:
+            # GitHub加载成功，使用GitHub数据作为基准
+            all_records = github_records
+            print(f"[{datetime.now()}] Using GitHub data: {len(all_records)} records")
+        elif ALL_RECORDS_CACHE:
+            # GitHub失败，使用本地缓存（有风险，但总比丢数据好）
+            all_records = list(ALL_RECORDS_CACHE)
+            print(f"[{datetime.now()}] WARNING: GitHub unavailable, using local cache: {len(all_records)} records")
+        else:
+            # 尝试从本地文件加载
+            try:
+                if os.path.exists(DATA_FILE):
+                    with open(DATA_FILE, 'r', encoding='utf-8') as f:
+                        all_records = json.load(f)
+                print(f"[{datetime.now()}] Using local file: {len(all_records)} records")
+            except:
+                all_records = []
+        
+        # 合并本地缓存（补充GitHub可能缺失的最新记录）
         if ALL_RECORDS_CACHE:
-            existing_keys = {(r.get('username',''), r.get('submit_time',''), str(r.get('score',0))) for r in all_records}
+            existing_keys = {(r.get('username',''), str(r.get('submit_time','')), str(r.get('score',0))) for r in all_records}
             for r in ALL_RECORDS_CACHE:
-                key = (r.get('username',''), r.get('submit_time',''), str(r.get('score',0)))
+                key = (r.get('username',''), str(r.get('submit_time','')), str(r.get('score',0)))
                 if key not in existing_keys:
                     all_records.append(r)
                     existing_keys.add(key)
         
         # 检查新记录是否已存在（避免重复）
-        new_key = (record.get('username',''), record.get('submit_time',''), str(record.get('score',0)))
+        new_key = (record.get('username',''), str(record.get('submit_time','')), str(record.get('score',0)))
         new_exists = False
         for r in all_records:
-            if (r.get('username',''), r.get('submit_time',''), str(r.get('score',0))) == new_key:
+            if (r.get('username',''), str(r.get('submit_time','')), str(r.get('score',0))) == new_key:
                 new_exists = True
                 break
         
         if not new_exists:
             all_records.append(record)
+            print(f"[{datetime.now()}] Added new record: {record.get('username')} | {record.get('score')}分")
         
         # 按时间排序
         all_records.sort(key=lambda x: x.get('submit_time', ''), reverse=True)
@@ -277,7 +294,7 @@ def save_record_to_file(record):
         except Exception as e:
             print(f"[{datetime.now()}] Failed to save to DATA_FILE: {e}")
         
-        # GitHub备份（异步）
+        # GitHub备份（异步，带重试和冲突检测）
         if requests:
             threading.Thread(target=sync_push_to_github, args=(all_records,), daemon=True).start()
     
@@ -285,41 +302,68 @@ def save_record_to_file(record):
     if requests and FEISHU_APP_SECRET:
         threading.Thread(target=_save_to_bitable, args=(record,), daemon=True).start()
 
-def sync_push_to_github(records):
-    """同步推送到 GitHub（阻塞式，确保数据保存成功）"""
+def sync_push_to_github(records, max_retries=3):
+    """同步推送到 GitHub（带冲突检测和重试）"""
+    import time
     token = _get_token()
     if not requests or not token:
         print(f"[{datetime.now()}] GitHub push skipped: token not available")
         return False
     
     headers = {"Authorization": f"token {token}", "Accept": "application/vnd.github.v3+json"}
-    content = base64.b64encode(json.dumps(records, ensure_ascii=False, indent=2).encode()).decode()
-    sha = ""
     
-    # 获取当前文件的 SHA
-    try:
-        resp = requests.get(GITHUB_API_URL, headers=headers, params={"ref": GITHUB_BRANCH}, timeout=10)
-        if resp.status_code == 200:
-            sha = resp.json().get("sha", "")
-    except Exception as e:
-        print(f"[{datetime.now()}] GitHub get SHA error: {e}")
+    for attempt in range(max_retries):
+        try:
+            # 每次重试都重新获取 SHA（解决并发冲突）
+            resp = requests.get(GITHUB_API_URL, headers=headers, params={"ref": GITHUB_BRANCH}, timeout=10)
+            sha = ""
+            current_records = []
+            if resp.status_code == 200:
+                sha = resp.json().get("sha", "")
+                try:
+                    current_records = json.loads(base64.b64decode(resp.json()["content"]).decode())
+                except:
+                    pass
+            
+            # 合并远程数据（防止覆盖）
+            if current_records:
+                existing_keys = {(r.get('username',''), str(r.get('submit_time','')), str(r.get('score',0))) for r in current_records}
+                merged = list(current_records)
+                for r in records:
+                    key = (r.get('username',''), str(r.get('submit_time','')), str(r.get('score',0)))
+                    if key not in existing_keys:
+                        merged.append(r)
+                        existing_keys.add(key)
+                merged.sort(key=lambda x: x.get('submit_time', ''), reverse=True)
+                records_to_push = merged
+            else:
+                records_to_push = records
+            
+            content = base64.b64encode(json.dumps(records_to_push, ensure_ascii=False, indent=2).encode()).decode()
+            data = {"message": f"自动保存 {len(records_to_push)}条记录", "content": content, "branch": GITHUB_BRANCH}
+            if sha:
+                data["sha"] = sha
+            
+            resp = requests.put(GITHUB_API_URL, headers=headers, json=data, timeout=15)
+            if resp.status_code in [200, 201]:
+                print(f"[{datetime.now()}] Successfully pushed {len(records_to_push)} records to GitHub")
+                return True
+            elif resp.status_code == 422:
+                # 冲突，等待后重试
+                print(f"[{datetime.now()}] GitHub conflict, retrying... ({attempt+1}/{max_retries})")
+                time.sleep(0.5 * (attempt + 1))
+                continue
+            else:
+                print(f"[{datetime.now()}] GitHub push error: {resp.status_code} - {resp.text[:200]}")
+                return False
+        except Exception as e:
+            print(f"[{datetime.now()}] GitHub push error: {e}")
+            if attempt < max_retries - 1:
+                time.sleep(0.5 * (attempt + 1))
+            else:
+                return False
     
-    # 推送数据
-    data = {"message": f"自动保存 {len(records)}条记录", "content": content, "branch": GITHUB_BRANCH}
-    if sha:
-        data["sha"] = sha
-    
-    try:
-        resp = requests.put(GITHUB_API_URL, headers=headers, json=data, timeout=15)
-        if resp.status_code in [200, 201]:
-            print(f"[{datetime.now()}] Successfully pushed {len(records)} records to GitHub")
-            return True
-        else:
-            print(f"[{datetime.now()}] GitHub push error: {resp.status_code} - {resp.text[:200]}")
-            return False
-    except Exception as e:
-        print(f"[{datetime.now()}] GitHub push error: {e}")
-        return False
+    return False
 
 # 保留异步推送函数（供其他场景使用）
 def async_push_to_github(records):
