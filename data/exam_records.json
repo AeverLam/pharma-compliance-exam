@@ -1,5 +1,41 @@
 [
   {
+    "username": "赵测试",
+    "province": "上海",
+    "position": "合规经理",
+    "phone": "13900139000",
+    "score": 0,
+    "single_score": 0,
+    "multiple_score": 0,
+    "single_correct": 0,
+    "single_total": 30,
+    "multiple_correct": 0,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 0,
+    "start_time": "2026-05-29T16:51:05.822869+08:00",
+    "end_time": "2026-05-29T16:51:06.037427+08:00",
+    "submit_time": "2026-05-29T16:51:06.037596+08:00"
+  },
+  {
+    "username": "曹永胜",
+    "province": "华东+山东一",
+    "position": "推广经理",
+    "phone": "15650016529",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 729,
+    "start_time": "2026-05-29T16:38:06.549382+08:00",
+    "end_time": "2026-05-29T16:50:15.635173+08:00",
+    "submit_time": "2026-05-29T16:50:15.635265+08:00"
+  },
+  {
     "username": "何爽",
     "province": "生殖+北京",
     "position": "省总",
@@ -1654,23 +1690,5 @@
     "start_time": "2026-05-29T16:32:07.470536+08:00",
     "end_time": "2026-05-29T16:32:07.739641+08:00",
     "submit_time": "2026-05-29T16:32:07.739770+08:00"
-  },
-  {
-    "username": "曹永胜",
-    "province": "华东+山东一",
-    "position": "推广经理",
-    "phone": "15650016529",
-    "score": 100,
-    "single_score": 60,
-    "multiple_score": 40,
-    "single_correct": 30,
-    "single_total": 30,
-    "multiple_correct": 10,
-    "multiple_total": 10,
-    "passed": true,
-    "duration_seconds": 729,
-    "start_time": "2026-05-29T16:38:06.549382+08:00",
-    "end_time": "2026-05-29T16:50:15.635173+08:00",
-    "submit_time": "2026-05-29T16:50:15.635265+08:00"
   }
 ]
