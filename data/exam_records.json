@@ -1,5 +1,23 @@
 [
   {
+    "username": "李晓莹",
+    "province": "生殖+安徽",
+    "position": "推广",
+    "phone": "15013552959",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 772,
+    "start_time": "2026-05-29T22:06:20.316315+08:00",
+    "end_time": "2026-05-29T22:19:13.145801+08:00",
+    "submit_time": "2026-05-29T22:19:13.145923+08:00"
+  },
+  {
     "username": "许巧",
     "province": "浙江",
     "position": "省总",
