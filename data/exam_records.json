@@ -1,5 +1,23 @@
 [
   {
+    "username": "张东旭",
+    "province": "精神上海",
+    "position": "省（区）经理",
+    "phone": "13673990873",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 562,
+    "start_time": "2026-05-29T20:44:40.754692+08:00",
+    "end_time": "2026-05-29T20:54:03.633682+08:00",
+    "submit_time": "2026-05-29T20:54:03.633807+08:00"
+  },
+  {
     "username": "许舒仪",
     "province": "SFE管理部",
     "position": "职能总部人员",
