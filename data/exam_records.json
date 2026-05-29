@@ -1,5 +1,23 @@
 [
   {
+    "username": "程彦朋",
+    "province": "华北大区",
+    "position": "省（区）经理",
+    "phone": "15849969093",
+    "score": 80,
+    "single_score": 60,
+    "multiple_score": 20,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 5,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 486,
+    "start_time": "2026-05-29T17:16:47.846933+08:00",
+    "end_time": "2026-05-29T17:24:53.982707+08:00",
+    "submit_time": "2026-05-29T17:24:53.982805+08:00"
+  },
+  {
     "username": "樊克宇",
     "province": "数字拓展部",
     "position": "职能总部人员",
