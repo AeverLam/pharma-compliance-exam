@@ -1,5 +1,23 @@
 [
   {
+    "username": "黄海凌",
+    "province": "生殖-浙江",
+    "position": "推广",
+    "phone": "13645719657",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 873,
+    "start_time": "2026-05-29T19:10:09.997777+08:00",
+    "end_time": "2026-05-29T19:24:43.283916+08:00",
+    "submit_time": "2026-05-29T19:24:43.284022+08:00"
+  },
+  {
     "username": "王瀚民",
     "province": "华东大区+山东一区",
     "position": "推广经理",
