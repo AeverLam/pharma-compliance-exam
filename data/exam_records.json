@@ -1,5 +1,23 @@
 [
   {
+    "username": "邵有裕",
+    "province": "华南广西",
+    "position": "推广经理",
+    "phone": "18677924904",
+    "score": 88,
+    "single_score": 60,
+    "multiple_score": 28,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 7,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 659,
+    "start_time": "2026-05-29T18:42:40.404375+08:00",
+    "end_time": "2026-05-29T18:53:40.165764+08:00",
+    "submit_time": "2026-05-29T18:53:40.165869+08:00"
+  },
+  {
     "username": "罗先兰",
     "province": "华西＋贵州",
     "position": "省（区）经理",
