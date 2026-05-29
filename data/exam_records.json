@@ -1,5 +1,23 @@
 [
   {
+    "username": "郭子瑞",
+    "province": "华西＋四川二",
+    "position": "省（区）经理",
+    "phone": "15310672895",
+    "score": 94,
+    "single_score": 58,
+    "multiple_score": 36,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 541,
+    "start_time": "2026-05-29T17:26:26.983048+08:00",
+    "end_time": "2026-05-29T17:35:28.816853+08:00",
+    "submit_time": "2026-05-29T17:35:28.816961+08:00"
+  },
+  {
     "username": "李勇",
     "province": "西南成都",
     "position": "省（区）经理",
