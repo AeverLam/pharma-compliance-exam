@@ -1,5 +1,23 @@
 [
   {
+    "username": "高金龙",
+    "province": "基层河北一",
+    "position": "省（区）经理",
+    "phone": "13803113810",
+    "score": 90,
+    "single_score": 58,
+    "multiple_score": 32,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 574,
+    "start_time": "2026-05-29T18:09:50.743202+08:00",
+    "end_time": "2026-05-29T18:19:25.395395+08:00",
+    "submit_time": "2026-05-29T18:19:25.395620+08:00"
+  },
+  {
     "username": "赵慧艳",
     "province": "基层事业部",
     "position": "推广经理",
