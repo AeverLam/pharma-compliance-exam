@@ -1,5 +1,23 @@
 [
   {
+    "username": "蒋家平",
+    "province": "华南+深圳",
+    "position": "省（区）经理",
+    "phone": "15989013809",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 1086,
+    "start_time": "2026-05-29T17:29:55.793424+08:00",
+    "end_time": "2026-05-29T17:48:01.795691+08:00",
+    "submit_time": "2026-05-29T17:48:01.795805+08:00"
+  },
+  {
     "username": "卢胥含",
     "province": "生殖辽宁",
     "position": "职能总部人员",
