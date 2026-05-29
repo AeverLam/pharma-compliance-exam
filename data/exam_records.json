@@ -1,5 +1,23 @@
 [
   {
+    "username": "谭炳堂",
+    "province": "基层事业部华南深莞惠",
+    "position": "省（区）经理",
+    "phone": "13712847914",
+    "score": 92,
+    "single_score": 60,
+    "multiple_score": 32,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 1037,
+    "start_time": "2026-05-29T17:33:19.895523+08:00",
+    "end_time": "2026-05-29T17:50:36.923187+08:00",
+    "submit_time": "2026-05-29T17:50:36.923306+08:00"
+  },
+  {
     "username": "闵文婕",
     "province": "华南+粤北",
     "position": "推广",
