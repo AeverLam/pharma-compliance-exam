@@ -1,5 +1,23 @@
 [
   {
+    "username": "柳婷婷",
+    "province": "华中+山西",
+    "position": "推广",
+    "phone": "18435124557",
+    "score": 86,
+    "single_score": 58,
+    "multiple_score": 28,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 7,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 645,
+    "start_time": "2026-05-29T22:28:18.089602+08:00",
+    "end_time": "2026-05-29T22:39:03.647802+08:00",
+    "submit_time": "2026-05-29T22:39:03.647923+08:00"
+  },
+  {
     "username": "王进",
     "province": "销售部门",
     "position": "推广经理",
