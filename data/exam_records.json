@@ -1,5 +1,23 @@
 [
   {
+    "username": "陶胜文",
+    "province": "基层＋湖南",
+    "position": "省（区）经理",
+    "phone": "13974885171",
+    "score": 88,
+    "single_score": 56,
+    "multiple_score": 32,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 594,
+    "start_time": "2026-05-30T02:54:13.533891+08:00",
+    "end_time": "2026-05-30T03:04:08.180116+08:00",
+    "submit_time": "2026-05-30T03:04:08.180235+08:00"
+  },
+  {
     "username": "黄琪顺",
     "province": "基层+湖南",
     "position": "推广经理",
