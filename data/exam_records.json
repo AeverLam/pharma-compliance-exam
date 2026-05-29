@@ -1,5 +1,23 @@
 [
   {
+    "username": "王慧",
+    "province": "华西＋新疆",
+    "position": "省（区）经理",
+    "phone": "15099331632",
+    "score": 90,
+    "single_score": 58,
+    "multiple_score": 32,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 742,
+    "start_time": "2026-05-30T00:09:42.629832+08:00",
+    "end_time": "2026-05-30T00:22:04.820254+08:00",
+    "submit_time": "2026-05-30T00:22:04.820362+08:00"
+  },
+  {
     "username": "高桂珍",
     "province": "生殖湖南",
     "position": "推广",
