@@ -1,5 +1,23 @@
 [
   {
+    "username": "陈涛",
+    "province": "生殖产品销售部",
+    "position": "职能总部人员",
+    "phone": "13600157516",
+    "score": 92,
+    "single_score": 56,
+    "multiple_score": 36,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 818,
+    "start_time": "2026-05-29T17:14:49.770188+08:00",
+    "end_time": "2026-05-29T17:28:28.538906+08:00",
+    "submit_time": "2026-05-29T17:28:28.539028+08:00"
+  },
+  {
     "username": "周靖敏",
     "province": "生殖广东",
     "position": "推广",
