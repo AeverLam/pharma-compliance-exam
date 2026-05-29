@@ -1,5 +1,23 @@
 [
   {
+    "username": "张云雪",
+    "province": "华北大区+黑龙江",
+    "position": "省总",
+    "phone": "13664619561",
+    "score": 92,
+    "single_score": 60,
+    "multiple_score": 32,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 670,
+    "start_time": "2026-05-29T19:58:30.309152+08:00",
+    "end_time": "2026-05-29T20:09:40.390936+08:00",
+    "submit_time": "2026-05-29T20:09:40.391059+08:00"
+  },
+  {
     "username": "黄旺达",
     "province": "华南广西",
     "position": "推广",
