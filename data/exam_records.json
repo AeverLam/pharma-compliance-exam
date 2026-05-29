@@ -1,5 +1,23 @@
 [
   {
+    "username": "纪晓红",
+    "province": "华东➕南京",
+    "position": "省（区）经理",
+    "phone": "15850604886",
+    "score": 94,
+    "single_score": 58,
+    "multiple_score": 36,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 859,
+    "start_time": "2026-05-29T20:48:30.943754+08:00",
+    "end_time": "2026-05-29T21:02:50.713863+08:00",
+    "submit_time": "2026-05-29T21:02:50.714013+08:00"
+  },
+  {
     "username": "刘鑫",
     "province": "华北+内蒙古",
     "position": "省（区）经理",
