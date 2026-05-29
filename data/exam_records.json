@@ -1,5 +1,23 @@
 [
   {
+    "username": "张婕",
+    "province": "生殖部",
+    "position": "推广",
+    "phone": "15117294200",
+    "score": 88,
+    "single_score": 60,
+    "multiple_score": 28,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 7,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 370,
+    "start_time": "2026-05-29T17:02:01.050798+08:00",
+    "end_time": "2026-05-29T17:08:11.820945+08:00",
+    "submit_time": "2026-05-29T17:08:11.821045+08:00"
+  },
+  {
     "username": "上官发炜",
     "province": "华东+南京",
     "position": "推广经理",
