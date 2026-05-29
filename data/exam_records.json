@@ -1,5 +1,23 @@
 [
   {
+    "username": "谢钦",
+    "province": "精神-江西",
+    "position": "推广经理",
+    "phone": "13576517713",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 902,
+    "start_time": "2026-05-29T18:15:01.441457+08:00",
+    "end_time": "2026-05-29T18:30:03.808642+08:00",
+    "submit_time": "2026-05-29T18:30:03.808788+08:00"
+  },
+  {
     "username": "潘禹璇",
     "province": "北京",
     "position": "职能总部人员",
