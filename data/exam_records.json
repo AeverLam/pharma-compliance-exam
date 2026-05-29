@@ -1,5 +1,23 @@
 [
   {
+    "username": "李勇",
+    "province": "西南成都",
+    "position": "省（区）经理",
+    "phone": "17740189176",
+    "score": 84,
+    "single_score": 52,
+    "multiple_score": 32,
+    "single_correct": 26,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 642,
+    "start_time": "2026-05-29T16:28:45.713094+08:00",
+    "end_time": "2026-05-29T16:39:28.154821+08:00",
+    "submit_time": "2026-05-29T16:39:28.154912+08:00"
+  },
+  {
     "username": "农梓优",
     "province": "SFE",
     "position": "职能总部人员",
@@ -450,21 +468,21 @@
     "submit_time": "2026-05-29T16:32:07.739770+08:00"
   },
   {
-    "username": "李勇",
-    "province": "西南成都",
-    "position": "省（区）经理",
-    "phone": "17740189176",
-    "score": 84,
-    "single_score": 52,
-    "multiple_score": 32,
-    "single_correct": 26,
+    "username": "李鉴龙",
+    "province": "华中大区河南二公司",
+    "position": "推广经理",
+    "phone": "17319713241",
+    "score": 96,
+    "single_score": 56,
+    "multiple_score": 40,
+    "single_correct": 28,
     "single_total": 30,
-    "multiple_correct": 8,
+    "multiple_correct": 10,
     "multiple_total": 10,
-    "passed": false,
-    "duration_seconds": 642,
-    "start_time": "2026-05-29T16:28:45.713094+08:00",
-    "end_time": "2026-05-29T16:39:28.154821+08:00",
-    "submit_time": "2026-05-29T16:39:28.154912+08:00"
+    "passed": true,
+    "duration_seconds": 529,
+    "start_time": "2026-05-29T16:31:02.127726+08:00",
+    "end_time": "2026-05-29T16:39:51.275751+08:00",
+    "submit_time": "2026-05-29T16:39:51.275870+08:00"
   }
 ]
