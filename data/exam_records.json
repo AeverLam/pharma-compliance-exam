@@ -1,5 +1,23 @@
 [
   {
+    "username": "钱垚",
+    "province": "市场推广部",
+    "position": "职能总部人员",
+    "phone": "13818050218",
+    "score": 92,
+    "single_score": 56,
+    "multiple_score": 36,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 1174,
+    "start_time": "2026-05-29T17:35:18.927450+08:00",
+    "end_time": "2026-05-29T17:54:53.913175+08:00",
+    "submit_time": "2026-05-29T17:54:53.913306+08:00"
+  },
+  {
     "username": "黄新考",
     "province": "生殖，浙江",
     "position": "自营代表（经理）",
