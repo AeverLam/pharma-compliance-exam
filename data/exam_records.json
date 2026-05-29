@@ -250,5 +250,23 @@
     "start_time": "2026-05-29T09:11:35.983712+08:00",
     "end_time": "2026-05-29T09:12:44.323494+08:00",
     "submit_time": "2026-05-29T09:12:44.323676+08:00"
+  },
+  {
+    "username": "王杰",
+    "province": "河南",
+    "position": "推广经理",
+    "phone": "15036845697",
+    "score": 28,
+    "single_score": 28,
+    "multiple_score": 0,
+    "single_correct": 14,
+    "single_total": 30,
+    "multiple_correct": 0,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 142,
+    "start_time": "2026-05-29T16:20:31.015019+08:00",
+    "end_time": "2026-05-29T16:22:53.562680+08:00",
+    "submit_time": "2026-05-29T16:22:53.562820+08:00"
   }
 ]
