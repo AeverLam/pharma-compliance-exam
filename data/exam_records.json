@@ -1,5 +1,23 @@
 [
   {
+    "username": "wn测试",
+    "province": "销售培训部",
+    "position": "职能总部人员",
+    "phone": "13726352840",
+    "score": 52,
+    "single_score": 52,
+    "multiple_score": 0,
+    "single_correct": 26,
+    "single_total": 30,
+    "multiple_correct": 0,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 239,
+    "start_time": "2026-05-29T16:28:43.794495+08:00",
+    "end_time": "2026-05-29T16:32:42.998560+08:00",
+    "submit_time": "2026-05-29T16:32:42.998716+08:00"
+  },
+  {
     "username": "限次测试User",
     "province": "测试省",
     "position": "测试部",
@@ -54,21 +72,21 @@
     "submit_time": "2026-05-29T16:32:07.739770+08:00"
   },
   {
-    "username": "wn测试",
-    "province": "销售培训部",
-    "position": "职能总部人员",
-    "phone": "13726352840",
-    "score": 52,
-    "single_score": 52,
-    "multiple_score": 0,
-    "single_correct": 26,
+    "username": "田俊华",
+    "province": "生殖+江苏",
+    "position": "省总",
+    "phone": "13913974487",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
     "single_total": 30,
-    "multiple_correct": 0,
+    "multiple_correct": 10,
     "multiple_total": 10,
-    "passed": false,
-    "duration_seconds": 239,
-    "start_time": "2026-05-29T16:28:43.794495+08:00",
-    "end_time": "2026-05-29T16:32:42.998560+08:00",
-    "submit_time": "2026-05-29T16:32:42.998716+08:00"
+    "passed": true,
+    "duration_seconds": 399,
+    "start_time": "2026-05-29T16:26:42.160165+08:00",
+    "end_time": "2026-05-29T16:33:21.900684+08:00",
+    "submit_time": "2026-05-29T16:33:21.900781+08:00"
   }
 ]
