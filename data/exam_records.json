@@ -1,5 +1,23 @@
 [
   {
+    "username": "刘灿",
+    "province": "医学项目部",
+    "position": "职能总部人员",
+    "phone": "17871921205",
+    "score": 92,
+    "single_score": 56,
+    "multiple_score": 36,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 855,
+    "start_time": "2026-05-29T17:04:46.763947+08:00",
+    "end_time": "2026-05-29T17:19:01.908411+08:00",
+    "submit_time": "2026-05-29T17:19:01.908507+08:00"
+  },
+  {
     "username": "吕秀敏",
     "province": "生殖吉林省",
     "position": "省总",
