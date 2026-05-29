@@ -1,5 +1,23 @@
 [
   {
+    "username": "王祺增",
+    "province": "华南大区",
+    "position": "省（区）经理",
+    "phone": "15506912258",
+    "score": 88,
+    "single_score": 56,
+    "multiple_score": 32,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 884,
+    "start_time": "2026-05-29T17:50:08.586695+08:00",
+    "end_time": "2026-05-29T18:04:53.076579+08:00",
+    "submit_time": "2026-05-29T18:04:53.076710+08:00"
+  },
+  {
     "username": "张兵",
     "province": "华西-贵州",
     "position": "省（区）经理",
