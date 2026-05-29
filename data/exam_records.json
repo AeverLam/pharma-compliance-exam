@@ -1,5 +1,23 @@
 [
   {
+    "username": "test_user",
+    "province": "test_dept",
+    "position": "test_role",
+    "phone": "",
+    "score": 0,
+    "single_score": 0,
+    "multiple_score": 0,
+    "single_correct": 0,
+    "single_total": 30,
+    "multiple_correct": 0,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 1,
+    "start_time": "2026-05-29T16:40:01.749332+08:00",
+    "end_time": "2026-05-29T16:40:03.051241+08:00",
+    "submit_time": "2026-05-29T16:40:03.051327+08:00"
+  },
+  {
     "username": "李鉴龙",
     "province": "华中大区河南二公司",
     "position": "推广经理",
@@ -486,21 +504,21 @@
     "submit_time": "2026-05-29T16:32:07.739770+08:00"
   },
   {
-    "username": "test_user",
-    "province": "test_dept",
-    "position": "test_role",
-    "phone": "",
-    "score": 0,
-    "single_score": 0,
-    "multiple_score": 0,
-    "single_correct": 0,
+    "username": "姚力",
+    "province": "华东+南京",
+    "position": "推广经理",
+    "phone": "18118218910",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
     "single_total": 30,
-    "multiple_correct": 0,
+    "multiple_correct": 10,
     "multiple_total": 10,
-    "passed": false,
-    "duration_seconds": 1,
-    "start_time": "2026-05-29T16:40:01.749332+08:00",
-    "end_time": "2026-05-29T16:40:03.051241+08:00",
-    "submit_time": "2026-05-29T16:40:03.051327+08:00"
+    "passed": true,
+    "duration_seconds": 408,
+    "start_time": "2026-05-29T16:33:20.336297+08:00",
+    "end_time": "2026-05-29T16:40:08.555477+08:00",
+    "submit_time": "2026-05-29T16:40:08.555581+08:00"
   }
 ]
