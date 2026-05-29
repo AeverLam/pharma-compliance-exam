@@ -1,5 +1,23 @@
 [
   {
+    "username": "黄新考",
+    "province": "生殖，浙江",
+    "position": "自营代表（经理）",
+    "phone": "13806780940",
+    "score": 80,
+    "single_score": 56,
+    "multiple_score": 24,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 6,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 897,
+    "start_time": "2026-05-29T17:17:25.713487+08:00",
+    "end_time": "2026-05-29T17:32:23.313577+08:00",
+    "submit_time": "2026-05-29T17:32:23.313673+08:00"
+  },
+  {
     "username": "刘如山",
     "province": "北区+北京",
     "position": "省（区）经理",
