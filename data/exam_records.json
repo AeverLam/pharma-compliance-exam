@@ -1,5 +1,23 @@
 [
   {
+    "username": "张晓茹",
+    "province": "华南+广州",
+    "position": "推广",
+    "phone": "17817357168",
+    "score": 96,
+    "single_score": 60,
+    "multiple_score": 36,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 1207,
+    "start_time": "2026-05-29T20:57:22.684341+08:00",
+    "end_time": "2026-05-29T21:17:29.699725+08:00",
+    "submit_time": "2026-05-29T21:17:29.699844+08:00"
+  },
+  {
     "username": "刘婷婷",
     "province": "精神＋甘青宁",
     "position": "推广经理",
