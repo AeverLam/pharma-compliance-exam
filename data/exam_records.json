@@ -1,5 +1,23 @@
 [
   {
+    "username": "宋其文",
+    "province": "华东+苏州",
+    "position": "省（区）经理",
+    "phone": "13915428157",
+    "score": 84,
+    "single_score": 56,
+    "multiple_score": 28,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 7,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 703,
+    "start_time": "2026-05-29T17:26:18.135099+08:00",
+    "end_time": "2026-05-29T17:38:01.598698+08:00",
+    "submit_time": "2026-05-29T17:38:01.598835+08:00"
+  },
+  {
     "username": "樊克宇",
     "province": "数字拓展部",
     "position": "职能总部人员",
