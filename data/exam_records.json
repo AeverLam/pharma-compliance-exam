@@ -1,5 +1,23 @@
 [
   {
+    "username": "张琛",
+    "province": "精神+陕西",
+    "position": "推广经理",
+    "phone": "18189126773",
+    "score": 92,
+    "single_score": 56,
+    "multiple_score": 36,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 327,
+    "start_time": "2026-05-29T17:10:54.348741+08:00",
+    "end_time": "2026-05-29T17:16:21.971278+08:00",
+    "submit_time": "2026-05-29T17:16:21.971376+08:00"
+  },
+  {
     "username": "宋金秋",
     "province": "生殖+陕西",
     "position": "推广",
