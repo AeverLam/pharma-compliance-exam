@@ -1,5 +1,23 @@
 [
   {
+    "username": "李涛",
+    "province": "华西+云南",
+    "position": "推广经理",
+    "phone": "15887804841",
+    "score": 96,
+    "single_score": 60,
+    "multiple_score": 36,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 509,
+    "start_time": "2026-05-29T17:12:01.781333+08:00",
+    "end_time": "2026-05-29T17:20:31.403684+08:00",
+    "submit_time": "2026-05-29T17:20:31.403805+08:00"
+  },
+  {
     "username": "马晓晨",
     "province": "生殖",
     "position": "省总",
