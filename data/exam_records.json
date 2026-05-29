@@ -1,5 +1,23 @@
 [
   {
+    "username": "郑玉芬",
+    "province": "数字拓展部",
+    "position": "职能总部人员",
+    "phone": "13728669806",
+    "score": 84,
+    "single_score": 60,
+    "multiple_score": 24,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 6,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 935,
+    "start_time": "2026-05-29T16:55:31.980651+08:00",
+    "end_time": "2026-05-29T17:11:07.570443+08:00",
+    "submit_time": "2026-05-29T17:11:07.570579+08:00"
+  },
+  {
     "username": "王仲瑞",
     "province": "生殖山东",
     "position": "省（区）经理",
