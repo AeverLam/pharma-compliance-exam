@@ -1,5 +1,23 @@
 [
   {
+    "username": "章雪莹",
+    "province": "华南江西",
+    "position": "推广经理",
+    "phone": "17379127662",
+    "score": 96,
+    "single_score": 60,
+    "multiple_score": 36,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 597,
+    "start_time": "2026-05-29T17:52:16.596813+08:00",
+    "end_time": "2026-05-29T18:02:13.681275+08:00",
+    "submit_time": "2026-05-29T18:02:13.681414+08:00"
+  },
+  {
     "username": "李子豪",
     "province": "华东+山东一",
     "position": "推广经理",
