@@ -1,5 +1,23 @@
 [
   {
+    "username": "钟颖斯",
+    "province": "生殖四川",
+    "position": "推广",
+    "phone": "18080056473",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 555,
+    "start_time": "2026-05-29T16:40:20.447997+08:00",
+    "end_time": "2026-05-29T16:49:35.815323+08:00",
+    "submit_time": "2026-05-29T16:49:35.815426+08:00"
+  },
+  {
     "username": "苏爽捷",
     "province": "生殖陕西",
     "position": "省（区）经理",
@@ -1620,21 +1638,21 @@
     "submit_time": "2026-05-29T16:32:07.739770+08:00"
   },
   {
-    "username": "钟颖斯",
-    "province": "生殖四川",
-    "position": "推广",
-    "phone": "18080056473",
-    "score": 100,
-    "single_score": 60,
-    "multiple_score": 40,
-    "single_correct": 30,
+    "username": "何爽",
+    "province": "生殖+北京",
+    "position": "省总",
+    "phone": "13911659318",
+    "score": 72,
+    "single_score": 56,
+    "multiple_score": 16,
+    "single_correct": 28,
     "single_total": 30,
-    "multiple_correct": 10,
+    "multiple_correct": 4,
     "multiple_total": 10,
-    "passed": true,
-    "duration_seconds": 555,
-    "start_time": "2026-05-29T16:40:20.447997+08:00",
-    "end_time": "2026-05-29T16:49:35.815323+08:00",
-    "submit_time": "2026-05-29T16:49:35.815426+08:00"
+    "passed": false,
+    "duration_seconds": 1208,
+    "start_time": "2026-05-29T16:29:46.307546+08:00",
+    "end_time": "2026-05-29T16:49:54.793148+08:00",
+    "submit_time": "2026-05-29T16:49:54.793235+08:00"
   }
 ]
