@@ -1,5 +1,23 @@
 [
   {
+    "username": "钱德全",
+    "province": "西南+川南",
+    "position": "大区总",
+    "phone": "13192877779",
+    "score": 92,
+    "single_score": 60,
+    "multiple_score": 32,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 564,
+    "start_time": "2026-05-29T18:56:55.843192+08:00",
+    "end_time": "2026-05-29T19:06:20.049112+08:00",
+    "submit_time": "2026-05-29T19:06:20.049214+08:00"
+  },
+  {
     "username": "朱煜泽",
     "province": "生殖 上海",
     "position": "职能总部人员",
