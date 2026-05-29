@@ -1,5 +1,23 @@
 [
   {
+    "username": "孙沐",
+    "province": "华南大区粤东省公司",
+    "position": "推广经理",
+    "phone": "13631039720",
+    "score": 96,
+    "single_score": 60,
+    "multiple_score": 36,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 605,
+    "start_time": "2026-05-29T17:15:52.793668+08:00",
+    "end_time": "2026-05-29T17:25:58.696148+08:00",
+    "submit_time": "2026-05-29T17:25:58.696272+08:00"
+  },
+  {
     "username": "苏建斌",
     "province": "华西-重庆",
     "position": "省（区）经理",
