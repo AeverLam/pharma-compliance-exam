@@ -1,5 +1,23 @@
 [
   {
+    "username": "宗成华",
+    "province": "精神+四川",
+    "position": "省（区）经理",
+    "phone": "17358521279",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 683,
+    "start_time": "2026-05-29T17:17:14.130734+08:00",
+    "end_time": "2026-05-29T17:28:37.551368+08:00",
+    "submit_time": "2026-05-29T17:28:37.551510+08:00"
+  },
+  {
     "username": "许佳佳",
     "province": "医学部",
     "position": "职能总部人员",
