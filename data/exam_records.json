@@ -1,5 +1,23 @@
 [
   {
+    "username": "王琨",
+    "province": "华东+浙江/上海",
+    "position": "职能总部人员",
+    "phone": "13918448996",
+    "score": 84,
+    "single_score": 56,
+    "multiple_score": 28,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 7,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 701,
+    "start_time": "2026-05-29T17:37:11.591259+08:00",
+    "end_time": "2026-05-29T17:48:53.216528+08:00",
+    "submit_time": "2026-05-29T17:48:53.216683+08:00"
+  },
+  {
     "username": "张琳",
     "province": "华北＋吉林",
     "position": "推广经理",
