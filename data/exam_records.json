@@ -1,5 +1,23 @@
 [
   {
+    "username": "石本一",
+    "province": "中部大区基层河南一",
+    "position": "省（区）经理",
+    "phone": "17799431231",
+    "score": 90,
+    "single_score": 58,
+    "multiple_score": 32,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 799,
+    "start_time": "2026-05-29T21:54:33.004033+08:00",
+    "end_time": "2026-05-29T22:07:52.311041+08:00",
+    "submit_time": "2026-05-29T22:07:52.311175+08:00"
+  },
+  {
     "username": "张洁",
     "province": "生殖+宁夏",
     "position": "省总",
