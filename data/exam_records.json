@@ -1,5 +1,23 @@
 [
   {
+    "username": "潘禹璇",
+    "province": "北京",
+    "position": "职能总部人员",
+    "phone": "13810999071",
+    "score": 84,
+    "single_score": 52,
+    "multiple_score": 32,
+    "single_correct": 26,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 456,
+    "start_time": "2026-05-29T18:07:28.933181+08:00",
+    "end_time": "2026-05-29T18:15:05.110214+08:00",
+    "submit_time": "2026-05-29T18:15:05.110322+08:00"
+  },
+  {
     "username": "刘思佳",
     "province": "北区＋北京",
     "position": "推广经理",
