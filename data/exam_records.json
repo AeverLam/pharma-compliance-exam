@@ -1,5 +1,23 @@
 [
   {
+    "username": "孙超",
+    "province": "华东苏中",
+    "position": "省总",
+    "phone": "13775687666",
+    "score": 94,
+    "single_score": 54,
+    "multiple_score": 40,
+    "single_correct": 27,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 613,
+    "start_time": "2026-05-29T17:12:07.736333+08:00",
+    "end_time": "2026-05-29T17:22:20.759844+08:00",
+    "submit_time": "2026-05-29T17:22:20.759942+08:00"
+  },
+  {
     "username": "张亚兰",
     "province": "华南十粤西",
     "position": "省（区）经理",
