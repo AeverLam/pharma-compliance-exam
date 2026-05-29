@@ -1,5 +1,23 @@
 [
   {
+    "username": "辛丽莉",
+    "province": "贵州",
+    "position": "省（区）经理",
+    "phone": "15002570000",
+    "score": 92,
+    "single_score": 60,
+    "multiple_score": 32,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 831,
+    "start_time": "2026-05-29T17:45:51.244423+08:00",
+    "end_time": "2026-05-29T17:59:42.944612+08:00",
+    "submit_time": "2026-05-29T17:59:42.944734+08:00"
+  },
+  {
     "username": "赵慧艳",
     "province": "基层事业部-华东-济南",
     "position": "推广经理",
