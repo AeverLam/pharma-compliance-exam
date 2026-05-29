@@ -1,5 +1,23 @@
 [
   {
+    "username": "靳丽红",
+    "province": "生殖-上海",
+    "position": "省总",
+    "phone": "18621877663",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 1187,
+    "start_time": "2026-05-29T18:11:29.355884+08:00",
+    "end_time": "2026-05-29T18:31:17.093010+08:00",
+    "submit_time": "2026-05-29T18:31:17.093140+08:00"
+  },
+  {
     "username": "王晓锟",
     "province": "华北-天津",
     "position": "推广经理",
