@@ -1,5 +1,23 @@
 [
   {
+    "username": "李庚生",
+    "province": "华南海南",
+    "position": "省总",
+    "phone": "13929859675",
+    "score": 92,
+    "single_score": 56,
+    "multiple_score": 36,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 735,
+    "start_time": "2026-05-29T16:29:23.836336+08:00",
+    "end_time": "2026-05-29T16:41:39.512953+08:00",
+    "submit_time": "2026-05-29T16:41:39.513092+08:00"
+  },
+  {
     "username": "test_user_1780044012",
     "province": "test",
     "position": "test",
@@ -612,21 +630,21 @@
     "submit_time": "2026-05-29T16:32:07.739770+08:00"
   },
   {
-    "username": "李庚生",
-    "province": "华南海南",
-    "position": "省总",
-    "phone": "13929859675",
-    "score": 92,
-    "single_score": 56,
+    "username": "王世豪",
+    "province": "基层销售部 北京二",
+    "position": "省（区）经理",
+    "phone": "18937005567",
+    "score": 96,
+    "single_score": 60,
     "multiple_score": 36,
-    "single_correct": 28,
+    "single_correct": 30,
     "single_total": 30,
     "multiple_correct": 9,
     "multiple_total": 10,
     "passed": true,
-    "duration_seconds": 735,
-    "start_time": "2026-05-29T16:29:23.836336+08:00",
-    "end_time": "2026-05-29T16:41:39.512953+08:00",
-    "submit_time": "2026-05-29T16:41:39.513092+08:00"
+    "duration_seconds": 562,
+    "start_time": "2026-05-29T16:32:22.958600+08:00",
+    "end_time": "2026-05-29T16:41:45.428327+08:00",
+    "submit_time": "2026-05-29T16:41:45.428419+08:00"
   }
 ]
