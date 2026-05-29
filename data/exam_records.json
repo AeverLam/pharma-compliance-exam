@@ -1,5 +1,23 @@
 [
   {
+    "username": "陈淑桂",
+    "province": "华南广州",
+    "position": "省（区）经理",
+    "phone": "13592855656",
+    "score": 80,
+    "single_score": 56,
+    "multiple_score": 24,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 6,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 751,
+    "start_time": "2026-05-29T17:00:03.686892+08:00",
+    "end_time": "2026-05-29T17:12:35.009911+08:00",
+    "submit_time": "2026-05-29T17:12:35.010020+08:00"
+  },
+  {
     "username": "郝一凡",
     "province": "华北+河北二",
     "position": "省（区）经理",
