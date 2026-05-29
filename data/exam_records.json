@@ -1,5 +1,23 @@
 [
   {
+    "username": "姜文娜",
+    "province": "华东+苏南",
+    "position": "推广经理",
+    "phone": "15989086228",
+    "score": 92,
+    "single_score": 60,
+    "multiple_score": 32,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 1208,
+    "start_time": "2026-05-29T18:27:26.115068+08:00",
+    "end_time": "2026-05-29T18:47:34.295322+08:00",
+    "submit_time": "2026-05-29T18:47:34.295446+08:00"
+  },
+  {
     "username": "何兴旺",
     "province": "华东+苏中",
     "position": "省（区）经理",
