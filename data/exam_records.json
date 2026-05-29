@@ -1,5 +1,23 @@
 [
   {
+    "username": "覃有平",
+    "province": "精神+广西",
+    "position": "省（区）经理",
+    "phone": "18707888868",
+    "score": 88,
+    "single_score": 60,
+    "multiple_score": 28,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 7,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 888,
+    "start_time": "2026-05-29T19:11:40.284060+08:00",
+    "end_time": "2026-05-29T19:26:28.509972+08:00",
+    "submit_time": "2026-05-29T19:26:28.510072+08:00"
+  },
+  {
     "username": "黄海凌",
     "province": "生殖-浙江",
     "position": "推广",
