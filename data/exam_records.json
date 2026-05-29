@@ -1,5 +1,23 @@
 [
   {
+    "username": "李金峰",
+    "province": "北区+北京",
+    "position": "推广",
+    "phone": "15711110438",
+    "score": 98,
+    "single_score": 58,
+    "multiple_score": 40,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 315,
+    "start_time": "2026-05-29T18:43:01.708505+08:00",
+    "end_time": "2026-05-29T18:48:17.392141+08:00",
+    "submit_time": "2026-05-29T18:48:17.392249+08:00"
+  },
+  {
     "username": "姜文娜",
     "province": "华东+苏南",
     "position": "推广经理",
