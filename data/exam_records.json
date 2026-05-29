@@ -1,5 +1,23 @@
 [
   {
+    "username": "宋鑫源",
+    "province": "华中+陕西",
+    "position": "省（区）经理",
+    "phone": "15389071669",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 951,
+    "start_time": "2026-05-29T17:53:06.772000+08:00",
+    "end_time": "2026-05-29T18:08:58.678951+08:00",
+    "submit_time": "2026-05-29T18:08:58.679069+08:00"
+  },
+  {
     "username": "王芸",
     "province": "精神云南",
     "position": "推广经理",
