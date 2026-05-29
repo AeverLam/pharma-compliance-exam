@@ -1,5 +1,23 @@
 [
   {
+    "username": "吕秀敏",
+    "province": "生殖吉林省",
+    "position": "省总",
+    "phone": "13578782852",
+    "score": 72,
+    "single_score": 56,
+    "multiple_score": 16,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 4,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 1004,
+    "start_time": "2026-05-29T17:02:06.872482+08:00",
+    "end_time": "2026-05-29T17:18:51.624789+08:00",
+    "submit_time": "2026-05-29T17:18:51.624891+08:00"
+  },
+  {
     "username": "孙勇",
     "province": "基层上海一",
     "position": "省（区）经理",
