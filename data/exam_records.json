@@ -1,5 +1,23 @@
 [
   {
+    "username": "李世芳",
+    "province": "华北辽宁",
+    "position": "省（区）经理",
+    "phone": "18701369097",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 150,
+    "start_time": "2026-05-29T18:15:13.151293+08:00",
+    "end_time": "2026-05-29T18:17:43.404990+08:00",
+    "submit_time": "2026-05-29T18:17:43.405092+08:00"
+  },
+  {
     "username": "王娟",
     "province": "华南深圳",
     "position": "推广经理",
