@@ -1,5 +1,23 @@
 [
   {
+    "username": "蔡煜宇",
+    "province": "精神+江苏",
+    "position": "省（区）经理",
+    "phone": "13601405557",
+    "score": 92,
+    "single_score": 56,
+    "multiple_score": 36,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 811,
+    "start_time": "2026-05-29T22:00:56.424654+08:00",
+    "end_time": "2026-05-29T22:14:28.404263+08:00",
+    "submit_time": "2026-05-29T22:14:28.405455+08:00"
+  },
+  {
     "username": "沈文坚",
     "province": "海南生殖",
     "position": "省（区）经理",
