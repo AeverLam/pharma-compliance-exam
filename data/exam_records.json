@@ -1,5 +1,23 @@
 [
   {
+    "username": "刘如山",
+    "province": "北区+北京",
+    "position": "省（区）经理",
+    "phone": "15321023501",
+    "score": 88,
+    "single_score": 60,
+    "multiple_score": 28,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 7,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 595,
+    "start_time": "2026-05-29T17:03:29.132524+08:00",
+    "end_time": "2026-05-29T17:13:24.846750+08:00",
+    "submit_time": "2026-05-29T17:13:24.846874+08:00"
+  },
+  {
     "username": "郝强",
     "province": "华中大区+山西",
     "position": "省（区）经理",
