@@ -1,5 +1,23 @@
 [
   {
+    "username": "阮仕林",
+    "province": "基层事业部华东大区",
+    "position": "大区总",
+    "phone": "13396888226",
+    "score": 98,
+    "single_score": 58,
+    "multiple_score": 40,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 489,
+    "start_time": "2026-05-29T18:29:00.722821+08:00",
+    "end_time": "2026-05-29T18:37:09.940368+08:00",
+    "submit_time": "2026-05-29T18:37:09.940477+08:00"
+  },
+  {
     "username": "杨奇",
     "province": "华西大区+四川二",
     "position": "省（区）经理",
