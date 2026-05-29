@@ -1,5 +1,23 @@
 [
   {
+    "username": "刘如山",
+    "province": "北区+北京",
+    "position": "省（区）经理",
+    "phone": "15321023501",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 894,
+    "start_time": "2026-05-29T17:17:16.523160+08:00",
+    "end_time": "2026-05-29T17:32:10.791050+08:00",
+    "submit_time": "2026-05-29T17:32:10.791165+08:00"
+  },
+  {
     "username": "邱婷婷",
     "province": "华西",
     "position": "职能总部人员",
