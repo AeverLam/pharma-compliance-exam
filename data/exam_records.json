@@ -1060,5 +1060,23 @@
     "start_time": "2026-05-29T16:44:10.643435+08:00",
     "end_time": "2026-05-29T16:44:10.868720+08:00",
     "submit_time": "2026-05-29T16:44:10.868811+08:00"
+  },
+  {
+    "username": "郑金梅",
+    "province": "华南大区+广州",
+    "position": "推广经理",
+    "phone": "13630124505",
+    "score": 84,
+    "single_score": 56,
+    "multiple_score": 28,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 7,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 593,
+    "start_time": "2026-05-29T16:34:21.512210+08:00",
+    "end_time": "2026-05-29T16:44:14.811753+08:00",
+    "submit_time": "2026-05-29T16:44:14.811881+08:00"
   }
 ]
