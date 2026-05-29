@@ -1,5 +1,23 @@
 [
   {
+    "username": "郑焕雷",
+    "province": "华中大区",
+    "position": "大区总",
+    "phone": "13837125308",
+    "score": 86,
+    "single_score": 58,
+    "multiple_score": 28,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 7,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 755,
+    "start_time": "2026-05-29T18:16:28.601289+08:00",
+    "end_time": "2026-05-29T18:29:03.992056+08:00",
+    "submit_time": "2026-05-29T18:29:03.992179+08:00"
+  },
+  {
     "username": "宋其文",
     "province": "华东+苏州",
     "position": "省（区）经理",
