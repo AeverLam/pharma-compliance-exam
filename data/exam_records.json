@@ -1,5 +1,23 @@
 [
   {
+    "username": "鲁子豪",
+    "province": "华西+四川一",
+    "position": "省（区）经理",
+    "phone": "18992586789",
+    "score": 96,
+    "single_score": 60,
+    "multiple_score": 36,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 545,
+    "start_time": "2026-05-29T18:14:56.582358+08:00",
+    "end_time": "2026-05-29T18:24:01.995290+08:00",
+    "submit_time": "2026-05-29T18:24:01.995393+08:00"
+  },
+  {
     "username": "王维",
     "province": "生殖",
     "position": "推广",
