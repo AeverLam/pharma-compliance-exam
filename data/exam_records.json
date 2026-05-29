@@ -1,5 +1,23 @@
 [
   {
+    "username": "吴文瑜",
+    "province": "精神产品销售部-精神专科销售线-广东",
+    "position": "推广经理",
+    "phone": "13828070512",
+    "score": 82,
+    "single_score": 54,
+    "multiple_score": 28,
+    "single_correct": 27,
+    "single_total": 30,
+    "multiple_correct": 7,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 667,
+    "start_time": "2026-05-29T17:37:59.020840+08:00",
+    "end_time": "2026-05-29T17:49:06.847225+08:00",
+    "submit_time": "2026-05-29T17:49:06.847335+08:00"
+  },
+  {
     "username": "王琨",
     "province": "华东+浙江/上海",
     "position": "职能总部人员",
