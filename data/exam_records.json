@@ -1,5 +1,23 @@
 [
   {
+    "username": "饶静",
+    "province": "华西+贵州",
+    "position": "推广经理",
+    "phone": "15519039552",
+    "score": 92,
+    "single_score": 56,
+    "multiple_score": 36,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 837,
+    "start_time": "2026-05-29T16:33:40.915868+08:00",
+    "end_time": "2026-05-29T16:47:38.205673+08:00",
+    "submit_time": "2026-05-29T16:47:38.205804+08:00"
+  },
+  {
     "username": "刘星辰",
     "province": "生殖重庆",
     "position": "推广",
@@ -1494,21 +1512,21 @@
     "submit_time": "2026-05-29T16:32:07.739770+08:00"
   },
   {
-    "username": "饶静",
-    "province": "华西+贵州",
-    "position": "推广经理",
-    "phone": "15519039552",
-    "score": 92,
-    "single_score": 56,
-    "multiple_score": 36,
-    "single_correct": 28,
+    "username": "陈康凯",
+    "province": "营销市场总部",
+    "position": "职能总部人员",
+    "phone": "13828418060",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
     "single_total": 30,
-    "multiple_correct": 9,
+    "multiple_correct": 10,
     "multiple_total": 10,
     "passed": true,
-    "duration_seconds": 837,
-    "start_time": "2026-05-29T16:33:40.915868+08:00",
-    "end_time": "2026-05-29T16:47:38.205673+08:00",
-    "submit_time": "2026-05-29T16:47:38.205804+08:00"
+    "duration_seconds": 607,
+    "start_time": "2026-05-29T16:37:41.570188+08:00",
+    "end_time": "2026-05-29T16:47:48.905671+08:00",
+    "submit_time": "2026-05-29T16:47:48.905777+08:00"
   }
 ]
