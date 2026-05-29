@@ -1,5 +1,23 @@
 [
   {
+    "username": "王明亮",
+    "province": "华北-王明亮",
+    "position": "省（区）经理",
+    "phone": "18636662358",
+    "score": 92,
+    "single_score": 56,
+    "multiple_score": 36,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 296,
+    "start_time": "2026-05-29T16:32:01.126907+08:00",
+    "end_time": "2026-05-29T16:36:57.894267+08:00",
+    "submit_time": "2026-05-29T16:36:57.894352+08:00"
+  },
+  {
     "username": "苏爽捷",
     "province": "生殖陕西",
     "position": "省（区）经理",
@@ -270,21 +288,21 @@
     "submit_time": "2026-05-29T16:32:07.739770+08:00"
   },
   {
-    "username": "王明亮",
-    "province": "华北-王明亮",
-    "position": "省（区）经理",
-    "phone": "18636662358",
-    "score": 92,
-    "single_score": 56,
-    "multiple_score": 36,
-    "single_correct": 28,
+    "username": "李光",
+    "province": "KA",
+    "position": "职能总部人员",
+    "phone": "15829908982",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
     "single_total": 30,
-    "multiple_correct": 9,
+    "multiple_correct": 10,
     "multiple_total": 10,
     "passed": true,
-    "duration_seconds": 296,
-    "start_time": "2026-05-29T16:32:01.126907+08:00",
-    "end_time": "2026-05-29T16:36:57.894267+08:00",
-    "submit_time": "2026-05-29T16:36:57.894352+08:00"
+    "duration_seconds": 420,
+    "start_time": "2026-05-29T16:30:04.776324+08:00",
+    "end_time": "2026-05-29T16:37:04.830809+08:00",
+    "submit_time": "2026-05-29T16:37:04.830904+08:00"
   }
 ]
