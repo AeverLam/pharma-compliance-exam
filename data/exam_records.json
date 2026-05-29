@@ -1,5 +1,23 @@
 [
   {
+    "username": "陈美琴",
+    "province": "华西+四川二",
+    "position": "推广经理",
+    "phone": "18283582305",
+    "score": 88,
+    "single_score": 60,
+    "multiple_score": 28,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 7,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 672,
+    "start_time": "2026-05-29T17:06:41.033739+08:00",
+    "end_time": "2026-05-29T17:17:53.559382+08:00",
+    "submit_time": "2026-05-29T17:17:53.559494+08:00"
+  },
+  {
     "username": "张怀涛",
     "province": "基层济宁公司",
     "position": "省（区）经理",
