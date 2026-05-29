@@ -1,5 +1,23 @@
 [
   {
+    "username": "刘志英",
+    "province": "精神+内蒙",
+    "position": "推广经理",
+    "phone": "15754808021",
+    "score": 90,
+    "single_score": 58,
+    "multiple_score": 32,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 881,
+    "start_time": "2026-05-29T22:42:35.404794+08:00",
+    "end_time": "2026-05-29T22:57:17.111814+08:00",
+    "submit_time": "2026-05-29T22:57:17.111926+08:00"
+  },
+  {
     "username": "张丽歌",
     "province": "华中大区河南二",
     "position": "省（区）经理",
