@@ -1,5 +1,23 @@
 [
   {
+    "username": "孙勇",
+    "province": "基层上海一",
+    "position": "省（区）经理",
+    "phone": "13482557118",
+    "score": 94,
+    "single_score": 58,
+    "multiple_score": 36,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 817,
+    "start_time": "2026-05-29T17:04:52.664258+08:00",
+    "end_time": "2026-05-29T17:18:30.149891+08:00",
+    "submit_time": "2026-05-29T17:18:30.150002+08:00"
+  },
+  {
     "username": "植翠婷",
     "province": "市场推广部",
     "position": "职能总部人员",
