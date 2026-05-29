@@ -1,5 +1,23 @@
 [
   {
+    "username": "张东旭",
+    "province": "精神上海",
+    "position": "省（区）经理",
+    "phone": "13673990873",
+    "score": 82,
+    "single_score": 54,
+    "multiple_score": 28,
+    "single_correct": 27,
+    "single_total": 30,
+    "multiple_correct": 7,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 582,
+    "start_time": "2026-05-29T20:31:46.445130+08:00",
+    "end_time": "2026-05-29T20:41:29.009954+08:00",
+    "submit_time": "2026-05-29T20:41:29.010083+08:00"
+  },
+  {
     "username": "王磊",
     "province": "精神-江苏",
     "position": "省（区）经理",
