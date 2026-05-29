@@ -1,5 +1,23 @@
 [
   {
+    "username": "朱煜泽",
+    "province": "生殖 上海",
+    "position": "职能总部人员",
+    "phone": "13504414300",
+    "score": 92,
+    "single_score": 60,
+    "multiple_score": 32,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 1184,
+    "start_time": "2026-05-29T18:46:26.747950+08:00",
+    "end_time": "2026-05-29T19:06:11.551789+08:00",
+    "submit_time": "2026-05-29T19:06:11.551888+08:00"
+  },
+  {
     "username": "覃有平",
     "province": "精神+广西",
     "position": "省（区）经理",
