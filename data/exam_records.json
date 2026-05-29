@@ -1,5 +1,23 @@
 [
   {
+    "username": "张燕",
+    "province": "基层+福州",
+    "position": "省（区）经理",
+    "phone": "13720810094",
+    "score": 98,
+    "single_score": 58,
+    "multiple_score": 40,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 1087,
+    "start_time": "2026-05-29T16:53:41.650347+08:00",
+    "end_time": "2026-05-29T17:11:49.264351+08:00",
+    "submit_time": "2026-05-29T17:11:49.264442+08:00"
+  },
+  {
     "username": "纪依玲",
     "province": "数字拓展部",
     "position": "职能总部人员",
