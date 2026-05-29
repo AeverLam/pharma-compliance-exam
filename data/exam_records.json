@@ -1,5 +1,23 @@
 [
   {
+    "username": "黄春龙",
+    "province": "华南大区粤西省公司",
+    "position": "省（区）经理",
+    "phone": "13825053598",
+    "score": 74,
+    "single_score": 58,
+    "multiple_score": 16,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 4,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 1204,
+    "start_time": "2026-05-30T00:09:27.703591+08:00",
+    "end_time": "2026-05-30T00:29:31.740991+08:00",
+    "submit_time": "2026-05-30T00:29:31.741105+08:00"
+  },
+  {
     "username": "陈倩倩",
     "province": "华西大区+新疆省公司",
     "position": "推广经理",
