@@ -1,5 +1,23 @@
 [
   {
+    "username": "许佳佳",
+    "province": "医学部",
+    "position": "职能总部人员",
+    "phone": "18350283136",
+    "score": 78,
+    "single_score": 50,
+    "multiple_score": 28,
+    "single_correct": 25,
+    "single_total": 30,
+    "multiple_correct": 7,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 1202,
+    "start_time": "2026-05-29T17:08:32.567468+08:00",
+    "end_time": "2026-05-29T17:28:34.923509+08:00",
+    "submit_time": "2026-05-29T17:28:34.923644+08:00"
+  },
+  {
     "username": "陈涛",
     "province": "生殖产品销售部",
     "position": "职能总部人员",
