@@ -1,5 +1,23 @@
 [
   {
+    "username": "惠东东",
+    "province": "华东+苏中",
+    "position": "省（区）经理",
+    "phone": "15365695016",
+    "score": 90,
+    "single_score": 58,
+    "multiple_score": 32,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 621,
+    "start_time": "2026-05-29T22:32:15.620927+08:00",
+    "end_time": "2026-05-29T22:42:36.880086+08:00",
+    "submit_time": "2026-05-29T22:42:36.880218+08:00"
+  },
+  {
     "username": "李恒飞",
     "province": "精神+辽宁",
     "position": "省总",
