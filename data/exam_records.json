@@ -1,5 +1,23 @@
 [
   {
+    "username": "管翎汐",
+    "province": "华西+甘肃",
+    "position": "推广经理",
+    "phone": "17726919511",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 717,
+    "start_time": "2026-05-29T17:07:14.051791+08:00",
+    "end_time": "2026-05-29T17:19:11.311020+08:00",
+    "submit_time": "2026-05-29T17:19:11.311131+08:00"
+  },
+  {
     "username": "刘灿",
     "province": "医学项目部",
     "position": "职能总部人员",
