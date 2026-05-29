@@ -1,5 +1,23 @@
 [
   {
+    "username": "胡雅",
+    "province": "生殖职能",
+    "position": "职能总部人员",
+    "phone": "17355998261",
+    "score": 76,
+    "single_score": 52,
+    "multiple_score": 24,
+    "single_correct": 26,
+    "single_total": 30,
+    "multiple_correct": 6,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 627,
+    "start_time": "2026-05-29T16:32:04.301129+08:00",
+    "end_time": "2026-05-29T16:42:32.281897+08:00",
+    "submit_time": "2026-05-29T16:42:32.281997+08:00"
+  },
+  {
     "username": "海怀林",
     "province": "生殖河南",
     "position": "省总",
@@ -810,21 +828,21 @@
     "submit_time": "2026-05-29T16:32:07.739770+08:00"
   },
   {
-    "username": "胡雅",
-    "province": "生殖职能",
-    "position": "职能总部人员",
-    "phone": "17355998261",
-    "score": 76,
+    "username": "u_1780044081",
+    "province": "t",
+    "position": "t",
+    "phone": "",
+    "score": 80,
     "single_score": 52,
-    "multiple_score": 24,
+    "multiple_score": 28,
     "single_correct": 26,
     "single_total": 30,
-    "multiple_correct": 6,
+    "multiple_correct": 7,
     "multiple_total": 10,
     "passed": false,
-    "duration_seconds": 627,
-    "start_time": "2026-05-29T16:32:04.301129+08:00",
-    "end_time": "2026-05-29T16:42:32.281897+08:00",
-    "submit_time": "2026-05-29T16:42:32.281997+08:00"
+    "duration_seconds": 0,
+    "start_time": "2026-05-29T16:42:35.438905+08:00",
+    "end_time": "2026-05-29T16:42:35.660420+08:00",
+    "submit_time": "2026-05-29T16:42:35.660511+08:00"
   }
 ]
