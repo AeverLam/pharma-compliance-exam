@@ -1,5 +1,23 @@
 [
   {
+    "username": "王惟娜",
+    "province": "精神+四川",
+    "position": "推广经理",
+    "phone": "18682568222",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 550,
+    "start_time": "2026-05-29T22:18:13.965235+08:00",
+    "end_time": "2026-05-29T22:27:24.421744+08:00",
+    "submit_time": "2026-05-29T22:27:24.421890+08:00"
+  },
+  {
     "username": "吴晛",
     "province": "KA项目部",
     "position": "职能总部人员",
