@@ -1,5 +1,23 @@
 [
   {
+    "username": "龚猛",
+    "province": "精神",
+    "position": "省（区）经理",
+    "phone": "18696123425",
+    "score": 96,
+    "single_score": 60,
+    "multiple_score": 36,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 1071,
+    "start_time": "2026-05-29T16:28:05.773929+08:00",
+    "end_time": "2026-05-29T16:45:57.666565+08:00",
+    "submit_time": "2026-05-29T16:45:57.666701+08:00"
+  },
+  {
     "username": "左亚军",
     "province": "安徽二",
     "position": "省（区）经理",
@@ -1332,21 +1350,21 @@
     "submit_time": "2026-05-29T16:32:07.739770+08:00"
   },
   {
-    "username": "龚猛",
-    "province": "精神",
-    "position": "省（区）经理",
-    "phone": "18696123425",
-    "score": 96,
-    "single_score": 60,
+    "username": "曾方方",
+    "province": "河南精神内勤",
+    "position": "推广",
+    "phone": "15038362359",
+    "score": 92,
+    "single_score": 56,
     "multiple_score": 36,
-    "single_correct": 30,
+    "single_correct": 28,
     "single_total": 30,
     "multiple_correct": 9,
     "multiple_total": 10,
     "passed": true,
-    "duration_seconds": 1071,
-    "start_time": "2026-05-29T16:28:05.773929+08:00",
-    "end_time": "2026-05-29T16:45:57.666565+08:00",
-    "submit_time": "2026-05-29T16:45:57.666701+08:00"
+    "duration_seconds": 849,
+    "start_time": "2026-05-29T16:32:09.550185+08:00",
+    "end_time": "2026-05-29T16:46:18.946148+08:00",
+    "submit_time": "2026-05-29T16:46:18.946237+08:00"
   }
 ]
