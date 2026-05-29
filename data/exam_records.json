@@ -1420,5 +1420,23 @@
     "start_time": "2026-05-29T16:26:48.558552+08:00",
     "end_time": "2026-05-29T16:46:53.079421+08:00",
     "submit_time": "2026-05-29T16:46:53.079498+08:00"
+  },
+  {
+    "username": "孙鑫",
+    "province": "精神省区-江西",
+    "position": "省（区）经理",
+    "phone": "18852607388",
+    "score": 96,
+    "single_score": 56,
+    "multiple_score": 40,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 1105,
+    "start_time": "2026-05-29T16:28:30.513682+08:00",
+    "end_time": "2026-05-29T16:46:55.516281+08:00",
+    "submit_time": "2026-05-29T16:46:55.516373+08:00"
   }
 ]
