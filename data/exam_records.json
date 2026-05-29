@@ -1,5 +1,23 @@
 [
   {
+    "username": "马楠",
+    "province": "华中+陕西",
+    "position": "省总",
+    "phone": "13891872111",
+    "score": 92,
+    "single_score": 60,
+    "multiple_score": 32,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 311,
+    "start_time": "2026-05-29T17:03:37.630061+08:00",
+    "end_time": "2026-05-29T17:08:49.032590+08:00",
+    "submit_time": "2026-05-29T17:08:49.032683+08:00"
+  },
+  {
     "username": "苏统席",
     "province": "华西+甘肃",
     "position": "省（区）经理",
