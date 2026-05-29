@@ -1,5 +1,23 @@
 [
   {
+    "username": "胡雅",
+    "province": "生殖职能",
+    "position": "职能总部人员",
+    "phone": "17355998261",
+    "score": 96,
+    "single_score": 56,
+    "multiple_score": 40,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 595,
+    "start_time": "2026-05-29T17:17:45.896727+08:00",
+    "end_time": "2026-05-29T17:27:41.510780+08:00",
+    "submit_time": "2026-05-29T17:27:41.510887+08:00"
+  },
+  {
     "username": "陈青",
     "province": "市场推广部",
     "position": "职能总部人员",
