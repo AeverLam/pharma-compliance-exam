@@ -1,5 +1,23 @@
 [
   {
+    "username": "方圆圆",
+    "province": "华东+南京",
+    "position": "省（区）经理",
+    "phone": "18952557697",
+    "score": 78,
+    "single_score": 58,
+    "multiple_score": 20,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 5,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 1205,
+    "start_time": "2026-05-29T17:44:28.466877+08:00",
+    "end_time": "2026-05-29T18:04:33.983677+08:00",
+    "submit_time": "2026-05-29T18:04:33.983769+08:00"
+  },
+  {
     "username": "黄浩",
     "province": "华南大区粤东公司",
     "position": "省（区）经理",
