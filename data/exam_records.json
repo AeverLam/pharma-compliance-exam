@@ -772,5 +772,23 @@
     "start_time": "2026-05-29T16:42:19.785653+08:00",
     "end_time": "2026-05-29T16:42:20.013645+08:00",
     "submit_time": "2026-05-29T16:42:20.013779+08:00"
+  },
+  {
+    "username": "邹国通",
+    "province": "生殖邹国通",
+    "position": "省（区）经理",
+    "phone": "15980604733",
+    "score": 80,
+    "single_score": 56,
+    "multiple_score": 24,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 6,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 556,
+    "start_time": "2026-05-29T16:33:05.339678+08:00",
+    "end_time": "2026-05-29T16:42:21.618924+08:00",
+    "submit_time": "2026-05-29T16:42:21.619014+08:00"
   }
 ]
