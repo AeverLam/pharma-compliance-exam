@@ -1,5 +1,23 @@
 [
   {
+    "username": "宋其文",
+    "province": "华东+苏州",
+    "position": "省（区）经理",
+    "phone": "13915428157",
+    "score": 92,
+    "single_score": 60,
+    "multiple_score": 32,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 1174,
+    "start_time": "2026-05-29T18:08:32.662198+08:00",
+    "end_time": "2026-05-29T18:28:07.420772+08:00",
+    "submit_time": "2026-05-29T18:28:07.420883+08:00"
+  },
+  {
     "username": "沈玉洋",
     "province": "西南大区川北省区",
     "position": "推广",
