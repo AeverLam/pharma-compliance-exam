@@ -1,5 +1,23 @@
 [
   {
+    "username": "翟立国",
+    "province": "华东大区+南京省公司",
+    "position": "省（区）经理",
+    "phone": "17798513766",
+    "score": 92,
+    "single_score": 60,
+    "multiple_score": 32,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 857,
+    "start_time": "2026-05-29T19:41:30.727843+08:00",
+    "end_time": "2026-05-29T19:55:48.465521+08:00",
+    "submit_time": "2026-05-29T19:55:48.465631+08:00"
+  },
+  {
     "username": "石万宝",
     "province": "精神+天津",
     "position": "省（区）经理",
