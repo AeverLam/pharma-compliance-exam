@@ -1,5 +1,23 @@
 [
   {
+    "username": "黄旺达",
+    "province": "华南广西",
+    "position": "推广",
+    "phone": "15977931541",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 370,
+    "start_time": "2026-05-29T20:00:27.979578+08:00",
+    "end_time": "2026-05-29T20:06:38.186295+08:00",
+    "submit_time": "2026-05-29T20:06:38.186438+08:00"
+  },
+  {
     "username": "洒凯",
     "province": "精神+贵州",
     "position": "省（区）经理",
