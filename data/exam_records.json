@@ -1,5 +1,23 @@
 [
   {
+    "username": "王晓旭",
+    "province": "华中大区+河南二",
+    "position": "推广经理",
+    "phone": "13937162462",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 537,
+    "start_time": "2026-05-29T22:39:15.351461+08:00",
+    "end_time": "2026-05-29T22:48:12.372283+08:00",
+    "submit_time": "2026-05-29T22:48:12.372466+08:00"
+  },
+  {
     "username": "董加新",
     "province": "市场推广部",
     "position": "职能总部人员",
