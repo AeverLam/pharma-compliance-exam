@@ -1,5 +1,23 @@
 [
   {
+    "username": "赵慧艳",
+    "province": "基层事业部",
+    "position": "推广经理",
+    "phone": "18764403316",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 844,
+    "start_time": "2026-05-29T18:04:19.802965+08:00",
+    "end_time": "2026-05-29T18:18:23.936457+08:00",
+    "submit_time": "2026-05-29T18:18:23.936624+08:00"
+  },
+  {
     "username": "李世芳",
     "province": "华北辽宁",
     "position": "省（区）经理",
