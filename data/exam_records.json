@@ -1,5 +1,23 @@
 [
   {
+    "username": "方圆圆",
+    "province": "华东+南京",
+    "position": "省（区）经理",
+    "phone": "18952557697",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 909,
+    "start_time": "2026-05-29T18:19:18.495052+08:00",
+    "end_time": "2026-05-29T18:34:27.910140+08:00",
+    "submit_time": "2026-05-29T18:34:27.910255+08:00"
+  },
+  {
     "username": "李刚",
     "province": "华南大区 福建省公司",
     "position": "省总",
