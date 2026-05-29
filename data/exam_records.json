@@ -1,5 +1,23 @@
 [
   {
+    "username": "毛娜",
+    "province": "KA项目部",
+    "position": "职能总部人员",
+    "phone": "18810979433",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 847,
+    "start_time": "2026-05-29T20:22:50.340473+08:00",
+    "end_time": "2026-05-29T20:36:58.123086+08:00",
+    "submit_time": "2026-05-29T20:36:58.123216+08:00"
+  },
+  {
     "username": "陈蓉",
     "province": "西南大区川北省区",
     "position": "省（区）经理",
