@@ -1,5 +1,23 @@
 [
   {
+    "username": "郑荣辉",
+    "province": "生殖+广东",
+    "position": "推广",
+    "phone": "18200663209",
+    "score": 84,
+    "single_score": 56,
+    "multiple_score": 28,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 7,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 761,
+    "start_time": "2026-05-29T16:59:11.037360+08:00",
+    "end_time": "2026-05-29T17:11:52.978685+08:00",
+    "submit_time": "2026-05-29T17:11:52.978778+08:00"
+  },
+  {
     "username": "张燕",
     "province": "基层+福州",
     "position": "省（区）经理",
