@@ -1,5 +1,23 @@
 [
   {
+    "username": "王江",
+    "province": "基层事业部华北大区黑龙江省区",
+    "position": "省（区）经理",
+    "phone": "13936245218",
+    "score": 94,
+    "single_score": 58,
+    "multiple_score": 36,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 642,
+    "start_time": "2026-05-29T20:10:02.112634+08:00",
+    "end_time": "2026-05-29T20:20:44.444425+08:00",
+    "submit_time": "2026-05-29T20:20:44.444578+08:00"
+  },
+  {
     "username": "汪玉成",
     "province": "中部大区安徽一",
     "position": "省（区）经理",
