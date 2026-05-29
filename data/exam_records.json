@@ -1,5 +1,23 @@
 [
   {
+    "username": "崔昕烨",
+    "province": "华东+上海",
+    "position": "推广经理",
+    "phone": "15706299056",
+    "score": 90,
+    "single_score": 58,
+    "multiple_score": 32,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 622,
+    "start_time": "2026-05-29T23:00:39.799891+08:00",
+    "end_time": "2026-05-29T23:11:02.485499+08:00",
+    "submit_time": "2026-05-29T23:11:02.485603+08:00"
+  },
+  {
     "username": "刘梅兰",
     "province": "基层+江西二",
     "position": "省（区）经理",
