@@ -1,5 +1,23 @@
 [
   {
+    "username": "黄浩",
+    "province": "职能总部+黄浩",
+    "position": "职能总部人员",
+    "phone": "13501590693",
+    "score": 96,
+    "single_score": 60,
+    "multiple_score": 36,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 550,
+    "start_time": "2026-05-29T17:19:35.205245+08:00",
+    "end_time": "2026-05-29T17:28:45.806602+08:00",
+    "submit_time": "2026-05-29T17:28:45.806711+08:00"
+  },
+  {
     "username": "宗成华",
     "province": "精神+四川",
     "position": "省（区）经理",
