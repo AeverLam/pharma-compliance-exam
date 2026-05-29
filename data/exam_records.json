@@ -1,5 +1,23 @@
 [
   {
+    "username": "刘思佳",
+    "province": "北区北京",
+    "position": "推广经理",
+    "phone": "17832673820",
+    "score": 84,
+    "single_score": 56,
+    "multiple_score": 28,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 7,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 916,
+    "start_time": "2026-05-29T17:14:14.616241+08:00",
+    "end_time": "2026-05-29T17:29:31.613018+08:00",
+    "submit_time": "2026-05-29T17:29:31.613137+08:00"
+  },
+  {
     "username": "陈旭",
     "province": "华北+辽宁",
     "position": "省（区）经理",
