@@ -1,5 +1,23 @@
 [
   {
+    "username": "王旭",
+    "province": "华东+上海",
+    "position": "省（区）经理",
+    "phone": "13761072069",
+    "score": 96,
+    "single_score": 60,
+    "multiple_score": 36,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 774,
+    "start_time": "2026-05-29T20:26:16.923176+08:00",
+    "end_time": "2026-05-29T20:39:11.485163+08:00",
+    "submit_time": "2026-05-29T20:39:11.485300+08:00"
+  },
+  {
     "username": "毛娜",
     "province": "KA项目部",
     "position": "职能总部人员",
