@@ -1,5 +1,23 @@
 [
   {
+    "username": "薛美",
+    "province": "生殖四川",
+    "position": "推广",
+    "phone": "18030789496",
+    "score": 94,
+    "single_score": 58,
+    "multiple_score": 36,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 493,
+    "start_time": "2026-05-29T17:08:16.475741+08:00",
+    "end_time": "2026-05-29T17:16:29.766812+08:00",
+    "submit_time": "2026-05-29T17:16:29.766936+08:00"
+  },
+  {
     "username": "张琛",
     "province": "精神+陕西",
     "position": "推广经理",
