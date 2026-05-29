@@ -1,5 +1,23 @@
 [
   {
+    "username": "卢胥含",
+    "province": "生殖辽宁",
+    "position": "职能总部人员",
+    "phone": "17624015477",
+    "score": 98,
+    "single_score": 58,
+    "multiple_score": 40,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 1080,
+    "start_time": "2026-05-29T20:31:13.061845+08:00",
+    "end_time": "2026-05-29T20:49:14.059310+08:00",
+    "submit_time": "2026-05-29T20:49:14.059495+08:00"
+  },
+  {
     "username": "陈楚鑫",
     "province": "华北+内蒙",
     "position": "推广经理",
