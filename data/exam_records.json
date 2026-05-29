@@ -1,5 +1,23 @@
 [
   {
+    "username": "吴科强",
+    "province": "华北+河北二",
+    "position": "省总",
+    "phone": "13653105021",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 455,
+    "start_time": "2026-05-29T16:56:17.842189+08:00",
+    "end_time": "2026-05-29T17:03:52.881367+08:00",
+    "submit_time": "2026-05-29T17:03:52.881497+08:00"
+  },
+  {
     "username": "孙悦彤",
     "province": "基层  黑龙江",
     "position": "推广经理",
