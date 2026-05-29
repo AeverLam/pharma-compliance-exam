@@ -1,5 +1,23 @@
 [
   {
+    "username": "雒海宁",
+    "province": "生殖河南",
+    "position": "推广",
+    "phone": "13838060103",
+    "score": 98,
+    "single_score": 58,
+    "multiple_score": 40,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 484,
+    "start_time": "2026-05-29T16:55:25.864600+08:00",
+    "end_time": "2026-05-29T17:03:30.112450+08:00",
+    "submit_time": "2026-05-29T17:03:30.112588+08:00"
+  },
+  {
     "username": "孙瑞芳",
     "province": "生殖-山西",
     "position": "推广",
