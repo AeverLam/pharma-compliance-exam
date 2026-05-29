@@ -1,5 +1,23 @@
 [
   {
+    "username": "黄富祥",
+    "province": "华西+四川一",
+    "position": "省总",
+    "phone": "13765699699",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 275,
+    "start_time": "2026-05-29T17:34:31.917002+08:00",
+    "end_time": "2026-05-29T17:39:07.443294+08:00",
+    "submit_time": "2026-05-29T17:39:07.443423+08:00"
+  },
+  {
     "username": "刘梅兰",
     "province": "基层+江西",
     "position": "省（区）经理",
