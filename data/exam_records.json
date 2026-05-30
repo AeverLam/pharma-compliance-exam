@@ -1,5 +1,23 @@
 [
   {
+    "username": "谢仲锋",
+    "province": "华南+江西",
+    "position": "省（区）经理",
+    "phone": "18827895360",
+    "score": 96,
+    "single_score": 60,
+    "multiple_score": 36,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 505,
+    "start_time": "2026-05-30T19:40:21.635512+08:00",
+    "end_time": "2026-05-30T19:48:47.403855+08:00",
+    "submit_time": "2026-05-30T19:48:47.403980+08:00"
+  },
+  {
     "username": "黎恩恩",
     "province": "华南广州",
     "position": "推广经理",
