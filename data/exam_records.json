@@ -1,5 +1,23 @@
 [
   {
+    "username": "周勇勇",
+    "province": "华中+山西",
+    "position": "省（区）经理",
+    "phone": "18535532161",
+    "score": 96,
+    "single_score": 56,
+    "multiple_score": 40,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 881,
+    "start_time": "2026-05-30T12:04:15.638088+08:00",
+    "end_time": "2026-05-30T12:18:57.027070+08:00",
+    "submit_time": "2026-05-30T12:18:57.027165+08:00"
+  },
+  {
     "username": "潘崇焘",
     "province": "浙东",
     "position": "省（区）经理",
