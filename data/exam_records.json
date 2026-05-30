@@ -1,5 +1,23 @@
 [
   {
+    "username": "梁站",
+    "province": "KA项目部",
+    "position": "省（区）经理",
+    "phone": "15753813588",
+    "score": 94,
+    "single_score": 58,
+    "multiple_score": 36,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 1172,
+    "start_time": "2026-05-30T12:19:25.230104+08:00",
+    "end_time": "2026-05-30T12:38:57.588801+08:00",
+    "submit_time": "2026-05-30T12:38:57.588895+08:00"
+  },
+  {
     "username": "王倩",
     "province": "生殖-新疆-销售部",
     "position": "职能总部人员",
