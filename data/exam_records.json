@@ -1,5 +1,23 @@
 [
   {
+    "username": "刘红丽",
+    "province": "华北 天津",
+    "position": "省（区）经理",
+    "phone": "13802087306",
+    "score": 94,
+    "single_score": 58,
+    "multiple_score": 36,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 1099,
+    "start_time": "2026-05-30T09:14:06.678980+08:00",
+    "end_time": "2026-05-30T09:32:26.635258+08:00",
+    "submit_time": "2026-05-30T09:32:26.635424+08:00"
+  },
+  {
     "username": "姬万勇",
     "province": "基层",
     "position": "省（区）经理",
