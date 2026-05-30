@@ -1,5 +1,23 @@
 [
   {
+    "username": "李海军",
+    "province": "华南+厦门",
+    "position": "省（区）经理",
+    "phone": "18039888808",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 971,
+    "start_time": "2026-05-30T20:36:05.914318+08:00",
+    "end_time": "2026-05-30T20:52:17.561339+08:00",
+    "submit_time": "2026-05-30T20:52:17.561491+08:00"
+  },
+  {
     "username": "薛楠",
     "province": "SFE",
     "position": "职能总部人员",
