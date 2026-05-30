@@ -1,5 +1,23 @@
 [
   {
+    "username": "常锦球",
+    "province": "基层事业部",
+    "position": "省（区）经理",
+    "phone": "13615186777",
+    "score": 96,
+    "single_score": 60,
+    "multiple_score": 36,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 849,
+    "start_time": "2026-05-30T10:07:37.338337+08:00",
+    "end_time": "2026-05-30T10:21:46.431699+08:00",
+    "submit_time": "2026-05-30T10:21:46.431802+08:00"
+  },
+  {
     "username": "付刘强",
     "province": "华中大区+山西",
     "position": "省（区）经理",
