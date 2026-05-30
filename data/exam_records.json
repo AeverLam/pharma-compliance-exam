@@ -1,5 +1,23 @@
 [
   {
+    "username": "高爱坤",
+    "province": "精神+内蒙",
+    "position": "省（区）经理",
+    "phone": "13804743357",
+    "score": 92,
+    "single_score": 56,
+    "multiple_score": 36,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 592,
+    "start_time": "2026-05-30T22:13:48.055764+08:00",
+    "end_time": "2026-05-30T22:23:41.040315+08:00",
+    "submit_time": "2026-05-30T22:23:41.040489+08:00"
+  },
+  {
     "username": "罗倩",
     "province": "西南贵州",
     "position": "推广",
