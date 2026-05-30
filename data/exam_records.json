@@ -1,5 +1,23 @@
 [
   {
+    "username": "刘星辰",
+    "province": "生殖重庆",
+    "position": "推广",
+    "phone": "15102348609",
+    "score": 86,
+    "single_score": 58,
+    "multiple_score": 28,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 7,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 590,
+    "start_time": "2026-05-30T21:48:44.594921+08:00",
+    "end_time": "2026-05-30T21:58:35.473297+08:00",
+    "submit_time": "2026-05-30T21:58:35.473467+08:00"
+  },
+  {
     "username": "杨再奎",
     "province": "销售部㇏",
     "position": "CSO推广人员",
