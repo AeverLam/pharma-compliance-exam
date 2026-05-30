@@ -1,5 +1,23 @@
 [
   {
+    "username": "张冰",
+    "province": "精神-吉林",
+    "position": "推广经理",
+    "phone": "18043441988",
+    "score": 92,
+    "single_score": 60,
+    "multiple_score": 32,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 854,
+    "start_time": "2026-05-30T16:52:31.572818+08:00",
+    "end_time": "2026-05-30T17:06:45.733193+08:00",
+    "submit_time": "2026-05-30T17:06:45.733302+08:00"
+  },
+  {
     "username": "刘炳昌",
     "province": "基层事业部云南省公司",
     "position": "省（区）经理",
