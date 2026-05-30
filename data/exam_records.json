@@ -1,5 +1,23 @@
 [
   {
+    "username": "宋芯蕊",
+    "province": "华东+山东二",
+    "position": "推广",
+    "phone": "15796210921",
+    "score": 86,
+    "single_score": 58,
+    "multiple_score": 28,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 7,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 884,
+    "start_time": "2026-05-30T09:38:06.490776+08:00",
+    "end_time": "2026-05-30T09:52:50.731254+08:00",
+    "submit_time": "2026-05-30T09:52:50.731395+08:00"
+  },
+  {
     "username": "赵思琦",
     "province": "华东大区浙江省公司",
     "position": "推广经理",
