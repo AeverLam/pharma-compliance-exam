@@ -1,5 +1,23 @@
 [
   {
+    "username": "王诗晗",
+    "province": "华中+湖北",
+    "position": "推广",
+    "phone": "17786526053",
+    "score": 94,
+    "single_score": 58,
+    "multiple_score": 36,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 312,
+    "start_time": "2026-05-31T00:41:34.325458+08:00",
+    "end_time": "2026-05-31T00:46:46.930341+08:00",
+    "submit_time": "2026-05-31T00:46:46.930464+08:00"
+  },
+  {
     "username": "高爱坤",
     "province": "精神内蒙",
     "position": "省（区）经理",
