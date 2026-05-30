@@ -1,5 +1,23 @@
 [
   {
+    "username": "白大冰",
+    "province": "华北大区黑龙江省",
+    "position": "省（区）经理",
+    "phone": "15145398572",
+    "score": 88,
+    "single_score": 56,
+    "multiple_score": 32,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 1206,
+    "start_time": "2026-05-30T22:49:12.509627+08:00",
+    "end_time": "2026-05-30T23:09:18.579754+08:00",
+    "submit_time": "2026-05-30T23:09:18.580206+08:00"
+  },
+  {
     "username": "高爱坤",
     "province": "精神+内蒙",
     "position": "省（区）经理",
