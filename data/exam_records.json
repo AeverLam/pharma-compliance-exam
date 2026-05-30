@@ -1,5 +1,23 @@
 [
   {
+    "username": "朱孔赏",
+    "province": "华东+山东二",
+    "position": "省（区）经理",
+    "phone": "13573986188",
+    "score": 98,
+    "single_score": 58,
+    "multiple_score": 40,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 273,
+    "start_time": "2026-05-30T10:25:34.603105+08:00",
+    "end_time": "2026-05-30T10:30:08.050774+08:00",
+    "submit_time": "2026-05-30T10:30:08.050882+08:00"
+  },
+  {
     "username": "赵立丛",
     "province": "华东+山东二",
     "position": "省（区）经理",
