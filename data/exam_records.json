@@ -1,5 +1,23 @@
 [
   {
+    "username": "卜宝宏",
+    "province": "华中+宁夏",
+    "position": "省总",
+    "phone": "18109576669",
+    "score": 100,
+    "single_score": 60,
+    "multiple_score": 40,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 418,
+    "start_time": "2026-05-30T13:03:57.931940+08:00",
+    "end_time": "2026-05-30T13:10:56.728609+08:00",
+    "submit_time": "2026-05-30T13:10:56.728743+08:00"
+  },
+  {
     "username": "孟涛",
     "province": "生殖湖南",
     "position": "省（区）经理",
