@@ -29,7 +29,7 @@ ALL_MULTIPLE = MULTIPLE_CHOICE_QUESTIONS
 exam_sessions = {}
 
 # 飞书多维表格持久化（数据在飞书云端，永不丢失）
-FEISHU_APP_ID = "cli_a938ac2a24391bcb"
+FEISHU_APP_ID = os.environ.get("FEISHU_APP_ID", "cli_a938ac2a24391bcb")
 FEISHU_APP_SECRET = os.environ.get("FEISHU_APP_SECRET", "")
 BITABLE_APP_TOKEN = "YW4ab8lvlaVL1QsLyjQcDSZEnCh"
 BITABLE_TABLE_ID = "tblpi3HfyCVa4do8"
