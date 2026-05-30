@@ -1,5 +1,23 @@
 [
   {
+    "username": "杨再奎",
+    "province": "销售部㇏",
+    "position": "CSO推广人员",
+    "phone": "13809432156",
+    "score": 88,
+    "single_score": 60,
+    "multiple_score": 28,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 7,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 911,
+    "start_time": "2026-05-30T21:05:46.113710+08:00",
+    "end_time": "2026-05-30T21:20:58.047621+08:00",
+    "submit_time": "2026-05-30T21:20:58.047745+08:00"
+  },
+  {
     "username": "李海军",
     "province": "华南+厦门",
     "position": "省（区）经理",
