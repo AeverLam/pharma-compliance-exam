@@ -1,6 +1,24 @@
 [
   {
     "username": "刘炳昌",
+    "province": "基层事业部云南省公司",
+    "position": "省（区）经理",
+    "phone": "13398752400",
+    "score": 96,
+    "single_score": 60,
+    "multiple_score": 36,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 773,
+    "start_time": "2026-05-30T16:45:04.986428+08:00",
+    "end_time": "2026-05-30T16:57:58.117605+08:00",
+    "submit_time": "2026-05-30T16:57:58.117734+08:00"
+  },
+  {
+    "username": "刘炳昌",
     "province": "基层云南省公司",
     "position": "省（区）经理",
     "phone": "13398752400",
