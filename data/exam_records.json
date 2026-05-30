@@ -1,5 +1,23 @@
 [
   {
+    "username": "谢文焕",
+    "province": "华北大区天津省公司",
+    "position": "自营代表（经理）",
+    "phone": "18522032233",
+    "score": 86,
+    "single_score": 58,
+    "multiple_score": 28,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 7,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 1214,
+    "start_time": "2026-05-30T09:53:42.937965+08:00",
+    "end_time": "2026-05-30T10:13:57.097505+08:00",
+    "submit_time": "2026-05-30T10:13:57.097653+08:00"
+  },
+  {
     "username": "赵思琦",
     "province": "华东大区浙江省公司",
     "position": "推广经理",
