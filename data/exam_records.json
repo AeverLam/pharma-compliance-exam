@@ -1,5 +1,23 @@
 [
   {
+    "username": "李凤羽",
+    "province": "精神+北京",
+    "position": "推广经理",
+    "phone": "13781723173",
+    "score": 92,
+    "single_score": 60,
+    "multiple_score": 32,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 1165,
+    "start_time": "2026-05-30T19:44:04.196675+08:00",
+    "end_time": "2026-05-30T20:03:29.817120+08:00",
+    "submit_time": "2026-05-30T20:03:29.817258+08:00"
+  },
+  {
     "username": "谢仲锋",
     "province": "华南+江西",
     "position": "省（区）经理",
