@@ -1,5 +1,23 @@
 [
   {
+    "username": "王蕙馨",
+    "province": "华东+山东二",
+    "position": "推广经理",
+    "phone": "18753232155",
+    "score": 98,
+    "single_score": 58,
+    "multiple_score": 40,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 233,
+    "start_time": "2026-05-30T10:54:13.501796+08:00",
+    "end_time": "2026-05-30T10:58:07.440803+08:00",
+    "submit_time": "2026-05-30T10:58:07.440936+08:00"
+  },
+  {
     "username": "仵涛",
     "province": "华东+山东二",
     "position": "省总",
