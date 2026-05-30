@@ -1,5 +1,23 @@
 [
   {
+    "username": "刘珍",
+    "province": "营销市场总部消化领域",
+    "position": "职能总部人员",
+    "phone": "13902874046",
+    "score": 88,
+    "single_score": 56,
+    "multiple_score": 32,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 1159,
+    "start_time": "2026-05-30T13:33:29.013048+08:00",
+    "end_time": "2026-05-30T13:52:48.031216+08:00",
+    "submit_time": "2026-05-30T13:52:48.031332+08:00"
+  },
+  {
     "username": "李剑",
     "province": "精神+云南",
     "position": "省（区）经理",
