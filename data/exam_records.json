@@ -1,5 +1,23 @@
 [
   {
+    "username": "吴茜茜",
+    "province": "华南＋广州省公司",
+    "position": "省（区）经理",
+    "phone": "18826493115",
+    "score": 94,
+    "single_score": 58,
+    "multiple_score": 36,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 688,
+    "start_time": "2026-06-01T02:52:13.703064+08:00",
+    "end_time": "2026-06-01T03:03:41.809044+08:00",
+    "submit_time": "2026-06-01T03:03:41.809146+08:00"
+  },
+  {
     "username": "朱剑锋",
     "province": "华东安徽",
     "position": "省（区）经理",
