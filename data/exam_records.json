@@ -1,5 +1,23 @@
 [
   {
+    "username": "毕军",
+    "province": "华东+安徽",
+    "position": "省（区）经理",
+    "phone": "13865925899",
+    "score": 96,
+    "single_score": 60,
+    "multiple_score": 36,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 591,
+    "start_time": "2026-05-31T11:18:53.054713+08:00",
+    "end_time": "2026-05-31T11:28:44.825674+08:00",
+    "submit_time": "2026-05-31T11:28:44.825787+08:00"
+  },
+  {
     "username": "王诗晗",
     "province": "华中+湖北",
     "position": "推广",
