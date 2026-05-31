@@ -1,5 +1,23 @@
 [
   {
+    "username": "朱剑锋",
+    "province": "华东安徽",
+    "position": "省（区）经理",
+    "phone": "18656981066",
+    "score": 94,
+    "single_score": 54,
+    "multiple_score": 40,
+    "single_correct": 27,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 1129,
+    "start_time": "2026-05-31T21:14:42.940232+08:00",
+    "end_time": "2026-05-31T21:33:32.933739+08:00",
+    "submit_time": "2026-05-31T21:33:32.933873+08:00"
+  },
+  {
     "username": "沈楠",
     "province": "华东大区 浙江省公司",
     "position": "省（区）经理",
