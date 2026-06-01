@@ -1,5 +1,23 @@
 [
   {
+    "username": "郑小根",
+    "province": "生殖产品线-东区-浙江",
+    "position": "推广",
+    "phone": "18069879998",
+    "score": 86,
+    "single_score": 58,
+    "multiple_score": 28,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 7,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 1013,
+    "start_time": "2026-06-01T16:26:47.915617+08:00",
+    "end_time": "2026-06-01T16:43:41.741709+08:00",
+    "submit_time": "2026-06-01T16:43:41.741830+08:00"
+  },
+  {
     "username": "陈立喆",
     "province": "基层",
     "position": "省（区）经理",
