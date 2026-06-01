@@ -1,5 +1,23 @@
 [
   {
+    "username": "陈立喆",
+    "province": "基层",
+    "position": "省（区）经理",
+    "phone": "17695170088",
+    "score": 82,
+    "single_score": 50,
+    "multiple_score": 32,
+    "single_correct": 25,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 815,
+    "start_time": "2026-06-01T09:17:48.805697+08:00",
+    "end_time": "2026-06-01T09:31:24.570306+08:00",
+    "submit_time": "2026-06-01T09:31:24.570456+08:00"
+  },
+  {
     "username": "吴茜茜",
     "province": "华南＋广州省公司",
     "position": "省（区）经理",
