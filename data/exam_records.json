@@ -1,5 +1,23 @@
 [
   {
+    "username": "陆波",
+    "province": "精神产品销售部+重庆",
+    "position": "省（区）经理",
+    "phone": "15213343903",
+    "score": 90,
+    "single_score": 54,
+    "multiple_score": 36,
+    "single_correct": 27,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 1187,
+    "start_time": "2026-06-09T17:39:22.158408+08:00",
+    "end_time": "2026-06-09T17:59:09.877756+08:00",
+    "submit_time": "2026-06-09T17:59:09.877886+08:00"
+  },
+  {
     "username": "王仲瑞",
     "province": "生殖山东",
     "position": "省（区）经理",
