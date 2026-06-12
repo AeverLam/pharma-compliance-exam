@@ -1,5 +1,23 @@
 [
   {
+    "username": "毛斌杨",
+    "province": "北京精神",
+    "position": "自营代表（经理）",
+    "phone": "15518270038",
+    "score": 0,
+    "single_score": 0,
+    "multiple_score": 0,
+    "single_correct": 0,
+    "single_total": 30,
+    "multiple_correct": 0,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 1213,
+    "start_time": "2026-06-12T14:22:54.098542+08:00",
+    "end_time": "2026-06-12T14:43:07.836860+08:00",
+    "submit_time": "2026-06-12T14:43:07.836960+08:00"
+  },
+  {
     "username": "陆波",
     "province": "精神产品销售部+重庆",
     "position": "省（区）经理",
