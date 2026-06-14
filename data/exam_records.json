@@ -1,5 +1,23 @@
 [
   {
+    "username": "谢欢",
+    "province": "北京",
+    "position": "推广经理",
+    "phone": "19935664551",
+    "score": 80,
+    "single_score": 52,
+    "multiple_score": 28,
+    "single_correct": 26,
+    "single_total": 30,
+    "multiple_correct": 7,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 660,
+    "start_time": "2026-06-14T08:48:57.218323+08:00",
+    "end_time": "2026-06-14T08:59:57.270107+08:00",
+    "submit_time": "2026-06-14T08:59:57.270211+08:00"
+  },
+  {
     "username": "毛斌杨",
     "province": "北京精神",
     "position": "自营代表（经理）",
