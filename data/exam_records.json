@@ -1,5 +1,23 @@
 [
   {
+    "username": "郭颖颖",
+    "province": "华东大区",
+    "position": "省（区）经理",
+    "phone": "13789827884",
+    "score": 94,
+    "single_score": 58,
+    "multiple_score": 36,
+    "single_correct": 29,
+    "single_total": 30,
+    "multiple_correct": 9,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 897,
+    "start_time": "2026-06-17T21:39:03.374836+08:00",
+    "end_time": "2026-06-17T21:54:00.693610+08:00",
+    "submit_time": "2026-06-17T21:54:00.693710+08:00"
+  },
+  {
     "username": "张三",
     "province": "贵州",
     "position": "CSO推广人员",
