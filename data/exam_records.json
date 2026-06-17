@@ -1,5 +1,23 @@
 [
   {
+    "username": "张三",
+    "province": "贵州",
+    "position": "CSO推广人员",
+    "phone": "13673952427",
+    "score": 84,
+    "single_score": 60,
+    "multiple_score": 24,
+    "single_correct": 30,
+    "single_total": 30,
+    "multiple_correct": 6,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 854,
+    "start_time": "2026-06-17T15:33:26.699852+08:00",
+    "end_time": "2026-06-17T15:47:41.435965+08:00",
+    "submit_time": "2026-06-17T15:47:41.436083+08:00"
+  },
+  {
     "username": "朱光华",
     "province": "生殖-浙江-朱光华",
     "position": "推广",
