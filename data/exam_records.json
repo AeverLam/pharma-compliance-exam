@@ -1,5 +1,23 @@
 [
   {
+    "username": "丁国英",
+    "province": "基层-天津",
+    "position": "自营代表（经理）",
+    "phone": "13821910705",
+    "score": 96,
+    "single_score": 56,
+    "multiple_score": 40,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 10,
+    "multiple_total": 10,
+    "passed": true,
+    "duration_seconds": 482,
+    "start_time": "2026-06-26T17:07:57.361014+08:00",
+    "end_time": "2026-06-26T17:16:00.027012+08:00",
+    "submit_time": "2026-06-26T17:16:00.027131+08:00"
+  },
+  {
     "username": "袁影",
     "province": "天津-基层",
     "position": "自营代表（经理）",
