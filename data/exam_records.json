@@ -1,5 +1,23 @@
 [
   {
+    "username": "111",
+    "province": "111",
+    "position": "职能总部人员",
+    "phone": "11111111111",
+    "score": 88,
+    "single_score": 56,
+    "multiple_score": 32,
+    "single_correct": 28,
+    "single_total": 30,
+    "multiple_correct": 8,
+    "multiple_total": 10,
+    "passed": false,
+    "duration_seconds": 456,
+    "start_time": "2026-07-14T21:44:58.119234+08:00",
+    "end_time": "2026-07-14T21:52:34.237012+08:00",
+    "submit_time": "2026-07-14T21:52:34.237124+08:00"
+  },
+  {
     "username": "测试",
     "province": "测试",
     "position": "职能总部人员",
